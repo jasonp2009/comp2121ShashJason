@@ -1,0 +1,28 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega2560"</DEVICE>
+ <WORKING_DIR>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-1\lab01-1\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-1\lab01-1\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-1\lab01-1\Debug\lab01-1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>lab01-1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>lab01-1.map</FILE>
+  <FILE>lab01-1.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <start><FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-1\lab01-1\main.asm</FILE><LINE>3</LINE></start>
+  <halt><FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-1\lab01-1\main.asm</FILE><LINE>12</LINE></halt>
+ </LABELS>
+</ASSEMBLER_INFO>
