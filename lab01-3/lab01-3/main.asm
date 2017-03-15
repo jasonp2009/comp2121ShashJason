@@ -1,7 +1,9 @@
 .include "m2560def.inc"
 
-.set UPPERCASE_A = 65
-.set LOWERCASE_A = 97
+.set UPPERCASE_INDEX = 65
+.set LOWERCASE_INDEX = 97
+;Subtracting one of these values from the ascii value with index the letter
+;ie a/A = 0, b/B = 1 ...
 .set STRING_LEN = 20
 .set NUM_LETTERS = 26
 
@@ -9,7 +11,7 @@
 	string: .byte 20 ;reserve 20 bytes in data memory
 
 .cseg
-	string_value: .db "{ello worl}",0,0,0,0,0,0,0,0,0 ;store string in program memory
+	string_value: .db "{Hallo WArldZz}",0,0,0,0,0 ;store string in program memory
 
 	ldi ZH, high(string_value) ;initialise Z to pont to program memory
 	ldi ZL, low(string_value)
@@ -17,9 +19,8 @@
 	ldi XL, low(string)
 
 	ldi r16, STRING_LEN
-	; Made a change below because say input = a, a - 97 = 0, +65 = A
-	ldi r17, UPPERCASE_A
-	ldi r18, LOWERCASE_A
+	ldi r17, UPPERCASE_INDEX
+	ldi r18, LOWERCASE_INDEX
 	ldi r20, NUM_LETTERS
 	lpm r19, Z+	 ;load first character of Z string
 
@@ -28,30 +29,29 @@
 		breq END ;if r16==0 end the loop
 			
 			dec r16	;decrement counter
-			sub r19, r18 ;r19-(ascii value for 'a'=97)
-			;cpi r19, 26 ;I think this line is not needed	
-			
-			;Swapped the if statment around
-			;We should also test the upperbound of lowercase
-			brsh ELSE ;r19>=26 if true not a lowercase letter
-				add r19, r18 ;r19+(what we subratracted)
+
+			sub r19, r18 ;r19-LOWERCASE_INDEX (If negative then r19 is not a lowercase letter)
+			brsh ELSE ;if r19>=LOWERCASE_INDEX break to ELSE
+				;Characters less than lowercase values in the ascii table
+				add r19, r18 ;r19+LOWERCASE_INDEX (what we subratracted)
 				st X+, r19 ;store the not-lowercase-letter into RAM(data memory)
 				lpm r19, Z+ ;load next Z value
 				rjmp LOOP
 			ELSE:
-				sub r19, r20
+				sub r19, r20 ;r19-NUM_LETTERS to check if r19 is actually a letter
 				brsh OTHER
-					add r19, r20
-					add r19, r17 ;r19+(what we subtracted+32[for uppercase]=129)
+					;Characters within the lowercase values in the ascii table
+					add r19, r20 ;reverse the subtraction used for testing
+					add r19, r17 ;add the UPPERCASE_INDEX to turn into uppercase ascii
 					st X+, r19 ;store new r19 value into RAM(data memory)
 					lpm r19, Z+ ;load next Z value
 					rjmp LOOP
-
 				OTHER:
-					add r19, r20
+					;Characters greater than lowercase values in the ascii table
+					add r19, r20 ;reverse subtraction used for testing
 					add r19, r18
-					st X+, r19
-					lpm r19, Z+
+					st X+, r19 ;store original valuu
+					lpm r19, Z+ ;load next Z value
 					rjmp LOOP
 				
 	END:

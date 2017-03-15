@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm Wed Mar 15 13:57:08 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm Wed Mar 15 14:03:20 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
@@ -1897,16 +1897,16 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\ma
 000200                           	string: .byte 20 ;reserve 20 bytes in data memory
                                  
                                  .cseg
-000000 657b
-000001 6c6c
-000002 206f
-000003 6f77
-000004 6c72
-000005 007d
-000006 0000
+000000 487b
+000001 6c61
+000002 6f6c
+000003 5720
+000004 726f
+000005 646c
+000006 007d
 000007 0000
 000008 0000
-000009 0000                      	string_value: .db "{ello worl}",0,0,0,0,0,0,0,0,0 ;store string in program memory
+000009 0000                      	string_value: .db "{Hallo World}",0,0,0,0,0,0,0 ;store string in program memory
                                  
 00000a e0f0                      	ldi ZH, high(string_value) ;initialise Z to pont to program memory
 00000b e0e0                      	ldi ZL, low(string_value)
@@ -1914,7 +1914,6 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\ma
 00000d e0a0                      	ldi XL, low(string)
                                  
 00000e e104                      	ldi r16, STRING_LEN
-                                 	; Made a change below because say input = a, a - 97 = 0, +65 = A
 00000f e411                      	ldi r17, UPPERCASE_A
 000010 e621                      	ldi r18, LOWERCASE_A
 000011 e14a                      	ldi r20, NUM_LETTERS
@@ -1925,12 +1924,9 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\ma
 000014 f099                      		breq END ;if r16==0 end the loop
                                  			
 000015 950a                      			dec r16	;decrement counter
+                                 
 000016 1b32                      			sub r19, r18 ;r19-(ascii value for 'a'=97)
-                                 			;cpi r19, 26 ;I think this line is not needed	
-                                 			
-                                 			;Swapped the if statment around
-                                 			;We should also test the upperbound of lowercase
-000017 f420                      			brsh ELSE ;r19>=26 if true not a lowercase letter
+000017 f420                      			brsh ELSE ;if r19>='a'
 000018 0f32                      				add r19, r18 ;r19+(what we subratracted)
 000019 933d                      				st X+, r19 ;store the not-lowercase-letter into RAM(data memory)
 00001a 9135                      				lpm r19, Z+ ;load next Z value
