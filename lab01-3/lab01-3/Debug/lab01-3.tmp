@@ -22,11 +22,12 @@
   <FILE>lab01-3.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <string><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>4</LINE></string>
-  <string_value><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>7</LINE></string_value>
-  <LOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>20</LINE></LOOP>
-  <END><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>41</LINE></END>
-  <ELSE><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>34</LINE></ELSE>
-  <halt><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>44</LINE></halt>
+  <string><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>9</LINE></string>
+  <string_value><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>12</LINE></string_value>
+  <LOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>26</LINE></LOOP>
+  <END><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>57</LINE></END>
+  <ELSE><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>41</LINE></ELSE>
+  <OTHER><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>50</LINE></OTHER>
+  <halt><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm</FILE><LINE>60</LINE></halt>
  </LABELS>
 </ASSEMBLER_INFO>
