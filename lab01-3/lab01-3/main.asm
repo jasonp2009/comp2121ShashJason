@@ -2,7 +2,7 @@
 
 .set UPPERCASE_INDEX = 65
 .set LOWERCASE_INDEX = 97
-;Subtracting one of these values from the ascii value with index the letter
+;Subtracting one of these values from the ascii value will index the letter
 ;ie a/A = 0, b/B = 1 ...
 .set STRING_LEN = 20
 .set NUM_LETTERS = 26
