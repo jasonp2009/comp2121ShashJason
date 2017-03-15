@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Documents\Atmel Studio\7.0\lab01-3\lab01-3\main.asm Mon Mar 13 16:34:34 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm Wed Mar 15 12:35:47 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1361,4 +1361,7 @@ EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
 DSEG string       00000200
 CSEG string_value 00000000
-CSEG halt         0000000a
+CSEG LOOP         00000012
+CSEG END          0000001f
+CSEG ELSE         0000001b
+CSEG halt         00000020

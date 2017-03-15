@@ -1,10 +1,10 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Documents\Atmel Studio\7.0\lab01-3\lab01-3\main.asm Mon Mar 13 16:34:34 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm Wed Mar 15 12:35:47 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
-C:\Users\Jason P\Documents\Atmel Studio\7.0\lab01-3\lab01-3\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
+C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
-C:\Users\Jason P\Documents\Atmel Studio\7.0\lab01-3\lab01-3\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
+C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
                                  
                                  .include "m2560def.inc"
                                  
@@ -1889,7 +1889,7 @@ C:\Users\Jason P\Documents\Atmel Studio\7.0\lab01-3\lab01-3\main.asm(1): Includi
                                  ; ***** END OF FILE ******************************************************
                                  
                                  .dseg
-000200                           	string: .byte 20
+000200                           	string: .byte 20 ;reserve 20 bytes in data memory
                                  
                                  .cseg
 000000 6568
@@ -1901,10 +1901,44 @@ C:\Users\Jason P\Documents\Atmel Studio\7.0\lab01-3\lab01-3\main.asm(1): Includi
 000006 0000
 000007 0000
 000008 0000
-000009 0000                      	string_value: .db "hello world",0,0,0,0,0,0,0,0,0
-                                 	
+000009 0000                      	string_value: .db "hello world",0,0,0,0,0,0,0,0,0 ;store string in program memory
+                                 
+00000a e0f0                      	ldi ZH, high(string_value) ;initialise Z to pont to program memory
+00000b e0e0                      	ldi ZL, low(string_value)
+00000c e0b2                      	ldi XH, high(string) ;initialise X to pont to reserved data memory
+00000d e0a0                      	ldi XL, low(string)
+                                 
+00000e e104                      	ldi r16, 20	 ;max 20 letters
+                                 	; Made a change below because say input = a, a - 97 = 0, +65 = A
+00000f e411                      	ldi r17, 65  ;Uppercase A
+000010 e621                      	ldi r18, 97	 ;lowercase a 
+000011 9135                      	lpm r19, Z+	 ;load first character of Z string
+                                 
+                                 	LOOP:
+000012 3000                      		cpi r16, 0
+000013 f059                      		breq END ;if r16==0 end the loop
+                                 			
+000014 950a                      			dec r16	;decrement counter
+000015 1b32                      			sub r19, r18 ;r19-(ascii value for 'a'=97)
+                                 			;cpi r19, 26 ;I think this line is not needed	
+                                 			
+                                 			;Swapped the if statment around
+000016 f420                      			brsh ELSE ;r19>=26 if true not a lowercase letter
+000017 0f32                      				add r19, r18 ;r19+(what we subratracted)
+000018 933d                      				st X+, r19 ;store the not-lowercase-letter into RAM(data memory)
+000019 9135                      				lpm r19, Z+ ;load next Z value
+00001a cff7                      				rjmp LOOP
+                                 			ELSE:
+00001b 0f31                      				add r19, r17 ;r19+(what we subtracted+32[for uppercase]=129)
+00001c 933d                      				st X+, r19 ;store new r19 value into RAM(data memory)
+00001d 9135                      				lpm r19, Z+ ;load next Z value
+00001e cff3                      				rjmp LOOP
+                                 				
+                                 				
+                                 	END:
+00001f c000                      		rjmp halt
+                                 
                                  halt:
-00000a cfff                      	rjmp halt
 
 
 RESOURCE USE INFORMATION
@@ -1922,40 +1956,40 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega2560" register use summary:
-x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   2 y  :   0 z  :   3 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   0 r17:   0 r18:   0 r19:   0 r20:   0 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
-r29:   0 r30:   0 r31:   0 
-Registers used: 0 out of 35 (0.0%)
+r13:   0 r14:   0 r15:   0 r16:   3 r17:   2 r18:   3 r19:   8 r20:   0 
+r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   1 r27:   1 r28:   0 
+r29:   0 r30:   1 r31:   1 
+Registers used: 10 out of 35 (28.6%)
 
 "ATmega2560" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   2 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :   1 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brne  :   0 brpl  :   0 brsh  :   1 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   0 eicall:   0 eijmp :   0 elpm  :   0 
+cpi   :   1 cpse  :   0 dec   :   1 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :   0 inc   :   0 jmp   :   0 ld    :   0 ldd   :   0 ldi   :   0 
-lds   :   0 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 
+in    :   0 inc   :   0 jmp   :   1 ld    :   0 ldd   :   0 ldi   :   7 
+lds   :   0 lpm   :   3 lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
 ori   :   0 out   :   0 pop   :   0 push  :   0 rcall :   0 ret   :   0 
-reti  :   0 rjmp  :   1 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
+reti  :   0 rjmp  :   3 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   0 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
-st    :   0 std   :   0 sts   :   0 sub   :   0 subi  :   0 swap  :   0 
+st    :   2 std   :   0 sts   :   0 sub   :   1 subi  :   0 swap  :   0 
 tst   :   0 wdr   :   0 
-Instructions used: 1 out of 116 (0.9%)
+Instructions used: 11 out of 116 (9.5%)
 
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000016      2     20     22  262144   0.0%
+[.cseg] 0x000000 0x000044     48     20     68  262144   0.0%
 [.dseg] 0x000200 0x000214      0     20     20    8192   0.2%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 

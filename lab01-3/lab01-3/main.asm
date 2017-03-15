@@ -12,7 +12,8 @@
 	ldi XL, low(string)
 
 	ldi r16, 20	 ;max 20 letters
-	ldi r17, 129 ;92+32 for upper
+	; Made a change below because say input = a, a - 97 = 0, +65 = A
+	ldi r17, 65  ;Uppercase A
 	ldi r18, 97	 ;lowercase a 
 	lpm r19, Z+	 ;load first character of Z string
 
@@ -22,18 +23,21 @@
 			
 			dec r16	;decrement counter
 			sub r19, r18 ;r19-(ascii value for 'a'=97)
-			cpi r19, 26	
+			;cpi r19, 26 ;I think this line is not needed	
 			
+			;Swapped the if statment around
+			;We should also test the upperbound of lowercase
 			brsh ELSE ;r19>=26 if true not a lowercase letter
-				add r19, r17 ;r19+(what we subtracted+32[for uppercase]=129)
-				st X+, r19 ;store new r19 value into RAM(data memory)
-				lpm r19, Z+ ;load next Z value
-				rjmp LOOP
-			ELSE:
 				add r19, r18 ;r19+(what we subratracted)
 				st X+, r19 ;store the not-lowercase-letter into RAM(data memory)
 				lpm r19, Z+ ;load next Z value
 				rjmp LOOP
+			ELSE:
+				add r19, r17 ;r19+(what we subtracted+32[for uppercase]=129)
+				st X+, r19 ;store new r19 value into RAM(data memory)
+				lpm r19, Z+ ;load next Z value
+				rjmp LOOP
+				
 				
 	END:
 		rjmp halt
