@@ -20,12 +20,13 @@ start:
 		ldi XH, high(array)
 		ldi XL, low(array)
 		ldi r16, ARRAY_LEN
-		LOOP:
+		STARTLOOP:
 			cpi r16, 0 ;While r16!=0
-			breq END
+			breq ENDLOOP
 				dec r16; decrement counter
 				lpm r17, Z+
 				st X+, r17
-				rjmp LOOP
-		END:
+				rjmp STARTLOOP
+		ENDLOOP:
+
 
