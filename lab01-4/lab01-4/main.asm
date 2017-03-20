@@ -16,7 +16,8 @@
 
 	.cseg
 		rjmp start ;jump over data definition
-		array_value: .db 7, 4, 5, 1, 6, 3, 2
+		;array_value: .db 7, 4, 5, 1, 6, 3, 2
+		array_value: .db 1, 2, 3, 4, 5, 6, 7
 		start:
 		ldi ZH, high(array_value<<1)
 		ldi ZL, low(array_value<<1)
@@ -49,6 +50,7 @@
 				ldi r18, 0
 				inc r17		;LOOP1 for loop increment (r17++)
 				sub r21,r17	;r21 := 6-r17
+				ldi r19, 0
 				LOOP3: ;dont want to continue incrementing previous for loop counter
 				cp r18,r21	;for loop (r18=0; r18<r21; r18++)
 				brlo COMPARE
@@ -57,6 +59,8 @@
 				ldi ZH, high(array)	;initialise Z to point to program memory
 				ldi ZL, low(array)
 				ldi r21,6					;reset r21 to 6
+				cpi r19, 0
+				breq halt
 				rjmp LOOP1	;LINE 52
 
 					COMPARE:
@@ -72,12 +76,7 @@
 					st -Z, r25 ;re-store the values
 					ld r25, Z+ ;incrementing Z
 					st Z, r24
+					ldi r19, 1
 					rjmp LOOP3
-
-		END:
-		rjmp halt 
-
-
-	
 	halt:
 		jmp halt

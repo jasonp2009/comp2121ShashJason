@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm Mon Mar 20 15:51:59 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm Mon Mar 20 16:06:50 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1367,7 +1367,6 @@ CSEG STARTLOOP    0000000a
 CSEG ENDLOOP      00000010
 CSEG LOOP1        00000016
 CSEG LOOP2        00000019
-CSEG halt         00000031
-CSEG LOOP3        0000001c
-CSEG COMPARE      00000023
-CSEG END          00000030
+CSEG halt         00000034
+CSEG LOOP3        0000001d
+CSEG COMPARE      00000026
