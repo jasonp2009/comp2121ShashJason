@@ -1,18 +1,18 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.6</VERSION>
  <DEVICE>"ATmega2560"</DEVICE>
- <WORKING_DIR>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-4\lab01-4\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-4\lab01-4\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-4\lab01-4\Debug\lab01-4.obj</FILE>
+  <FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\Debug\lab01-4.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>lab01-4.hex</FILE>
@@ -22,10 +22,16 @@
   <FILE>lab01-4.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <start><FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-4\lab01-4\main.asm</FILE><LINE>10</LINE></start>
-  <array><FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-4\lab01-4\main.asm</FILE><LINE>14</LINE></array>
-  <array_value><FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-4\lab01-4\main.asm</FILE><LINE>17</LINE></array_value>
-  <LOOP><FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-4\lab01-4\main.asm</FILE><LINE>23</LINE></LOOP>
-  <END><FILE>c:\users\jason p\Documents\Atmel Studio\7.0\lab01-4\lab01-4\main.asm</FILE><LINE>30</LINE></END>
+  <array><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>15</LINE></array>
+  <start><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>20</LINE></start>
+  <array_value><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>19</LINE></array_value>
+  <STARTLOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>26</LINE></STARTLOOP>
+  <ENDLOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>33</LINE></ENDLOOP>
+  <LOOP1><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>42</LINE></LOOP1>
+  <LOOP2><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>48</LINE></LOOP2>
+  <halt><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>82</LINE></halt>
+  <LOOP3><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>52</LINE></LOOP3>
+  <COMPARE><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>62</LINE></COMPARE>
+  <END><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-4\lab01-4\main.asm</FILE><LINE>77</LINE></END>
  </LABELS>
 </ASSEMBLER_INFO>

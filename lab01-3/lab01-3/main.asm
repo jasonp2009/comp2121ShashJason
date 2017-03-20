@@ -11,7 +11,7 @@
 	string: .byte 20 ;reserve 20 bytes in data memory
 
 .cseg
-	string_value: .db "{Hallo WArldZz}",0,0,0,0,0 ;store string in program memory
+	string_value: .db "{Hallo WArlZz!,./?}",0 ;store string in program memory
 
 	ldi ZH, high(string_value) ;initialise Z to pont to program memory
 	ldi ZL, low(string_value)

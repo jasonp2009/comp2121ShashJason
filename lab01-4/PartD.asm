@@ -4,7 +4,7 @@
 	array: .byte 7 ;reserve 7 bytes for array
 
 .cseg
-start:
+	start:
 	array_value: .db 7,4,5,1,6,3,2 ;store array values in program memory
 	
 	ldi ZH, high(array_value) ;initialise Z to point to program memory
@@ -55,11 +55,11 @@ start:
 				inc r18		;LOOP2 for loop increment (r18++)
 				ldi r21,6 	;set r21 to 6 again
 				lpm r22,Z+	;load Z value into a register
-				lpm r23,Z+	;load next Z value into a register
+				lpm r23,Z	;load next Z value into a register
 				cp r22,r23	;if statement (r22<r23)
 				brlo LOOP2	
 					
-				.macro swap2 ;swap two values into each others previous position
+				.macro swap2 2;swap two values into each others previous position
 				lds r19,@0 ;load data from provided 
 				lds r20,@1 ;two locations
 				sts @1,r19 ;interchange the data and 

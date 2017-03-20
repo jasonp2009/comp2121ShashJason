@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm Wed Mar 15 14:03:20 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm Mon Mar 20 15:24:47 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
@@ -1888,8 +1888,10 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\ma
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
-                                 .set UPPERCASE_A = 65
-                                 .set LOWERCASE_A = 97
+                                 .set UPPERCASE_INDEX = 65
+                                 .set LOWERCASE_INDEX = 97
+                                 ;Subtracting one of these values from the ascii value will index the letter
+                                 ;ie a/A = 0, b/B = 1 ...
                                  .set STRING_LEN = 20
                                  .set NUM_LETTERS = 26
                                  
@@ -1901,12 +1903,12 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\ma
 000001 6c61
 000002 6f6c
 000003 5720
-000004 726f
-000005 646c
-000006 007d
-000007 0000
-000008 0000
-000009 0000                      	string_value: .db "{Hallo World}",0,0,0,0,0,0,0 ;store string in program memory
+000004 7241
+000005 5a6c
+000006 217a
+000007 2e2c
+000008 3f2f
+000009 007d                      	string_value: .db "{Hallo WArlZz!,./?}",0 ;store string in program memory
                                  
 00000a e0f0                      	ldi ZH, high(string_value) ;initialise Z to pont to program memory
 00000b e0e0                      	ldi ZL, low(string_value)
@@ -1914,8 +1916,8 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\ma
 00000d e0a0                      	ldi XL, low(string)
                                  
 00000e e104                      	ldi r16, STRING_LEN
-00000f e411                      	ldi r17, UPPERCASE_A
-000010 e621                      	ldi r18, LOWERCASE_A
+00000f e411                      	ldi r17, UPPERCASE_INDEX
+000010 e621                      	ldi r18, LOWERCASE_INDEX
 000011 e14a                      	ldi r20, NUM_LETTERS
 000012 9135                      	lpm r19, Z+	 ;load first character of Z string
                                  
@@ -1925,26 +1927,28 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab01-3\lab01-3\ma
                                  			
 000015 950a                      			dec r16	;decrement counter
                                  
-000016 1b32                      			sub r19, r18 ;r19-(ascii value for 'a'=97)
-000017 f420                      			brsh ELSE ;if r19>='a'
-000018 0f32                      				add r19, r18 ;r19+(what we subratracted)
+000016 1b32                      			sub r19, r18 ;r19-LOWERCASE_INDEX (If negative then r19 is not a lowercase letter)
+000017 f420                      			brsh ELSE ;if r19>=LOWERCASE_INDEX break to ELSE
+                                 				;Characters less than lowercase values in the ascii table
+000018 0f32                      				add r19, r18 ;r19+LOWERCASE_INDEX (what we subratracted)
 000019 933d                      				st X+, r19 ;store the not-lowercase-letter into RAM(data memory)
 00001a 9135                      				lpm r19, Z+ ;load next Z value
 00001b cff7                      				rjmp LOOP
                                  			ELSE:
-00001c 1b34                      				sub r19, r20
+00001c 1b34                      				sub r19, r20 ;r19-NUM_LETTERS to check if r19 is actually a letter
 00001d f428                      				brsh OTHER
-00001e 0f34                      					add r19, r20
-00001f 0f31                      					add r19, r17 ;r19+(what we subtracted+32[for uppercase]=129)
+                                 					;Characters within the lowercase values in the ascii table
+00001e 0f34                      					add r19, r20 ;reverse the subtraction used for testing
+00001f 0f31                      					add r19, r17 ;add the UPPERCASE_INDEX to turn into uppercase ascii
 000020 933d                      					st X+, r19 ;store new r19 value into RAM(data memory)
 000021 9135                      					lpm r19, Z+ ;load next Z value
 000022 cff0                      					rjmp LOOP
-                                 
                                  				OTHER:
-000023 0f34                      					add r19, r20
+                                 					;Characters greater than lowercase values in the ascii table
+000023 0f34                      					add r19, r20 ;reverse subtraction used for testing
 000024 0f32                      					add r19, r18
-000025 933d                      					st X+, r19
-000026 9135                      					lpm r19, Z+
+000025 933d                      					st X+, r19 ;store original valuu
+000026 9135                      					lpm r19, Z+ ;load next Z value
 000027 cfeb                      					rjmp LOOP
                                  				
                                  	END:
