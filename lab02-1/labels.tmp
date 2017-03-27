@@ -1,0 +1,28 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>ATmega2560</DEVICE>
+ <WORKING_DIR>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1\lab02-1.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1\lab02-1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1\lab02-1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1\lab02-1.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <string><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1\lab02-1.asm</FILE><LINE>4</LINE></string>
+  <string_value><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1\lab02-1.asm</FILE><LINE>7</LINE></string_value>
+  <LOAD><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1\lab02-1.asm</FILE><LINE>20</LINE></LOAD>
+  <FLIP><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1\lab02-1.asm</FILE><LINE>28</LINE></FLIP>
+  <halt><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab02-1\lab02-1.asm</FILE><LINE>37</LINE></halt>
+ </LABELS>
+</ASSEMBLER_INFO>
