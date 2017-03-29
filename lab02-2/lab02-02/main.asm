@@ -26,6 +26,10 @@
 start: 
 	ldi ZH, high(NEXT_STRING<<1)
 	ldi ZL, low(NEXT_STRING<<1)
+	ldi r23, 0
+	ldi r24, 2
+	add r24, ZL
+	adc r23, ZH
 	ldi r16,0
 	ldi r28, low(RAMEND)
 	ldi r29, high(RAMEND)
@@ -35,32 +39,44 @@ start:
 
 
 search:
-	ldi r17, Z+
-	ldi r18, Z+
-	ldi r19, ZH
-	ldi r20, ZL
+	lpm r17, Z+
+	lpm r18, Z+
+	mov r19, ZH
+	mov r20, ZL
 	ldi r16, 0
 	LOOP:
-		cpi Z+, 0
+		lpm r21, Z+
+		cpi r21, 0
 		breq ENDLOOP
 		inc r16
 		jmp LOOP
 	ENDLOOP:
 	push r19
 	push r20
-	push, r16
-	ldi ZH, r17
-	ldi ZL, r18
+	push r16
+	mov ZL, r17
+	mov ZH, r18
 	ldi r16, 0
-	cpi r19, 0
+	cpi r17, 0
 	BRNE search
-	cpi r20, 0
+	cpi r18, 0
 	BRNE search
+	
 	ldi r16, 0
-	BIGGEST:
+	COMPARE:
 	pop r20
-	cpi 
-
+	pop r21
+	pop r22
+	cp r20, r16
+	brlo SMALLER
+		mov r16, r20
+		mov ZL, r21
+		mov ZH, r22
+	SMALLER:
+	cp r21, r24
+	brne COMPARE
+	cp r22, r23
+	brne COMPARE
 halt:
 	jmp halt
 
