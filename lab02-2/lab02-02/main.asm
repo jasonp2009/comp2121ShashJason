@@ -35,33 +35,31 @@ start:
 
 
 search:
-	ldi r17,0
-	COUNT:
-		lpm r18,Z+
-		cpi r18,0
-		breq END
-		inc r17
-		rjmp COUNT
-
-	END:
-		push r17
-		push ZL
-		push ZH
-
-
-
-
-		/*b r17,r16
-		brlo NOCHANGE
-		add r17,r16
-		mov r16,r17
-		ld r19,ZH
-		ld r20,ZL
-
-	NOCHANGE:*/
-
-
-		
+	ldi r17, Z+
+	ldi r18, Z+
+	ldi r19, ZH
+	ldi r20, ZL
+	ldi r16, 0
+	LOOP:
+		cpi Z+, 0
+		breq ENDLOOP
+		inc r16
+		jmp LOOP
+	ENDLOOP:
+	push r19
+	push r20
+	push, r16
+	ldi ZH, r17
+	ldi ZL, r18
+	ldi r16, 0
+	cpi r19, 0
+	BRNE search
+	cpi r20, 0
+	BRNE search
+	ldi r16, 0
+	BIGGEST:
+	pop r20
+	cpi 
 
 halt:
 	jmp halt
