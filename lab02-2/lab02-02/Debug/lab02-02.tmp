@@ -22,12 +22,12 @@
   <FILE>lab02-02.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <start><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>26</LINE></start>
-  <search><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>41</LINE></search>
-  <LOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>47</LINE></LOOP>
-  <ENDLOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>53</LINE></ENDLOOP>
-  <COMPARE><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>66</LINE></COMPARE>
-  <SMALLER><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>75</LINE></SMALLER>
-  <halt><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>80</LINE></halt>
+  <start><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>29</LINE></start>
+  <search><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>46</LINE></search>
+  <LOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>55</LINE></LOOP>
+  <ENDLOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>64</LINE></ENDLOOP>
+  <compare><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>81</LINE></compare>
+  <SMALLER><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>90</LINE></SMALLER>
+  <halt><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>95</LINE></halt>
  </LABELS>
 </ASSEMBLER_INFO>
