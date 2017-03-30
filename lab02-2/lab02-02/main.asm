@@ -80,15 +80,23 @@ search:
 	BRNE search
 	
 compare:
+	;Exiting each function call one by one by
+	;Popping all values for one instance of the function from stack
 	pop r20
 	pop r21
 	pop r22
+	;If r20 > r16
 	cp r20, r16
 	brlo SMALLER
+		;Store the length of the string
 		mov r16, r20
+		;And the location of the string (not node)
 		mov ZL, r21
 		mov ZH, r22
 	SMALLER:
+	;Check if we have reached the end of the stack
+	;By comparing the current string pointer to the
+	;pointer of the string in the header
 	cp r21, r24
 	brne compare
 	cp r22, r23
