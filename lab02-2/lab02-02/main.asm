@@ -95,9 +95,9 @@ compare:
 	pop r20
 	pop r21
 	pop r22
-	;If r20 > r16
-	cp r20, r16
-	brlo SMALLER
+	;If r20 >= r16
+	cp r16, r20
+	brsh SMALLER
 		;Store the length of the string
 		mov r16, r20
 		;And the location of the string (not node)

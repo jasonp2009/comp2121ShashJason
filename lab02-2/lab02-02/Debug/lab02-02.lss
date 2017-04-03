@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm Mon Apr 03 12:57:06 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm Mon Apr 03 13:00:12 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
@@ -2018,9 +2018,9 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\m
 00004e 914f                      	pop r20
 00004f 915f                      	pop r21
 000050 916f                      	pop r22
-                                 	;If r20 > r16
-000051 1740                      	cp r20, r16
-000052 f018                      	brlo SMALLER
+                                 	;If r20 >= r16
+000051 1704                      	cp r16, r20
+000052 f418                      	brsh SMALLER
                                  		;Store the length of the string
 000053 2f04                      		mov r16, r20
                                  		;And the location of the string (not node)
@@ -2065,8 +2065,8 @@ Registers used: 14 out of 35 (40.0%)
 .lds  :   0 .sts  :   0 adc   :   1 add   :   1 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   2 brge  :   0 brhc  :   0 
-brhs  :   0 brid  :   0 brie  :   0 brlo  :   1 brlt  :   0 brmi  :   0 
-brne  :   5 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
+brne  :   5 brpl  :   0 brsh  :   1 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   3 cpc   :   0 
