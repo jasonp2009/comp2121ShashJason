@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm Mon Apr 03 12:39:25 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm Mon Apr 03 12:57:06 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
@@ -1906,97 +1906,136 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\m
                                  
                                  
                                  .cseg
-000000 c000                      	rjmp start
+000000 c029                      	rjmp start
                                  	;Stores the strings in program memory as a link list
                                  	;Fun will be the head
                                  	;The first 2 bytes of each node is the pointer (*H, *L)
-                                 	;defstring "macros"
-                                 	;defstring "are"
-                                 	;defstring "fun"
+000001 0000
+000002 616d
+000003 7263
+000004 736f
+000005 0000                      	defstring "macros"
+000006 0002
+000007 7261
+000008 0065                      	defstring "are"
+000009 000c
+00000a 7566
+00000b 006e                      	defstring "fun"
+00000c 0012
+00000d 6172
+00000e 646e
+00000f 6d6f
+000010 6520
+000011 7478
+000012 6172
+000013 7420
+000014 7365
+000015 7374
+000016 0000                      	defstring "random extra tests"
+000017 0018
+000018 5645
+000019 4e45
+00001a 4f4d
+00001b 4552
+00001c 4554
+00001d 5453
+00001e 0053                      	defstring "EVENMORETESTS"
+00001f 002e
+000020 6172
+000021 646e
+000022 6d6f
+000023 6520
+000024 7478
+000025 6172
+000026 7420
+000027 7365
+000028 7374
+000029 0000                      	defstring "random extra tests"
                                  
                                  start: 
                                  	;Load the header
-000001 e0f0                      	ldi ZH, high(NEXT_STRING<<1)
-000002 e0e0                      	ldi ZL, low(NEXT_STRING<<1)
+00002a e0f0                      	ldi ZH, high(NEXT_STRING<<1)
+00002b e3ee                      	ldi ZL, low(NEXT_STRING<<1)
                                  	;Store the pointer to the first string ie 2 bytes past the header
-000003 e070                      	ldi r23, 0
-000004 e082                      	ldi r24, 2
-000005 0f8e                      	add r24, ZL
-000006 1f7f                      	adc r23, ZH
+00002c e070                      	ldi r23, 0
+00002d e082                      	ldi r24, 2
+00002e 0f8e                      	add r24, ZL
+00002f 1f7f                      	adc r23, ZH
                                  
                                  	;Initialise the stack pointer SP to point to the highest SRAM address
-000007 efcf                      	ldi r28, low(RAMEND)
-000008 e2d1                      	ldi r29, high(RAMEND)
-000009 bfde                      	out SPH, r29
-00000a bfcd                      	out SPL, r28
-00000b c000                      	rjmp search
+000030 efcf                      	ldi r28, low(RAMEND)
+000031 e2d1                      	ldi r29, high(RAMEND)
+000032 bfde                      	out SPH, r29
+000033 bfcd                      	out SPL, r28
+000034 c000                      	rjmp search
                                  
                                  search:
                                  	;Set a counter to count the length of the string
                                  	;or the return value in Z = NULL
-00000c e000                      	ldi r16, 0
-00000d 30f0                      	cpi ZH, 0
-00000e f411                      	brne skip
-00000f 30e0                      	cpi ZL, 0
-000010 f101                      	breq halt
+000035 e000                      	ldi r16, 0
+                                 	;test if Z = NULL
+000036 30f0                      	cpi ZH, 0
+000037 f411                      	brne skip
+000038 30e0                      	cpi ZL, 0
+000039 f101                      	breq halt
                                  	skip:
                                  	;Store the pointer to the next node in registers
-000011 9115                      	lpm r17, Z+
-000012 9125                      	lpm r18, Z+
+00003a 9115                      	lpm r17, Z+
+00003b 9125                      	lpm r18, Z+
                                  	;Store the pointer to the string in the current node in registers
-000013 2f3f                      	mov r19, ZH
-000014 2f4e                      	mov r20, ZL
+00003c 2f3f                      	mov r19, ZH
+00003d 2f4e                      	mov r20, ZL
                                  	LOOP:
                                  		;Store next character in register
-000015 9155                      		lpm r21, Z+
+00003e 9155                      		lpm r21, Z+
                                  		;If character equals '\0' end the loop
-000016 3050                      		cpi r21, 0
-000017 f019                      		breq ENDLOOP
+00003f 3050                      		cpi r21, 0
+000040 f019                      		breq ENDLOOP
                                  		;Else increment stringlen counter and loop
-000018 9503                      		inc r16
-000019 940c 0015                 		jmp LOOP
+000041 9503                      		inc r16
+000042 940c 003e                 		jmp LOOP
                                  	ENDLOOP:
                                  	;Push string pointer and string len to stack
-00001b 933f                      	push r19
-00001c 934f                      	push r20
-00001d 930f                      	push r16
+000044 933f                      	push r19
+000045 934f                      	push r20
+000046 930f                      	push r16
                                  	;Set the Z pointer to the next node
-00001e 2fe1                      	mov ZL, r17
-00001f 2ff2                      	mov ZH, r18
+000047 2fe1                      	mov ZL, r17
+000048 2ff2                      	mov ZH, r18
                                  	;Reset the string counter
                                  	;If end of list is reached then r16 will be used to store the value of the largest string
-000020 e000                      	ldi r16, 0
+000049 e000                      	ldi r16, 0
                                  	;If there are nodes left ie if next node != 0x0000
                                  	;Then go to search, ie recursively calling itself
-000021 3010                      	cpi r17, 0
-000022 f749                      	BRNE search
-000023 3020                      	cpi r18, 0
-000024 f739                      	BRNE search
+00004a 3010                      	cpi r17, 0
+00004b f749                      	BRNE search
+00004c 3020                      	cpi r18, 0
+00004d f739                      	BRNE search
                                  	
                                  compare:
                                  	;Exiting each function call one by one by
                                  	;Popping all values for one instance of the function from stack
-000025 914f                      	pop r20
-000026 915f                      	pop r21
-000027 916f                      	pop r22
+00004e 914f                      	pop r20
+00004f 915f                      	pop r21
+000050 916f                      	pop r22
                                  	;If r20 > r16
-000028 1740                      	cp r20, r16
-000029 f018                      	brlo SMALLER
+000051 1740                      	cp r20, r16
+000052 f018                      	brlo SMALLER
                                  		;Store the length of the string
-00002a 2f04                      		mov r16, r20
+000053 2f04                      		mov r16, r20
                                  		;And the location of the string (not node)
-00002b 2fe5                      		mov ZL, r21
-00002c 2ff6                      		mov ZH, r22
+000054 2fe5                      		mov ZL, r21
+000055 2ff6                      		mov ZH, r22
                                  	SMALLER:
                                  	;Check if we have reached the end of the stack
                                  	;By comparing the current string pointer to the
                                  	;pointer of the string in the header
-00002d 1758                      	cp r21, r24
-00002e f7b1                      	brne compare
-00002f 1767                      	cp r22, r23
-000030 f7a1                      	brne compare
+000056 1758                      	cp r21, r24
+000057 f7b1                      	brne compare
+000058 1767                      	cp r22, r23
+000059 f7a1                      	brne compare
                                  halt:
-000031 940c 0031                 	jmp halt
+00005a 940c 005a                 	jmp halt
                                  
 
 
@@ -2048,7 +2087,7 @@ Instructions used: 16 out of 116 (13.8%)
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000066    102      0    102  262144   0.0%
+[.cseg] 0x000000 0x0000b8    102     82    184  262144   0.1%
 [.dseg] 0x000200 0x000200      0      0      0    8192   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 

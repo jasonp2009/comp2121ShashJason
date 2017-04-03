@@ -22,9 +22,12 @@
 	;Stores the strings in program memory as a link list
 	;Fun will be the head
 	;The first 2 bytes of each node is the pointer (*H, *L)
-	;defstring "macros"
-	;defstring "are"
-	;defstring "fun"
+	defstring "macros"
+	defstring "are"
+	defstring "fun"
+	defstring "random extra tests"
+	defstring "EVENMORETESTS"
+	defstring "random extra tests"
 
 start: 
 	;Load the header

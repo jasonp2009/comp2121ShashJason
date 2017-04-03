@@ -22,13 +22,13 @@
   <FILE>lab02-02.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <start><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>29</LINE></start>
-  <search><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>46</LINE></search>
-  <skip><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>54</LINE></skip>
-  <halt><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>110</LINE></halt>
-  <LOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>61</LINE></LOOP>
-  <ENDLOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>70</LINE></ENDLOOP>
-  <compare><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>88</LINE></compare>
-  <SMALLER><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>102</LINE></SMALLER>
+  <start><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>32</LINE></start>
+  <search><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>49</LINE></search>
+  <skip><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>58</LINE></skip>
+  <halt><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>114</LINE></halt>
+  <LOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>65</LINE></LOOP>
+  <ENDLOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>74</LINE></ENDLOOP>
+  <compare><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>92</LINE></compare>
+  <SMALLER><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm</FILE><LINE>106</LINE></SMALLER>
  </LABELS>
 </ASSEMBLER_INFO>

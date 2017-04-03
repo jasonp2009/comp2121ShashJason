@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm Mon Apr 03 12:39:25 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-2\lab02-02\main.asm Mon Apr 03 12:57:06 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1359,12 +1359,13 @@ EQU  URXC3addr    0000006c
 EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
-SET  NEXT_STRING  00000000
-CSEG start        00000001
-CSEG search       0000000c
-CSEG skip         00000011
-CSEG halt         00000031
-CSEG LOOP         00000015
-CSEG ENDLOOP      0000001b
-CSEG compare      00000025
-CSEG SMALLER      0000002d
+SET  NEXT_STRING  0000001f
+CSEG start        0000002a
+SET  T            0000001f
+CSEG search       00000035
+CSEG skip         0000003a
+CSEG halt         0000005a
+CSEG LOOP         0000003e
+CSEG ENDLOOP      00000044
+CSEG compare      0000004e
+CSEG SMALLER      00000056
