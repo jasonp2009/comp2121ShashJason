@@ -22,10 +22,10 @@
 	;Stores the strings in program memory as a link list
 	;Fun will be the head
 	;The first 2 bytes of each node is the pointer (*H, *L)
-	defstring "macros"
+	defstring ""
 	defstring "are"
-	defstring "fun"
-	defstring "random extra tests"
+	defstring ""
+	defstring ""
 	defstring "EVENMORETESTS"
 	defstring "random extra tests"
 
@@ -44,7 +44,8 @@ start:
 	ldi r29, high(RAMEND)
 	out SPH, r29
 	out SPL, r28
-	rjmp search
+	
+	rcall search
 
 search:
 	;Set a counter to count the length of the string
@@ -85,9 +86,12 @@ search:
 	;If there are nodes left ie if next node != 0x0000
 	;Then go to search, ie recursively calling itself
 	cpi r17, 0
-	BRNE search
+	BREQ temp
+	rcall search
+	temp:
 	cpi r18, 0
-	BRNE search
+	BREQ compare
+	rcall search
 	
 compare:
 	;Exiting each function call one by one by

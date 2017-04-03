@@ -1,0 +1,33 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega2560"</DEVICE>
+ <WORKING_DIR>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\Debug\lab02-3.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>lab02-3.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>lab02-3.map</FILE>
+  <FILE>lab02-3.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <start><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\main.asm</FILE><LINE>30</LINE></start>
+  <search><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\main.asm</FILE><LINE>48</LINE></search>
+  <skip><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\main.asm</FILE><LINE>57</LINE></skip>
+  <halt><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\main.asm</FILE><LINE>116</LINE></halt>
+  <temp><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\main.asm</FILE><LINE>81</LINE></temp>
+  <compare><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\main.asm</FILE><LINE>86</LINE></compare>
+  <SMALLER><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab02-3\lab02-3\main.asm</FILE><LINE>100</LINE></SMALLER>
+ </LABELS>
+</ASSEMBLER_INFO>
