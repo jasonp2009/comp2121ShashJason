@@ -22,9 +22,9 @@
 	;Stores the strings in program memory as a link list
 	;Fun will be the head
 	;The first 2 bytes of each node is the pointer (*H, *L)
-	defstring "macros"
-	defstring "are"
-	defstring "fun"
+	;defstring "macros"
+	;defstring "are"
+	;defstring "fun"
 
 start: 
 	;Load the header
@@ -44,14 +44,21 @@ start:
 	rjmp search
 
 search:
+	;Set a counter to count the length of the string
+	;or the return value in Z = NULL
+	ldi r16, 0
+	;test if Z = NULL
+	cpi ZH, 0
+	brne skip
+	cpi ZL, 0
+	breq halt
+	skip:
 	;Store the pointer to the next node in registers
 	lpm r17, Z+
 	lpm r18, Z+
 	;Store the pointer to the string in the current node in registers
 	mov r19, ZH
 	mov r20, ZL
-	;Set a counter to count the length of the string
-	ldi r16, 0
 	LOOP:
 		;Store next character in register
 		lpm r21, Z+
