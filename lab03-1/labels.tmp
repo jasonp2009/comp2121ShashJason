@@ -1,0 +1,32 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>ATmega2560</DEVICE>
+ <WORKING_DIR>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <SecondCounter><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>20</LINE></SecondCounter>
+  <TempCounter><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>22</LINE></TempCounter>
+  <RESET><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>35</LINE></RESET>
+  <DEFAULT><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>33</LINE></DEFAULT>
+  <Timer0OVF><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>43</LINE></Timer0OVF>
+  <main><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>80</LINE></main>
+  <NotSecond><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>69</LINE></NotSecond>
+  <EndIF><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>72</LINE></EndIF>
+  <loop><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>94</LINE></loop>
+ </LABELS>
+</ASSEMBLER_INFO>
