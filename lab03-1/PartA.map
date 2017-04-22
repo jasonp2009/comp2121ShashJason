@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.42  C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm Mon Apr 10 16:48:49 2017
+AVRASM ver. 2.1.42  C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm Sat Apr 22 17:14:42 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1359,15 +1359,4 @@ EQU  URXC3addr    0000006c
 EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
-EQU  PATTERN      000000e5
-DEF  temp         r16
-DEF  leds         r17
-DSEG SecondCounter 00000200
-DSEG TempCounter  00000202
-CSEG RESET        00000033
-CSEG DEFAULT      00000032
-CSEG Timer0OVF    0000003a
-CSEG main         00000065
-CSEG NotSecond    0000005a
-CSEG EndIF        0000005e
-CSEG loop         0000007a
+CSEG end          00000004

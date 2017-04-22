@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.42  C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartB\PartB.asm Fri Apr 21 20:15:01 2017
+AVRASM ver. 2.1.42  C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartB\PartB.asm Sat Apr 22 19:12:54 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1366,7 +1366,28 @@ DSEG TempCounter  00000202
 CSEG RESET        00000033
 CSEG DEFAULT      00000032
 CSEG Timer0OVF    0000003a
-CSEG main         00000066
-CSEG NotSecond    0000005b
-CSEG EndIF        0000005f
-CSEG loop         0000007a
+CSEG main         000000dc
+CSEG Compbreak    0000004a
+CSEG Comp         0000004b
+CSEG NotSecond    000000d1
+CSEG Zero         0000005e
+CSEG One          00000063
+CSEG Two          00000067
+CSEG Three        0000006b
+CSEG Four         0000006f
+CSEG Five         00000073
+CSEG Six          00000077
+CSEG Seven        0000007b
+CSEG Eight        0000007f
+CSEG Cont2        00000083
+CSEG Cont         000000c2
+CSEG Nine         00000093
+CSEG Ten          00000099
+CSEG Eleven       0000009f
+CSEG Tweleve      000000a5
+CSEG Thirteen     000000ab
+CSEG Fourteen     000000b1
+CSEG Fifteen      000000b7
+CSEG Sixteen      000000bd
+CSEG EndIF        000000d5
+CSEG loop         000000ee

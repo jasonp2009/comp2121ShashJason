@@ -19,14 +19,6 @@
   <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.map</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <SecondCounter><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>20</LINE></SecondCounter>
-  <TempCounter><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>22</LINE></TempCounter>
-  <RESET><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>35</LINE></RESET>
-  <DEFAULT><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>33</LINE></DEFAULT>
-  <Timer0OVF><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>43</LINE></Timer0OVF>
-  <main><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>80</LINE></main>
-  <NotSecond><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>69</LINE></NotSecond>
-  <EndIF><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>72</LINE></EndIF>
-  <loop><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>94</LINE></loop>
+  <end><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartA\PartA.asm</FILE><LINE>8</LINE></end>
  </LABELS>
 </ASSEMBLER_INFO>
