@@ -1,0 +1,41 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>ATmega2560</DEVICE>
+ <WORKING_DIR>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <SecondCounter><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>23</LINE></SecondCounter>
+  <TempCounter><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>25</LINE></TempCounter>
+  <RESET><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>47</LINE></RESET>
+  <EXT_INT1><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>87</LINE></EXT_INT1>
+  <EXT_INT0><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>74</LINE></EXT_INT0>
+  <Timer0OVF><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>56</LINE></Timer0OVF>
+  <DEFAULT><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>45</LINE></DEFAULT>
+  <main><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>143</LINE></main>
+  <NS><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>71</LINE></NS>
+  <Compare><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>103</LINE></Compare>
+  <NotSecond><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>130</LINE></NotSecond>
+  <Zero><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>109</LINE></Zero>
+  <One><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>114</LINE></One>
+  <Cont><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>121</LINE></Cont>
+  <EndIF><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>134</LINE></EndIF>
+  <loop><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>157</LINE></loop>
+  <maintwo><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>162</LINE></maintwo>
+  <looptwo><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab3\PartC\PartC.asm</FILE><LINE>171</LINE></looptwo>
+ </LABELS>
+</ASSEMBLER_INFO>

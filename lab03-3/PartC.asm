@@ -1,12 +1,13 @@
 
 .include "m2560def.inc" 
 
-.def temp = r19 
-.def temp2 = r16 
-.def output = r17 
-.def count = r18
+;.def temp = r19 
+.def temp = r16 
+;.def output = r17 
+;.def count = r18
 .def counter = r20
 .def input = r21
+.def flash = r22
 
 ; The macro clears a word (2 bytes) in a memory 
 ; the parameter @0 is the memory address for that word
@@ -25,20 +26,22 @@ TempCounter:
 	.byte 2 ; Temporary counter. Used to determine if one second has passed
 
 .cseg
-	ldi input, 0
-	ldi r22, 0
 .org 0x0000
 	jmp RESET
-	jmp DEFAULT ; No handling for IRQ0.
-	jmp DEFAULT ; No handling for IRQ1.
-.org OVF0addr
-	jmp Timer0OVF ; Jump to the interrupt handler for timer0 overflow.
-.org INT0addr	; set up interrupt vectors
-	jmp EXT_INT0	
+	;jmp DEFAULT ; No handling for IRQ0.
+	;jmp DEFAULT ; No handling for IRQ1.
 .org INT1addr	; set up interrupt vectors
 	jmp EXT_INT1
-		
+.org INT0addr	; set up interrupt vectors
+	jmp EXT_INT0	
+.org OVF0addr
+	jmp Timer0OVF ; Jump to the interrupt handler for timer0 overflow.
 	jmp DEFAULT ; default service for all other interrupts.
+	
+	ldi input, 0
+	ldi flash, 0
+	ldi counter, 0
+
 DEFAULT: reti ; no service
 
 RESET: 
@@ -69,28 +72,32 @@ NS:
 	rjmp NotSecond 
 
 EXT_INT0: 
-	push temp2 ; save register 
-	in temp2, SREG ; save SREG 
-	push temp2 
-	ldi r23, 0x02	;	PB0 (the right button) enters 0
+	push temp ; save register 
+	in temp, SREG ; save SREG 
+	push temp 
+	clr r0
+	ldi r23, 2	;	PB0 (the right button) enters 0
 	mul input, r23	;	hence multiply by 2 and a 0 will be placed last in the input register
 	mov input, r0
-	pop temp2 ; restore SREG 
-	out SREG, temp2 
-	pop temp2 ; restore register 
+	inc counter
+	pop temp ; restore SREG 
+	out SREG, temp 
+	pop temp ; restore register 
 	reti
 EXT_INT1: 
-	push temp2 ; save register 
-	in temp2, SREG ; save SREG 
-	push temp2 
-	ldi r23, 0x02	;	PB1 (the right button) enters 1
+	push temp ; save register 
+	in temp, SREG ; save SREG 
+	push temp 
+	clr r0
+	ldi r23, 2	;	PB1 (the left button) enters 1
 	mul input, r23	;	hence multiply by 2 and add 0x01
 	mov input, r0
-	ldi r23, 0x01
+	ldi r23, 1
 	add input, r23
-	pop temp2 ; restore SREG 
-	out SREG, temp2 
-	pop temp2 ; restore register 
+	inc counter
+	pop temp ; restore SREG 
+	out SREG, temp
+	pop temp ; restore register 
 	reti
 
 Compare:
@@ -100,13 +107,14 @@ Compare:
 	breq One	
 
 Zero:
-	ldi r22, 0
+	ldi flash, 0
 	out PORTC, input
-	inc r22	
+	ldi flash, 1	
 	rjmp Cont
 One:
-	out PORTC, 0x00
-	ldi r22, 0	
+	ldi flash, 0x00
+	out PORTC, flash
+	ldi flash, 0
 	rjmp Cont
 
 
@@ -132,7 +140,26 @@ EndIF:
 	out SREG, temp 
 	reti ; Return from the interrupt.
 
-main: 
+main: 	
+	ldi temp, (2 << ISC00) ; set INT0 as falling-edge triggered interrupt
+	sts EICRA, temp 
+	in temp, EIMSK ; enable INT0 
+	ori temp, (1<<INT0) 
+	out EIMSK, temp 
+
+	ldi temp, (2 << ISC10) ; set INT1 as falling-edge triggered interrupt
+	sts EICRA, temp 
+	in temp, EIMSK ; enable INT0 
+	ori temp, (1<<INT1) 
+	out EIMSK, temp
+	sei ; Enable global interrupt 
+	
+loop: 
+	cpi counter, 8
+	breq maintwo
+	rjmp loop ; loop forever
+
+maintwo:
 	clear TempCounter ; Initialize the temporary counter to 0 
 	clear SecondCounter ; Initialize the second counter to 0 
 	ldi temp, 0b00000000 
@@ -140,20 +167,6 @@ main:
 	ldi temp, 0b00000010 
 	out TCCR0B, temp ; Prescaling value=8 
 	ldi temp, 1<<TOIE0 ; = 128 microseconds 
-	sts TIMSK0, temp ; T/C0 interrupt enable 
-
-	ldi temp2, (2 << ISC00) ; set INT0 as falling-edge triggered interrupt
-	sts EICRA, temp2  
-	in temp2, EIMSK ; enable INT0 
-	ori temp2, (1<<INT0) 
-	out EIMSK, temp2 
-
-	ldi temp2, (2 << ISC10) ; set INT1 as falling-edge triggered interrupt
-	sts EICRA, temp2  
-	in temp2, EIMSK ; enable INT0 
-	ori temp2, (1<<INT1) 
-	out EIMSK, temp2 
-	sei ; Enable global interrupt 
-	
-loop: 
-	rjmp loop ; loop forever
+	sts TIMSK0, temp ; T/C0 interrupt enable
+looptwo:
+	rjmp looptwo	
