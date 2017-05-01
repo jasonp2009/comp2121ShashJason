@@ -1,0 +1,35 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>ATmega2560</DEVICE>
+ <WORKING_DIR>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <RESET><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>15</LINE></RESET>
+  <main><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>24</LINE></main>
+  <colloop><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>28</LINE></colloop>
+  <delay><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>34</LINE></delay>
+  <nextcol><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>52</LINE></nextcol>
+  <rowloop><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>44</LINE></rowloop>
+  <convert><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>57</LINE></convert>
+  <letters><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>69</LINE></letters>
+  <symbols><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>73</LINE></symbols>
+  <convert_end><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>85</LINE></convert_end>
+  <star><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>80</LINE></star>
+  <zero><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartA\PartA.asm</FILE><LINE>83</LINE></zero>
+ </LABELS>
+</ASSEMBLER_INFO>

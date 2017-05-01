@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.42  C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\comp2121ShashJason\lab03-3\PartC.asm Mon Apr 24 16:51:28 2017
+AVRASM ver. 2.1.42  C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab4\PartB\PartB.asm Mon May 01 16:43:45 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1359,33 +1359,18 @@ EQU  URXC3addr    0000006c
 EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
-DEF  temp         r16
-DEF  counter      r20
-DEF  flashCounter r19
-DEF  input        r21
-DEF  pattern      r17
-DEF  flash        r22
-DEF  bounceFlag   r18
-DSEG SecondCounter 00000200
-DSEG TempCounter  00000202
-DSEG DebounceCounter 00000204
-CSEG RESET        00000033
-CSEG EXT_INT1     0000008d
-CSEG EXT_INT0     00000081
-CSEG DEFAULT      00000032
-CSEG Timer0OVF    00000051
-CSEG main         000000c2
-CSEG tag          00000048
-CSEG skip         00000070
-CSEG ENDIFtwo     0000007f
-CSEG NS           0000007c
-CSEG Compare      0000009b
-CSEG NotSecond    000000b7
-CSEG loopthree    0000007d
-CSEG loop         000000e3
-CSEG ENDIF        000000bb
-CSEG Zero         0000009f
-CSEG One          000000a3
-CSEG Cont         000000a8
-CSEG maintwo      000000dd
-CSEG BLAH         000000e6
+CSEG RESET        00000002
+CSEG lcd_command  00000051
+CSEG lcd_wait     00000061
+CSEG sleep_5ms    0000007b
+CSEG sleep_1ms    00000072
+CSEG lcd_data     00000058
+CSEG halt         00000050
+EQU  LCD_RS       00000007
+EQU  LCD_E        00000006
+EQU  LCD_RW       00000005
+EQU  LCD_BE       00000004
+CSEG lcd_wait_loop 00000066
+EQU  F_CPU        00f42400
+EQU  DELAY_1MS    00000f9c
+CSEG delayloop_1ms 00000076
