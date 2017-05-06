@@ -1,0 +1,45 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega2560"</DEVICE>
+ <WORKING_DIR>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\Debug\lab04-3-atmel.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>lab04-3-atmel.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>lab04-3-atmel.map</FILE>
+  <FILE>lab04-3-atmel.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <RESET><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>35</LINE></RESET>
+  <lcd_command><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>161</LINE></lcd_command>
+  <lcd_wait><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>180</LINE></lcd_wait>
+  <sleep_5ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>216</LINE></sleep_5ms>
+  <sleep_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>204</LINE></sleep_1ms>
+  <lcd_data><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>169</LINE></lcd_data>
+  <main><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>74</LINE></main>
+  <colloop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>78</LINE></colloop>
+  <delay><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>84</LINE></delay>
+  <nextcol><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>102</LINE></nextcol>
+  <rowloop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>94</LINE></rowloop>
+  <convert><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>107</LINE></convert>
+  <letters><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>126</LINE></letters>
+  <symbols><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>130</LINE></symbols>
+  <convert_end><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>142</LINE></convert_end>
+  <star><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>137</LINE></star>
+  <zero><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>140</LINE></zero>
+  <lcd_wait_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>186</LINE></lcd_wait_loop>
+  <delayloop_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>209</LINE></delayloop_1ms>
+ </LABELS>
+</ASSEMBLER_INFO>

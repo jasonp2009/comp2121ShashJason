@@ -1,3 +1,12 @@
+;
+; lab04-B.asm
+;
+; Created: 01-May-17 4:31:54 PM
+; Author : Jason P
+;
+
+
+; Replace with your application code
 .include "m2560def.inc"
 
 .macro do_lcd_command
@@ -39,22 +48,12 @@ RESET:
 	do_lcd_command 0b00000110 ; increment, no display shift
 	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
 
-	do_lcd_data 'C'
-	do_lcd_data 'O'
-	do_lcd_data 'M'
-	do_lcd_data 'P'
-	do_lcd_data '2'
-	do_lcd_data '1'
-	do_lcd_data '2'
-	do_lcd_data '1'
+	do_lcd_data 'H'
+	do_lcd_data 'e'
+	do_lcd_data 'l'
+	do_lcd_data 'l'
+	do_lcd_data 'o'
 
-	do_lcd_command 0b11000000 ;new line
-
-	do_lcd_data 'L'
-	do_lcd_data 'a'
-	do_lcd_data 'b'
-	do_lcd_data ' '
-	do_lcd_data '4'
 halt:
 	rjmp halt
 

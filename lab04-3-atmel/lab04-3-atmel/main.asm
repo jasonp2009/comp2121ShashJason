@@ -24,6 +24,11 @@
 	rcall lcd_data
 	rcall lcd_wait
 .endmacro
+.macro do_lcd_data_reg
+	mov r16, @0
+	rcall lcd_data
+	rcall lcd_wait
+.endmacro
 .org 0
 	jmp RESET
 
@@ -54,6 +59,9 @@ RESET:
 	do_lcd_command 0b00000001 ; clear display
 	do_lcd_command 0b00000110 ; increment, no display shift
 	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
+	
+	do_lcd_data '0'
+	do_lcd_command 0b11000000 ;new line
 
 	ldi temp1, low(RAMEND) ; initialize the stack 
 	out SPL, temp1 
@@ -104,8 +112,15 @@ convert:
 	mov temp1, row ; Otherwise we have a number in 1-9 
 	lsl temp1 
 	add temp1, row 
-	add temp1, col ; temp1 = row*3 + col 
-	subi temp1, -1 ; Add the value of character ‘1’ 
+	add temp1, col 
+	subi temp1, -1 ; temp1 = row*3 + col + 1
+	ldi temp2, 10
+	mul input, temp2
+	mov input, r0
+	add input, temp1
+	ldi temp2, '0'
+	add temp1, temp2
+	do_lcd_data_reg temp1
 	jmp convert_end
 
 letters: 
@@ -125,7 +140,6 @@ star:
 zero: 
 	ldi temp1, 0 ; Set to zero 
 convert_end: 
-	out PORTC, temp1 ; Write value to PORTC 
 	jmp main ; Restart main loop
 
 .equ LCD_RS = 7
