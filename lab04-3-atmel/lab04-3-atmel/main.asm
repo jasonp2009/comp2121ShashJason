@@ -8,6 +8,7 @@
 .def temp2 = r21
 .def acc   = r22
 .def input = r23
+.def press = r24
  
 .equ PORTADIR = 0xF0 ; PD7-4: output, PD3-0, input 
 .equ INITCOLMASK = 0xEF ; scan from the rightmost column, 
@@ -41,6 +42,7 @@ RESET:
 
 	ldi acc, 0
 	ldi input, 0
+	ldi press, 0
 
 	ser r16
 	out DDRF, r16
@@ -74,6 +76,10 @@ RESET:
 	out PORTC, temp1 main: 
 	ldi cmask, INITCOLMASK ; initial column mask 
 	clr col ; initial column
+	jmp colloop
+
+nopress:
+	ldi press, 0
 
 colloop: 
 	cpi col, 4 
@@ -102,9 +108,11 @@ rowloop:
 	jmp rowloop nextcol: ; if row scan is over 
 	lsl cmask 
 	inc col ; increase column value 
-	jmp colloop ; go to the next column
+	jmp nopress ; go to the next column
 
-convert: 
+convert:
+	cpi press, 1
+	breq colloop
 	cpi col, 3 ; If the pressed key is in col.3 
 	breq letters ; we have a letter If the key is not in col.3 and 
 	cpi row, 3 ; If the key is in row3, 
@@ -139,7 +147,8 @@ star:
 	jmp convert_end 
 zero: 
 	ldi temp1, 0 ; Set to zero 
-convert_end: 
+convert_end:
+	ldi press, 1
 	jmp main ; Restart main loop
 
 .equ LCD_RS = 7

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm Sun May 07 09:45:31 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm Sun May 07 09:57:08 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1367,32 +1367,34 @@ DEF  temp1        r20
 DEF  temp2        r21
 DEF  acc          r22
 DEF  input        r23
+DEF  press        r24
 EQU  PORTADIR     000000f0
 EQU  INITCOLMASK  000000ef
 EQU  INITROWMASK  00000001
 EQU  ROWMASK      0000000f
 CSEG RESET        00000002
-CSEG lcd_command  00000079
-CSEG lcd_wait     00000089
-CSEG sleep_5ms    000000a3
-CSEG sleep_1ms    0000009a
-CSEG lcd_data     00000080
-CSEG main         00000038
-CSEG colloop      0000003a
-CSEG delay        0000003f
-CSEG nextcol      00000051
-CSEG rowloop      00000048
-CSEG convert      00000055
-CSEG letters      00000069
-CSEG symbols      0000006c
-CSEG convert_end  00000077
-CSEG star         00000073
-CSEG zero         00000076
+CSEG lcd_command  00000080
+CSEG lcd_wait     00000090
+CSEG sleep_5ms    000000aa
+CSEG sleep_1ms    000000a1
+CSEG lcd_data     00000087
+CSEG main         00000039
+CSEG colloop      0000003e
+CSEG nopress      0000003d
+CSEG delay        00000043
+CSEG nextcol      00000055
+CSEG rowloop      0000004c
+CSEG convert      00000059
+CSEG letters      0000006f
+CSEG symbols      00000072
+CSEG convert_end  0000007d
+CSEG star         00000079
+CSEG zero         0000007c
 EQU  LCD_RS       00000007
 EQU  LCD_E        00000006
 EQU  LCD_RW       00000005
 EQU  LCD_BE       00000004
-CSEG lcd_wait_loop 0000008e
+CSEG lcd_wait_loop 00000095
 EQU  F_CPU        00f42400
 EQU  DELAY_1MS    00000f9c
-CSEG delayloop_1ms 0000009e
+CSEG delayloop_1ms 000000a5
