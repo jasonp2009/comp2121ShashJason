@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm Sun May 07 10:01:57 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm Sun May 07 10:05:12 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
@@ -1940,38 +1940,38 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab0
 00000e b902                      	out PORTA, r16
                                  
 00000f e308
-000010 d070
-000011 d07f                      	do_lcd_command 0b00111000 ; 2x5x7
-000012 d098                      	rcall sleep_5ms
+000010 d078
+000011 d087                      	do_lcd_command 0b00111000 ; 2x5x7
+000012 d0a0                      	rcall sleep_5ms
 000013 e308
-000014 d06c
-000015 d07b                      	do_lcd_command 0b00111000 ; 2x5x7
-000016 d08b                      	rcall sleep_1ms
+000014 d074
+000015 d083                      	do_lcd_command 0b00111000 ; 2x5x7
+000016 d093                      	rcall sleep_1ms
 000017 e308
-000018 d068
-000019 d077                      	do_lcd_command 0b00111000 ; 2x5x7
+000018 d070
+000019 d07f                      	do_lcd_command 0b00111000 ; 2x5x7
 00001a e308
-00001b d065
-00001c d074                      	do_lcd_command 0b00111000 ; 2x5x7
+00001b d06d
+00001c d07c                      	do_lcd_command 0b00111000 ; 2x5x7
 00001d e008
-00001e d062
-00001f d071                      	do_lcd_command 0b00001000 ; display off?
+00001e d06a
+00001f d079                      	do_lcd_command 0b00001000 ; display off?
 000020 e001
-000021 d05f
-000022 d06e                      	do_lcd_command 0b00000001 ; clear display
+000021 d067
+000022 d076                      	do_lcd_command 0b00000001 ; clear display
 000023 e006
-000024 d05c
-000025 d06b                      	do_lcd_command 0b00000110 ; increment, no display shift
+000024 d064
+000025 d073                      	do_lcd_command 0b00000110 ; increment, no display shift
 000026 e00e
-000027 d059
-000028 d068                      	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
+000027 d061
+000028 d070                      	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
                                  	
 000029 e300
-00002a d05d
-00002b d065                      	do_lcd_data '0'
+00002a d065
+00002b d06d                      	do_lcd_data '0'
 00002c ec00
-00002d d053
-00002e d062                      	do_lcd_command 0b11000000 ;new line
+00002d d05b
+00002e d06a                      	do_lcd_command 0b11000000 ;new line
                                  
 00002f ef4f                      	ldi temp1, low(RAMEND) ; initialize the stack 
 000030 bf4d                      	out SPL, temp1 
@@ -2039,29 +2039,36 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab0
 000069 e350                      	ldi temp2, '0'
 00006a 0f45                      	add temp1, temp2
 00006b 2f04
-00006c d01b
-00006d d023                      	do_lcd_data_reg temp1
-00006e 940c 007e                 	jmp convert_end
+00006c d023
+00006d d02b                      	do_lcd_data_reg temp1
+00006e 940c 0086                 	jmp convert_end
                                  
                                  letters: 
 000070 e040                      	ldi temp1, 0
                                  	;add temp1, row ; Get the ASCII value for the key 
-000071 940c 007e                 	jmp convert_end 
+000071 940c 0086                 	jmp convert_end 
                                  symbols: 
 000073 3010                      	cpi col, 0 ; Check if we have a star 
 000074 f029                      	breq star 
 000075 3011                      	cpi col, 1 ; or if we have zero 
 000076 f031                      	breq zero 
 000077 e040                      	ldi temp1, 0 ; if not we have hash 
-000078 940c 007e                 	jmp convert_end 
+000078 940c 0086                 	jmp convert_end 
                                  star: 
 00007a e040                      	ldi temp1, 0 ; Set to star 
-00007b 940c 007e                 	jmp convert_end 
-                                 zero: 
-00007d e040                      	ldi temp1, 0 ; Set to zero 
+00007b 940c 0086                 	jmp convert_end 
+                                 zero:
+00007d e05a                      	ldi temp2, 10
+00007e 9f75                      	mul input, temp2
+00007f 2d70                      	mov input, r0
+000080 0f74                      	add input, temp1
+000081 e300
+000082 d00d
+000083 d015                      	do_lcd_data '0'
+000084 940c 0086                 	jmp convert_end
                                  convert_end:
-00007e e081                      	ldi press, 1
-00007f 940c 003b                 	jmp main ; Restart main loop
+000086 e081                      	ldi press, 1
+000087 940c 003b                 	jmp main ; Restart main loop
                                  
                                  .equ LCD_RS = 7
                                  .equ LCD_E = 6
@@ -2080,67 +2087,67 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab0
                                  ;
                                  
                                  lcd_command:
-000081 bb01                      	out PORTF, r16
-000082 d01f                      	rcall sleep_1ms
-000083 9a16                      	lcd_set LCD_E
-000084 d01d                      	rcall sleep_1ms
-000085 9816                      	lcd_clr LCD_E
-000086 d01b                      	rcall sleep_1ms
-000087 9508                      	ret
-                                 lcd_data:
-000088 bb01                      	out PORTF, r16
-000089 9a17                      	lcd_set LCD_RS
-00008a d017                      	rcall sleep_1ms
+000089 bb01                      	out PORTF, r16
+00008a d01f                      	rcall sleep_1ms
 00008b 9a16                      	lcd_set LCD_E
-00008c d015                      	rcall sleep_1ms
+00008c d01d                      	rcall sleep_1ms
 00008d 9816                      	lcd_clr LCD_E
-00008e d013                      	rcall sleep_1ms
-00008f 9817                      	lcd_clr LCD_RS
-000090 9508                      	ret
+00008e d01b                      	rcall sleep_1ms
+00008f 9508                      	ret
+                                 lcd_data:
+000090 bb01                      	out PORTF, r16
+000091 9a17                      	lcd_set LCD_RS
+000092 d017                      	rcall sleep_1ms
+000093 9a16                      	lcd_set LCD_E
+000094 d015                      	rcall sleep_1ms
+000095 9816                      	lcd_clr LCD_E
+000096 d013                      	rcall sleep_1ms
+000097 9817                      	lcd_clr LCD_RS
+000098 9508                      	ret
                                  
                                  lcd_wait:
-000091 930f                      	push r16
-000092 2700                      	clr r16
-000093 bb00                      	out DDRF, r16
-000094 bb01                      	out PORTF, r16
-000095 9a15                      	lcd_set LCD_RW
+000099 930f                      	push r16
+00009a 2700                      	clr r16
+00009b bb00                      	out DDRF, r16
+00009c bb01                      	out PORTF, r16
+00009d 9a15                      	lcd_set LCD_RW
                                  lcd_wait_loop:
-000096 d00b                      	rcall sleep_1ms
-000097 9a16                      	lcd_set LCD_E
-000098 d009                      	rcall sleep_1ms
-000099 b10f                      	in r16, PINF
-00009a 9816                      	lcd_clr LCD_E
-00009b fd07                      	sbrc r16, 7
-00009c cff9                      	rjmp lcd_wait_loop
-00009d 9815                      	lcd_clr LCD_RW
-00009e ef0f                      	ser r16
-00009f bb00                      	out DDRF, r16
-0000a0 910f                      	pop r16
-0000a1 9508                      	ret
+00009e d00b                      	rcall sleep_1ms
+00009f 9a16                      	lcd_set LCD_E
+0000a0 d009                      	rcall sleep_1ms
+0000a1 b10f                      	in r16, PINF
+0000a2 9816                      	lcd_clr LCD_E
+0000a3 fd07                      	sbrc r16, 7
+0000a4 cff9                      	rjmp lcd_wait_loop
+0000a5 9815                      	lcd_clr LCD_RW
+0000a6 ef0f                      	ser r16
+0000a7 bb00                      	out DDRF, r16
+0000a8 910f                      	pop r16
+0000a9 9508                      	ret
                                  
                                  .equ F_CPU = 16000000
                                  .equ DELAY_1MS = F_CPU / 4 / 1000 - 4
                                  ; 4 cycles per iteration - setup/call-return overhead
                                  
                                  sleep_1ms:
-0000a2 938f                      	push r24
-0000a3 939f                      	push r25
-0000a4 e09f                      	ldi r25, high(DELAY_1MS)
-0000a5 e98c                      	ldi r24, low(DELAY_1MS)
+0000aa 938f                      	push r24
+0000ab 939f                      	push r25
+0000ac e09f                      	ldi r25, high(DELAY_1MS)
+0000ad e98c                      	ldi r24, low(DELAY_1MS)
                                  delayloop_1ms:
-0000a6 9701                      	sbiw r25:r24, 1
-0000a7 f7f1                      	brne delayloop_1ms
-0000a8 919f                      	pop r25
-0000a9 918f                      	pop r24
-0000aa 9508                      	ret
+0000ae 9701                      	sbiw r25:r24, 1
+0000af f7f1                      	brne delayloop_1ms
+0000b0 919f                      	pop r25
+0000b1 918f                      	pop r24
+0000b2 9508                      	ret
                                  
                                  sleep_5ms:
-0000ab dff6                      	rcall sleep_1ms
-0000ac dff5                      	rcall sleep_1ms
-0000ad dff4                      	rcall sleep_1ms
-0000ae dff3                      	rcall sleep_1ms
-0000af dff2                      	rcall sleep_1ms
-0000b0 9508                      	ret
+0000b3 dff6                      	rcall sleep_1ms
+0000b4 dff5                      	rcall sleep_1ms
+0000b5 dff4                      	rcall sleep_1ms
+0000b6 dff3                      	rcall sleep_1ms
+0000b7 dff2                      	rcall sleep_1ms
+0000b8 9508                      	ret
 
 
 RESOURCE USE INFORMATION
@@ -2158,15 +2165,15 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega2560" register use summary:
-x  :   0 y  :   0 z  :   0 r0 :   1 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   0 r0 :   2 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  38 r17:   7 r18:   3 r19:   3 r20:  27 
-r21:   6 r22:   1 r23:   4 r24:   8 r25:   4 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  39 r17:   7 r18:   3 r19:   3 r20:  27 
+r21:   8 r22:   1 r23:   7 r24:   8 r25:   4 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 11 out of 35 (31.4%)
 
 "ATmega2560" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   4 adiw  :   0 and   :   1 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   5 adiw  :   0 and   :   1 
 andi  :   1 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   9 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
@@ -2176,10 +2183,10 @@ clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   4 cls   :   0
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   8 cpse  :   0 dec   :   1 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :   1 inc   :   2 jmp   :   9 ld    :   0 ldd   :   0 ldi   :  31 
-lds   :   1 lpm   :   0 lsl   :   3 lsr   :   0 mov   :   4 movw  :   0 
-mul   :   1 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
-ori   :   0 out   :  15 pop   :   3 push  :   3 rcall :  37 ret   :   5 
+in    :   1 inc   :   2 jmp   :  10 ld    :   0 ldd   :   0 ldi   :  32 
+lds   :   1 lpm   :   0 lsl   :   3 lsr   :   0 mov   :   5 movw  :   0 
+mul   :   2 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
+ori   :   0 out   :  15 pop   :   3 push  :   3 rcall :  39 ret   :   5 
 reti  :   0 rjmp  :   2 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   5 sbic  :   0 sbis  :   0 sbiw  :   1 sbr   :   0 sbrc  :   1 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   3 
@@ -2191,7 +2198,7 @@ Instructions used: 29 out of 116 (25.0%)
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000162    354      0    354  262144   0.1%
+[.cseg] 0x000000 0x000172    370      0    370  262144   0.1%
 [.dseg] 0x000200 0x000200      0      0      0    8192   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 

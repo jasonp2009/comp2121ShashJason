@@ -147,8 +147,13 @@ symbols:
 star: 
 	ldi temp1, 0 ; Set to star 
 	jmp convert_end 
-zero: 
-	ldi temp1, 0 ; Set to zero 
+zero:
+	ldi temp2, 10
+	mul input, temp2
+	mov input, r0
+	add input, temp1
+	do_lcd_data '0'
+	jmp convert_end
 convert_end:
 	ldi press, 1
 	jmp main ; Restart main loop
