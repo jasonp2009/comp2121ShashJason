@@ -73,17 +73,19 @@ RESET:
 	sts DDRL, temp1 
 	ser temp1 ; PORTC is output 
 	out DDRC, temp1 
-	out PORTC, temp1 main: 
+	out PORTC, temp1
+	rjmp main
+nopress:
+	ldi press, 0
+
+main: 
 	ldi cmask, INITCOLMASK ; initial column mask 
 	clr col ; initial column
 	jmp colloop
 
-nopress:
-	ldi press, 0
-
 colloop: 
 	cpi col, 4 
-	breq main ; If all keys are scanned, repeat. 
+	breq nopress ; If all keys are scanned, repeat. 
 	sts PORTL, cmask ; Otherwise, scan a column. 
 	ldi temp1, 0xFF ; Slow down the scan operation. 
 
@@ -108,11 +110,11 @@ rowloop:
 	jmp rowloop nextcol: ; if row scan is over 
 	lsl cmask 
 	inc col ; increase column value 
-	jmp nopress ; go to the next column
+	jmp colloop ; go to the next column
 
 convert:
 	cpi press, 1
-	breq colloop
+	breq main
 	cpi col, 3 ; If the pressed key is in col.3 
 	breq letters ; we have a letter If the key is not in col.3 and 
 	cpi row, 3 ; If the key is in row3, 
