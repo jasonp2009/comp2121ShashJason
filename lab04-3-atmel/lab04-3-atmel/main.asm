@@ -138,6 +138,10 @@ letters:
 	breq plus
 	cpi row, 1
 	breq minus
+	cpi row, 2
+	breq multiply
+	cpi row, 3
+	breq divide
 	jmp convert_end 
 
 plus:
@@ -160,7 +164,17 @@ multiply:
 	rjmp convert_end
 
 divide:
-
+	ldi temp1, 0
+divide_loop:
+	cp acc, input
+	brlo divide_end
+	sub acc, input
+	inc temp1
+	rjmp divide_loop
+divide_end:
+	mov acc, temp1
+	ldi input, 0
+	call reset_LCD
 	rjmp convert_end
 
 symbols: 

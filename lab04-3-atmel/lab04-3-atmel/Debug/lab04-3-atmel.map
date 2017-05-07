@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm Sun May 07 11:09:00 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm Sun May 07 14:27:50 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1374,11 +1374,11 @@ EQU  INITCOLMASK  000000ef
 EQU  INITROWMASK  00000001
 EQU  ROWMASK      0000000f
 CSEG RESET        00000002
-CSEG lcd_command  000000b6
-CSEG lcd_wait     000000c6
-CSEG sleep_5ms    000000e0
-CSEG sleep_1ms    000000d7
-CSEG lcd_data     000000bd
+CSEG lcd_command  000000ca
+CSEG lcd_wait     000000da
+CSEG sleep_5ms    000000f4
+CSEG sleep_1ms    000000eb
+CSEG lcd_data     000000d1
 CSEG main         0000003b
 CSEG nopress      0000003a
 CSEG colloop      0000003f
@@ -1387,22 +1387,26 @@ CSEG nextcol      00000056
 CSEG rowloop      0000004d
 CSEG convert      0000005a
 CSEG letters      0000006f
-CSEG symbols      00000081
-CSEG convert_end  00000094
-CSEG plus         00000075
-CSEG minus        0000007b
-CSEG reset_LCD    00000097
-CSEG star         00000088
-CSEG zero         0000008b
-CSEG loop         0000009c
-CSEG get_last_digit 000000a5
-CSEG cont         0000009f
-CSEG end          000000aa
+CSEG symbols      00000095
+CSEG convert_end  000000a8
+CSEG plus         00000079
+CSEG minus        0000007f
+CSEG multiply     00000084
+CSEG divide       0000008a
+CSEG reset_LCD    000000ab
+CSEG divide_loop  0000008b
+CSEG divide_end   00000090
+CSEG star         0000009c
+CSEG zero         0000009f
+CSEG loop         000000b0
+CSEG get_last_digit 000000b9
+CSEG cont         000000b3
+CSEG end          000000be
 EQU  LCD_RS       00000007
 EQU  LCD_E        00000006
 EQU  LCD_RW       00000005
 EQU  LCD_BE       00000004
-CSEG lcd_wait_loop 000000cb
+CSEG lcd_wait_loop 000000df
 EQU  F_CPU        00f42400
 EQU  DELAY_1MS    00000f9c
-CSEG delayloop_1ms 000000db
+CSEG delayloop_1ms 000000ef
