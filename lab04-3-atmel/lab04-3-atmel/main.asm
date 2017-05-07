@@ -9,6 +9,7 @@
 .def acc   = r22
 .def input = r23
 .def press = r24
+.def count = r25
  
 .equ PORTADIR = 0xF0 ; PD7-4: output, PD3-0, input 
 .equ INITCOLMASK = 0xEF ; scan from the rightmost column, 
@@ -146,7 +147,9 @@ plus:
 	jmp convert_end
 
 minus:
-
+	sub acc, input
+	ldi input, 0
+	call reset_LCD
 	jmp convert_end
 
 symbols: 
@@ -173,26 +176,32 @@ convert_end:
 reset_LCD:
 	do_lcd_command 0b00000001 ; clear display
 	mov temp1, acc
-	ldi input, 0
+	ldi count, 0
 loop:
 	ldi temp2, 0
 	cpi temp1, 0
-	brne pop_last_digit
+	brne get_last_digit
 cont:
-	do_lcd_num temp1
+	inc count
+	push temp1
 	cpi temp2, 0
 	breq end
 	mov temp1, temp2
 	rjmp loop
 
-pop_last_digit:
+get_last_digit:
 	cpi temp1, 10
 	brlo cont
 	subi temp1, 10
 	subi temp2, -1
-	rjmp pop_last_digit
+	rjmp get_last_digit
 
 end:
+	pop temp1
+	do_lcd_num temp1
+	dec count
+	cpi count, 0
+	brne end
 	do_lcd_command 0b11000000 ;new line
 	ret
 
