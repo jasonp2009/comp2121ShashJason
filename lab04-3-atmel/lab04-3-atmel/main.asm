@@ -150,7 +150,18 @@ minus:
 	sub acc, input
 	ldi input, 0
 	call reset_LCD
-	jmp convert_end
+	rjmp convert_end
+
+multiply:
+	mul acc, input
+	mov acc, r0
+	ldi input, 0
+	call reset_LCD
+	rjmp convert_end
+
+divide:
+
+	rjmp convert_end
 
 symbols: 
 	cpi col, 0 ; Check if we have a star 
