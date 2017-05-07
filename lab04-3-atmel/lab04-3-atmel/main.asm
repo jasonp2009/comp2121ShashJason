@@ -25,8 +25,9 @@
 	rcall lcd_data
 	rcall lcd_wait
 .endmacro
-.macro do_lcd_data_reg
+.macro do_lcd_num
 	mov r16, @0
+	subi r16, -'0'
 	rcall lcd_data
 	rcall lcd_wait
 .endmacro
@@ -128,15 +129,26 @@ convert:
 	mul input, temp2
 	mov input, r0
 	add input, temp1
-	ldi temp2, '0'
-	add temp1, temp2
-	do_lcd_data_reg temp1
+	do_lcd_num temp1
 	jmp convert_end
 
 letters: 
-	ldi temp1, 0
-	;add temp1, row ; Get the ASCII value for the key 
+	cpi row, 0
+	breq plus
+	cpi row, 1
+	breq minus
 	jmp convert_end 
+
+plus:
+	add acc, input
+	ldi input, 0
+	call reset_LCD
+	jmp convert_end
+
+minus:
+
+	jmp convert_end
+
 symbols: 
 	cpi col, 0 ; Check if we have a star 
 	breq star 
@@ -157,6 +169,32 @@ zero:
 convert_end:
 	ldi press, 1
 	jmp main ; Restart main loop
+
+reset_LCD:
+	do_lcd_command 0b00000001 ; clear display
+	mov temp1, acc
+	ldi input, 0
+loop:
+	ldi temp2, 0
+	cpi temp1, 0
+	brne pop_last_digit
+cont:
+	do_lcd_num temp1
+	cpi temp2, 0
+	breq end
+	mov temp1, temp2
+	rjmp loop
+
+pop_last_digit:
+	cpi temp1, 10
+	brlo cont
+	subi temp1, 10
+	subi temp2, -1
+	rjmp pop_last_digit
+
+end:
+	do_lcd_command 0b11000000 ;new line
+	ret
 
 .equ LCD_RS = 7
 .equ LCD_E = 6
