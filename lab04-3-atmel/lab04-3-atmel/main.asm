@@ -77,6 +77,7 @@ RESET:
 	out DDRC, temp1 
 	out PORTC, temp1
 	rjmp main
+
 nopress:
 	ldi press, 0
 
@@ -178,15 +179,10 @@ divide_end:
 	rjmp convert_end
 
 symbols: 
-	cpi col, 0 ; Check if we have a star 
-	breq star 
-	cpi col, 1 ; or if we have zero 
+	cpi col, 1 ; if we have zero 
 	breq zero 
-	ldi temp1, 0 ; if not we have hash 
-	jmp convert_end 
-star: 
-	ldi temp1, 0 ; Set to star 
-	jmp convert_end 
+	jmp convert_end ; else skip to end
+
 zero:
 	ldi temp2, 10
 	mul input, temp2
