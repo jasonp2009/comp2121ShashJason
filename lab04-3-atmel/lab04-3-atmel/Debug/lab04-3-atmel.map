@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm Sun May 07 14:27:50 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm Mon May 08 14:48:08 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1374,39 +1374,39 @@ EQU  INITCOLMASK  000000ef
 EQU  INITROWMASK  00000001
 EQU  ROWMASK      0000000f
 CSEG RESET        00000002
-CSEG lcd_command  000000ca
-CSEG lcd_wait     000000da
-CSEG sleep_5ms    000000f4
-CSEG sleep_1ms    000000eb
-CSEG lcd_data     000000d1
-CSEG main         0000003b
-CSEG nopress      0000003a
-CSEG colloop      0000003f
-CSEG delay        00000044
-CSEG nextcol      00000056
-CSEG rowloop      0000004d
-CSEG convert      0000005a
-CSEG letters      0000006f
-CSEG symbols      00000095
-CSEG convert_end  000000a8
-CSEG plus         00000079
-CSEG minus        0000007f
-CSEG multiply     00000084
-CSEG divide       0000008a
-CSEG reset_LCD    000000ab
-CSEG divide_loop  0000008b
-CSEG divide_end   00000090
-CSEG star         0000009c
-CSEG zero         0000009f
-CSEG loop         000000b0
-CSEG get_last_digit 000000b9
-CSEG cont         000000b3
-CSEG end          000000be
+CSEG lcd_command  000000cd
+CSEG lcd_wait     000000dd
+CSEG sleep_5ms    000000f7
+CSEG sleep_1ms    000000ee
+CSEG lcd_data     000000d4
+CSEG main         00000038
+CSEG nopress      00000037
+CSEG colloop      0000003c
+CSEG delay        00000041
+CSEG nextcol      00000053
+CSEG rowloop      0000004a
+CSEG convert      00000057
+CSEG letters      00000074
+CSEG symbols      0000009a
+CSEG convert_end  000000ab
+CSEG plus         0000007d
+CSEG minus        00000082
+CSEG multiply     00000087
+CSEG divide       0000008d
+CSEG reset_LCD    000000ae
+CSEG divide_loop  00000090
+CSEG divide_end   00000095
+CSEG reset_star   0000009f
+CSEG zero         000000a4
+CSEG loop         000000b3
+CSEG get_last_digit 000000bc
+CSEG cont         000000b6
+CSEG end          000000c1
 EQU  LCD_RS       00000007
 EQU  LCD_E        00000006
 EQU  LCD_RW       00000005
 EQU  LCD_BE       00000004
-CSEG lcd_wait_loop 000000df
+CSEG lcd_wait_loop 000000e2
 EQU  F_CPU        00f42400
 EQU  DELAY_1MS    00000f9c
-CSEG delayloop_1ms 000000ef
+CSEG delayloop_1ms 000000f2

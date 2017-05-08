@@ -73,9 +73,9 @@ RESET:
 	out SPH, temp1 
 	ldi temp1, PORTADIR ; PA7:4/PA3:0, out/in 
 	sts DDRL, temp1 
-	ser temp1 ; PORTC is output 
-	out DDRC, temp1 
-	out PORTC, temp1
+	;ser temp1 ; PORTC is output 
+	;out DDRC, temp1 
+	;out PORTC, temp1
 	rjmp main
 
 nopress:
@@ -116,6 +116,10 @@ rowloop:
 	jmp colloop ; go to the next column
 
 convert:
+	call sleep_5ms
+	call sleep_5ms
+	call sleep_5ms
+	call sleep_5ms ; 20ms debounce
 	cpi press, 1
 	breq main
 	cpi col, 3 ; If the pressed key is in col.3 
@@ -135,21 +139,21 @@ convert:
 	jmp convert_end
 
 letters: 
-	cpi row, 0
+	cpi row, 0 ; If plus
 	breq plus
-	cpi row, 1
+	cpi row, 1 ; If minus
 	breq minus
-	cpi row, 2
+	cpi row, 2 ; If multiply
 	breq multiply
-	cpi row, 3
+	cpi row, 3 ; If divide
 	breq divide
-	jmp convert_end 
+	rjmp convert_end ; else jump to end
 
 plus:
 	add acc, input
 	ldi input, 0
 	call reset_LCD
-	jmp convert_end
+	rjmp convert_end
 
 minus:
 	sub acc, input
@@ -165,6 +169,8 @@ multiply:
 	rjmp convert_end
 
 divide:
+	cpi input, 0 ;If the divisor is 0 jump to end
+	breq convert_end
 	ldi temp1, 0
 divide_loop:
 	cp acc, input
@@ -179,17 +185,23 @@ divide_end:
 	rjmp convert_end
 
 symbols: 
+	cpi col, 0 ; if reset was pressed
+	breq reset_star
 	cpi col, 1 ; if we have zero 
 	breq zero 
-	jmp convert_end ; else skip to end
+	rjmp convert_end ; else skip to end
 
+reset_star:
+	ldi acc, 0
+	ldi input, 0
+	call reset_LCD
+	rjmp convert_end
 zero:
 	ldi temp2, 10
 	mul input, temp2
 	mov input, r0
-	add input, temp1
 	do_lcd_data '0'
-	jmp convert_end
+	rjmp convert_end
 convert_end:
 	ldi press, 1
 	jmp main ; Restart main loop

@@ -23,35 +23,35 @@
  </OUTPUT_FILES>
  <LABELS>
   <RESET><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>38</LINE></RESET>
-  <lcd_command><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>249</LINE></lcd_command>
-  <lcd_wait><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>268</LINE></lcd_wait>
-  <sleep_5ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>304</LINE></sleep_5ms>
-  <sleep_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>292</LINE></sleep_1ms>
-  <lcd_data><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>257</LINE></lcd_data>
-  <main><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>83</LINE></main>
-  <nopress><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>80</LINE></nopress>
-  <colloop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>88</LINE></colloop>
-  <delay><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>94</LINE></delay>
-  <nextcol><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>112</LINE></nextcol>
-  <rowloop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>104</LINE></rowloop>
-  <convert><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>117</LINE></convert>
-  <letters><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>136</LINE></letters>
-  <symbols><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>180</LINE></symbols>
-  <convert_end><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>197</LINE></convert_end>
-  <plus><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>147</LINE></plus>
-  <minus><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>153</LINE></minus>
-  <multiply><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>159</LINE></multiply>
-  <divide><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>166</LINE></divide>
-  <reset_LCD><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>201</LINE></reset_LCD>
-  <divide_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>168</LINE></divide_loop>
-  <divide_end><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>174</LINE></divide_end>
-  <star><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>187</LINE></star>
-  <zero><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>190</LINE></zero>
-  <loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>205</LINE></loop>
-  <get_last_digit><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>217</LINE></get_last_digit>
-  <cont><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>209</LINE></cont>
-  <end><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>224</LINE></end>
-  <lcd_wait_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>274</LINE></lcd_wait_loop>
-  <delayloop_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>297</LINE></delayloop_1ms>
+  <lcd_command><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>257</LINE></lcd_command>
+  <lcd_wait><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>276</LINE></lcd_wait>
+  <sleep_5ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>312</LINE></sleep_5ms>
+  <sleep_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>300</LINE></sleep_1ms>
+  <lcd_data><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>265</LINE></lcd_data>
+  <main><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>84</LINE></main>
+  <nopress><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>81</LINE></nopress>
+  <colloop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>89</LINE></colloop>
+  <delay><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>95</LINE></delay>
+  <nextcol><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>113</LINE></nextcol>
+  <rowloop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>105</LINE></rowloop>
+  <convert><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>118</LINE></convert>
+  <letters><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>141</LINE></letters>
+  <symbols><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>187</LINE></symbols>
+  <convert_end><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>205</LINE></convert_end>
+  <plus><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>152</LINE></plus>
+  <minus><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>158</LINE></minus>
+  <multiply><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>164</LINE></multiply>
+  <divide><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>171</LINE></divide>
+  <reset_LCD><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>209</LINE></reset_LCD>
+  <divide_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>175</LINE></divide_loop>
+  <divide_end><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>181</LINE></divide_end>
+  <reset_star><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>194</LINE></reset_star>
+  <zero><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>199</LINE></zero>
+  <loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>213</LINE></loop>
+  <get_last_digit><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>225</LINE></get_last_digit>
+  <cont><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>217</LINE></cont>
+  <end><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>232</LINE></end>
+  <lcd_wait_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>282</LINE></lcd_wait_loop>
+  <delayloop_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab04-3-atmel\lab04-3-atmel\main.asm</FILE><LINE>305</LINE></delayloop_1ms>
  </LABELS>
 </ASSEMBLER_INFO>
