@@ -1,0 +1,46 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>ATmega2560</DEVICE>
+ <WORKING_DIR>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <SecondCounter><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>41</LINE></SecondCounter>
+  <TempCounter><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>43</LINE></TempCounter>
+  <RESET><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>58</LINE></RESET>
+  <EXT_INT2><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>93</LINE></EXT_INT2>
+  <Timer0OVF><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>104</LINE></Timer0OVF>
+  <lcd_command><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>213</LINE></lcd_command>
+  <lcd_wait><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>232</LINE></lcd_wait>
+  <sleep_5ms><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>268</LINE></sleep_5ms>
+  <sleep_1ms><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>256</LINE></sleep_1ms>
+  <lcd_data><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>221</LINE></lcd_data>
+  <main><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>147</LINE></main>
+  <loop2><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>159</LINE></loop2>
+  <Compbreak><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>119</LINE></Compbreak>
+  <Continue><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>122</LINE></Continue>
+  <NotSecond><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>133</LINE></NotSecond>
+  <reset_LCD><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>165</LINE></reset_LCD>
+  <EndIF><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>137</LINE></EndIF>
+  <loop><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>169</LINE></loop>
+  <get_last_digit><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>181</LINE></get_last_digit>
+  <cont><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>173</LINE></cont>
+  <end><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>188</LINE></end>
+  <lcd_wait_loop><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>238</LINE></lcd_wait_loop>
+  <delayloop_1ms><FILE>C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm</FILE><LINE>261</LINE></delayloop_1ms>
+ </LABELS>
+</ASSEMBLER_INFO>
