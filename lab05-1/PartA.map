@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.42  C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm Mon May 15 17:08:57 2017
+AVRASM ver. 2.1.42  C:\Users\Shashika R\Documents\My Stuff\Uni\Year 2\COMP2121\Labs\Lab5\PartA\PartA.asm Sun May 21 20:19:07 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1359,39 +1359,37 @@ EQU  URXC3addr    0000006c
 EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
-DEF  rpm          r22
-DEF  temp         r17
-DEF  temp1        r20
-DEF  temp2        r21
-DEF  input        r23
-DEF  count        r19
-EQU  PORTADIR     000000f0
-DSEG SecondCounter 00000200
-DSEG TempCounter  00000202
-CSEG RESET        00000030
-CSEG EXT_INT2     0000005d
-CSEG Timer0OVF    00000074
-CSEG lcd_command  000000d4
-CSEG lcd_wait     000000e4
-CSEG sleep_5ms    000000fe
-CSEG sleep_1ms    000000f5
-CSEG lcd_data     000000db
-CSEG main         000000a1
-CSEG loop2        000000b4
-CSEG Compbreak    00000084
-CSEG Continue     00000085
-CSEG NotSecond    00000096
-CSEG reset_LCD    000000b5
-CSEG EndIF        0000009a
-CSEG loop         000000ba
-CSEG get_last_digit 000000c3
-CSEG cont         000000bd
-CSEG end          000000c8
+DEF  temp         r16
+DEF  temp1        r17
+DEF  temp2        r18
+DEF  rpm          r19
+DEF  lcd          r20
+DEF  count        r21
+DSEG TempCounter  00000200
+CSEG RESET        00000033
+CSEG DEFAULT      00000032
+CSEG EXT_INT2     0000006a
+CSEG Timer0OVF    0000006c
+CSEG lcd_command  000000d9
+CSEG lcd_wait     000000e9
+CSEG sleep_5ms    00000103
+CSEG sleep_1ms    000000fa
+CSEG lcd_data     000000e0
+CSEG main         000000a6
+CSEG NotSecond    0000009b
+CSEG secondPassed 0000007b
+CSEG EndIF        0000009f
+CSEG loop2        000000b9
+CSEG reset_LCD    000000ba
+CSEG loop         000000bf
+CSEG get_last_digit 000000c8
+CSEG cont         000000c2
+CSEG end          000000cd
 EQU  LCD_RS       00000007
 EQU  LCD_E        00000006
 EQU  LCD_RW       00000005
 EQU  LCD_BE       00000004
-CSEG lcd_wait_loop 000000e9
+CSEG lcd_wait_loop 000000ee
 EQU  F_CPU        00f42400
 EQU  DELAY_1MS    00000f9c
-CSEG delayloop_1ms 000000f9
+CSEG delayloop_1ms 000000fe
