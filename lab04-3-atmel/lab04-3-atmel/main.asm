@@ -110,7 +110,8 @@ rowloop:
 	breq convert ; if bit is clear, the key is pressed 
 	inc row ; else move to the next row 
 	lsl rmask 
-	jmp rowloop nextcol: ; if row scan is over 
+	jmp rowloop
+nextcol: ; if row scan is over 
 	lsl cmask 
 	inc col ; increase column value 
 	jmp colloop ; go to the next column
