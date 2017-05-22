@@ -1,6 +1,7 @@
 .include "m2560def.inc"
 .def temp=r16
 .def PWM=r17
+.def count=r18
 
 .macro clear
     ldi YL, low(@0)    
@@ -23,11 +24,28 @@ SETUP:
     out TCCR0B, temp        ; Prescaling value=8
     ldi temp, 1<<TOIE0      ; = 128 microseconds
     sts TIMSK0, temp        ; T/C0 interrupt enable
-
-    sei                     ; Enable global interrupt
+	ldi temp, high(RAMEND)
+	out SPH, temp
+	ldi temp, low(RAMEND)
+	out SPL, temp
+	ser temp
+	out DDRC, temp
+    sei                    ; Enable global interrupt
 	jmp LOOP
 
 LOOP:
+	inc count
+	cpi count, 255
+	ldi count, 0
+
+	cp count, PWM
+	brlo ON
+	ldi temp, 0
+	out PORTC, temp
+	rjmp LOOP
+ON:
+	ldi temp, 1
+	out PORTC, temp
 	rjmp LOOP
 
 Timer0OVF:
@@ -49,9 +67,9 @@ Timer0OVF:
 	secondPassed: ; 1/252
 		inc PWM
 		cpi PWM, 252
+		brne DONT_RESET
 		ldi PWM, 0
-		call SET_LED
-		
+		DONT_RESET:
 		clear TempCounter
     rjmp EndIF
 

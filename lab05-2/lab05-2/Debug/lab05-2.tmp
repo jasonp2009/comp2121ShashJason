@@ -22,13 +22,15 @@
   <FILE>lab05-2.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <TempCounter><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>14</LINE></TempCounter>
-  <SETUP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>18</LINE></SETUP>
-  <LOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>30</LINE></LOOP>
-  <Timer0OVF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>33</LINE></Timer0OVF>
-  <NotSecond><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>58</LINE></NotSecond>
-  <secondPassed><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>49</LINE></secondPassed>
-  <SET_LED><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>73</LINE></SET_LED>
-  <EndIF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>62</LINE></EndIF>
+  <TempCounter><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>15</LINE></TempCounter>
+  <SETUP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>19</LINE></SETUP>
+  <LOOP><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>36</LINE></LOOP>
+  <ON><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>46</LINE></ON>
+  <Timer0OVF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>51</LINE></Timer0OVF>
+  <NotSecond><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>76</LINE></NotSecond>
+  <secondPassed><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>67</LINE></secondPassed>
+  <DONT_RESET><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>72</LINE></DONT_RESET>
+  <EndIF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>80</LINE></EndIF>
+  <SET_LED><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-2\lab05-2\main.asm</FILE><LINE>91</LINE></SET_LED>
  </LABELS>
 </ASSEMBLER_INFO>
