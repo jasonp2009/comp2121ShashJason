@@ -49,7 +49,7 @@ TempCounter:
 jmp DEFAULT 
 DEFAULT:  reti          
 
-RESET: 
+/*RESET: 
     ldi temp, high(RAMEND) 	; Initialize stack pointer
     out SPH, temp
     ldi temp, low(RAMEND)
@@ -83,6 +83,48 @@ RESET:
 	do_lcd_data ':';
 	do_lcd_data ' ';
 
+	rjmp main*/
+
+RESET:
+	ldi r16, low(RAMEND)
+	out SPL, r16
+	ldi r16, high(RAMEND)
+	out SPH, r16
+
+	ldi acc, 0
+	ldi input, 0
+	ldi press, 0
+
+	ser r16
+	out DDRF, r16
+	out DDRA, r16
+	clr r16
+	out PORTF, r16
+	out PORTA, r16
+
+	do_lcd_command 0b00111000 ; 2x5x7
+	rcall sleep_5ms
+	do_lcd_command 0b00111000 ; 2x5x7
+	rcall sleep_1ms
+	do_lcd_command 0b00111000 ; 2x5x7
+	do_lcd_command 0b00111000 ; 2x5x7
+	do_lcd_command 0b00001000 ; display off?
+	do_lcd_command 0b00000001 ; clear display
+	do_lcd_command 0b00000110 ; increment, no display shift
+	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
+	
+	do_lcd_data '0'
+	do_lcd_command 0b11000000 ;new line
+
+	ldi temp1, low(RAMEND) ; initialize the stack 
+	out SPL, temp1 
+	ldi temp1, high(RAMEND) 
+	out SPH, temp1 
+	ldi temp1, PORTADIR ; PA7:4/PA3:0, out/in 
+	sts DDRL, temp1 
+	;ser temp1 ; PORTC is output 
+	;out DDRC, temp1 
+	;out PORTC, temp1
 	rjmp main
 
 EXT_INT2:
@@ -185,8 +227,7 @@ get_last_digit:
 
 end:
 	pop temp1
-	subi temp1, -'0'
-	do_lcd_data temp1
+	do_lcd_num temp1
 	dec count
 	cpi count, 0
 	brne end
