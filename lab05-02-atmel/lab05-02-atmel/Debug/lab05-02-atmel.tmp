@@ -1,0 +1,48 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega2560"</DEVICE>
+ <WORKING_DIR>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\Debug\lab05-02-atmel.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>lab05-02-atmel.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>lab05-02-atmel.map</FILE>
+  <FILE>lab05-02-atmel.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <TempCounter><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>19</LINE></TempCounter>
+  <RESET><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>52</LINE></RESET>
+  <DEFAULT><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>50</LINE></DEFAULT>
+  <EXT_INT2><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>89</LINE></EXT_INT2>
+  <Timer0OVF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>93</LINE></Timer0OVF>
+  <lcd_command><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>212</LINE></lcd_command>
+  <lcd_wait><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>231</LINE></lcd_wait>
+  <sleep_5ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>267</LINE></sleep_5ms>
+  <sleep_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>255</LINE></sleep_1ms>
+  <lcd_data><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>220</LINE></lcd_data>
+  <main><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>141</LINE></main>
+  <NotSecond><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>128</LINE></NotSecond>
+  <secondPassed><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>109</LINE></secondPassed>
+  <PRINT_RPM><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>164</LINE></PRINT_RPM>
+  <EndIF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>132</LINE></EndIF>
+  <loop2><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>160</LINE></loop2>
+  <loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>168</LINE></loop>
+  <get_last_digit><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>180</LINE></get_last_digit>
+  <cont><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>172</LINE></cont>
+  <end><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>187</LINE></end>
+  <lcd_wait_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>237</LINE></lcd_wait_loop>
+  <delayloop_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-02-atmel\lab05-02-atmel\main.asm</FILE><LINE>260</LINE></delayloop_1ms>
+ </LABELS>
+</ASSEMBLER_INFO>

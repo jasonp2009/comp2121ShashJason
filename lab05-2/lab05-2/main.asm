@@ -1,7 +1,6 @@
 .include "m2560def.inc"
 .def temp=r16
 .def PWM=r17
-.def temp=r18
 
 .macro clear
     ldi YL, low(@0)    
@@ -15,6 +14,7 @@
 TempCounter:
    .byte 2
 
+.cseg
 SETUP:
 	; Timer0 initilaisation
     ldi temp, 0b00000000
@@ -46,8 +46,11 @@ Timer0OVF:
 	cpc r25, temp
 	brne NotSecond
 		
-	secondPassed: ; 1/4 of a second passed
-	
+	secondPassed: ; 1/252
+		inc PWM
+		cpi PWM, 252
+		ldi PWM, 0
+		call SET_LED
 		
 		clear TempCounter
     rjmp EndIF
@@ -71,7 +74,7 @@ SET_LED:
 	ldi temp, 0b00001000
 	sts DDRL, temp ; Bit 3 will function as OC5A.
 
-	ldi temp, PWM ; the value controls the PWM duty cycle
+	mov temp, PWM ; the value controls the PWM duty cycle
 	sts OCR5AL, temp
 	clr temp
 	sts OCR5AH, temp
