@@ -1,10 +1,10 @@
 .include "m2560def.inc"
 
-.def temp = r16
+.def temp = r20
 .def temp1 = r17 
 .def temp2 = r18
 .def rpm = r19
-.def lcd = r20	; lcd handle
+.def lcd = r16	; lcd handle
 .def count = r21
 
 .macro clear
@@ -77,9 +77,9 @@ RESET:
 	do_lcd_command 0b00000110 ; increment, no display shift
 	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
 
-	do_lcd_data 'r';
-	do_lcd_data 'p';
-	do_lcd_data 'm';
+	do_lcd_data 'R';
+	do_lcd_data 'P';
+	do_lcd_data 'M';
 	do_lcd_data ':';
 	do_lcd_data ' ';
 	
@@ -111,9 +111,9 @@ Timer0OVF:
 		do_lcd_command 0b00000110 ; increment, no display shift
 		do_lcd_command 0b00001110 ; Cursor on, bar, no blink
 
-		do_lcd_data 'r';
-		do_lcd_data 'p';
-		do_lcd_data 'm';
+		do_lcd_data 'R';
+		do_lcd_data 'P';
+		do_lcd_data 'M';
 		do_lcd_data ':';
 		do_lcd_data ' ';
 
