@@ -118,7 +118,7 @@ Timer0OVF:
 
 		out PORTC, rpm
 
-		//PRINT RPM
+		call PRINT_RPM
 
 		clr rpm
 		clear TempCounter
@@ -160,8 +160,8 @@ loop2: ; loop forever
 	rjmp loop2
 
 
-reset_LCD:
-	do_lcd_command 0b00000001 ; clear display
+PRINT_RPM:
+	;do_lcd_command 0b00000001 ; clear display
 	mov temp1, rpm
 	ldi count, 0
 loop:
@@ -189,8 +189,8 @@ end:
 	dec count
 	cpi count, 0
 	brne end
-	do_lcd_command 0b11000000 ;new line
-	rjmp EndIF
+	;do_lcd_command 0b11000000 ;new line
+	reti
 
 .equ LCD_RS = 7
 .equ LCD_E = 6
