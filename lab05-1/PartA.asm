@@ -116,7 +116,7 @@ Timer0OVF:
 		do_lcd_data ':';
 		do_lcd_data ' ';
 
-		out PORTC, rpm
+		;out PORTC, rpm
 
 		call PRINT_RPM
 
@@ -185,7 +185,8 @@ get_last_digit:
 
 end:
 	pop temp1
-	do_lcd_num temp1
+	subi temp1, -'0'
+	do_lcd_data temp1
 	dec count
 	cpi count, 0
 	brne end
