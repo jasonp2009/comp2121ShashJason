@@ -190,7 +190,7 @@ end:
 	cpi count, 0
 	brne end
 	;do_lcd_command 0b11000000 ;new line
-	reti
+	ret
 
 .equ LCD_RS = 7
 .equ LCD_E = 6
