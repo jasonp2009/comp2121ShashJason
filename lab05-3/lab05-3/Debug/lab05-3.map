@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-3\lab05-3\main.asm Mon May 22 16:54:58 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\lab05-3\lab05-3\main.asm Mon May 22 17:02:51 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1370,35 +1370,35 @@ DEF  bounceFlag   r22
 DEF  pwm          r24
 DSEG TempCounter  00000200
 CSEG RESET        00000037
-CSEG EXT_INT1     00000075
-CSEG EXT_INT0     00000070
-CSEG EXT_INT2     0000007a
-CSEG Timer0OVF    0000007c
+CSEG EXT_INT1     00000097
+CSEG EXT_INT0     00000092
+CSEG EXT_INT2     0000009c
+CSEG Timer0OVF    0000009e
 CSEG DEFAULT      00000036
-CSEG lcd_command  000000ee
-CSEG lcd_wait     000000fe
-CSEG sleep_5ms    00000118
-CSEG sleep_1ms    0000010f
-CSEG lcd_data     000000f5
-CSEG main         000000c1
-CSEG BOUNCING     0000006f
-CSEG NotSecond    000000b6
-CSEG secondPassed 0000008b
-CSEG PRINT_RPM    000000d5
-CSEG MATCH_RPM    000000ae
-CSEG RETURN_MATCH_RPM 000000a7
-CSEG EndIF        000000ba
-CSEG DECREASE_PWM 000000b3
-CSEG loop2        000000d4
-CSEG loop         000000d7
-CSEG get_last_digit 000000e0
-CSEG cont         000000da
-CSEG end          000000e5
+CSEG lcd_command  00000114
+CSEG lcd_wait     00000124
+CSEG sleep_5ms    0000013e
+CSEG sleep_1ms    00000135
+CSEG lcd_data     0000011b
+CSEG main         000000e7
+CSEG BOUNCING     00000091
+CSEG NotSecond    000000dc
+CSEG secondPassed 000000ad
+CSEG PRINT_RPM    000000fb
+CSEG MATCH_RPM    000000d4
+CSEG RETURN_MATCH_RPM 000000c9
+CSEG EndIF        000000e0
+CSEG DECREASE_PWM 000000d9
+CSEG loop2        000000fa
+CSEG loop         000000fd
+CSEG get_last_digit 00000106
+CSEG cont         00000100
+CSEG end          0000010b
 EQU  LCD_RS       00000007
 EQU  LCD_E        00000006
 EQU  LCD_RW       00000005
 EQU  LCD_BE       00000004
-CSEG lcd_wait_loop 00000103
+CSEG lcd_wait_loop 00000129
 EQU  F_CPU        00f42400
 EQU  DELAY_1MS    00000f9c
-CSEG delayloop_1ms 00000113
+CSEG delayloop_1ms 00000139

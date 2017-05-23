@@ -56,7 +56,8 @@ TempCounter:
 jmp DEFAULT 
 DEFAULT:  reti          
 
-RESET: 
+RESET:
+	ldi pwm, 0
     ldi temp, high(RAMEND) 	; Initialize stack pointer
     out SPH, temp
     ldi temp, low(RAMEND)
@@ -89,7 +90,44 @@ RESET:
 	do_lcd_data 'M';
 	do_lcd_data ':';
 	do_lcd_data ' ';
+
+	 ; Timer3 initialisation
+	ldi temp, 0b00001000
+	sts DDRL, temp
 	
+	ldi temp, 0x4A
+	sts OCR3AL, temp
+	clr temp
+	sts OCR3AH, temp
+
+	ldi temp, (1<<CS50)
+	sts TCCR3B, temp
+	ldi temp, (1<<WGM30)|(1<<COM3A1)
+	sts TCCR3A, temp
+	
+	ldi temp, 1<<TOIE3	
+    sts TIMSK3, temp        ; T/C3 interrupt enable
+   	
+	; PWM Configuration
+
+	; Configure bit PE2 as output
+	ldi temp, 0b00010000
+	ser temp
+	out DDRE, temp ; Bit 3 will function as OC3B
+	ldi temp, 0xFF ; the value controls the PWM duty cycle (store the value in the OCR registers)
+	sts OCR3BL, temp
+	clr temp
+	sts OCR3BH, temp
+
+	ldi temp, (1 << CS00) ; no prescaling
+	sts TCCR3B, temp
+
+
+	; PWM phase correct 8-bit mode (WGM30)
+	; Clear when up counting, set when down-counting
+	ldi temp, (1<< WGM30)|(1<<COM3B1)
+	sts TCCR3A, temp
+
 	sei
 	jmp main
 
@@ -144,6 +182,7 @@ Timer0OVF:
 		cp target_rpm, rpm
 		brne MATCH_RPM
 		RETURN_MATCH_RPM:
+		sts OCR3BL, pwm 		; connected to PE2 (internally PE4)
 		clr rpm
 		clear TempCounter
     rjmp EndIF
