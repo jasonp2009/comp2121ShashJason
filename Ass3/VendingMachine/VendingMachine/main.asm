@@ -1,18 +1,16 @@
 .include "m2560def.inc"
 
 .def lcd = r16	//lcd handler
-.def temp = r17
-.def count = r18
-.def inventory_value = r19
-.def boolean = r22
-.def flag = r23
+.def inventory_value = r17
+.def boolean = r18
+.def flag = r19
 
-.def row = r16				; current row number
-.def col = r17				; current column number
-.def rmask = r18			; mask for current row during scan
-.def cmask = r19			; mask for current column during scan
-.def temp1 = r20
-.def temp2 = r21
+.def row = r20				; current row number
+.def col = r21				; current column number
+.def rmask = r22			; mask for current row during scan
+.def cmask = r23			; mask for current column during scan
+.def temp1 = r24
+.def temp2 = r25
 
 .equ PORTLDIR = 0xF0		; -> 1111 0000 PL7-4: output, PL3-0, input
 .equ INITCOLMASK = 0xEF		; -> 1110 1111 scan from the rightmost column,
@@ -24,16 +22,9 @@
 .macro clear 
 	ldi YL, low(@0) ; load the memory address to Y 
 	ldi YH, high(@0) 
-	clr temp 
-	st Y+, temp ; clear the two bytes at @0 in SRAM 
-	st Y, temp 
-.endmacro
-; Loads a single immediate value into an input SRAM address
-.macro load
-	ldi YL, low(@0)
-	ldi YH, high(@0)
-	ldi temp, @1
-	st Y, temp
+	clr temp1
+	st Y+, temp1 ; clear the two bytes at @0 in SRAM 
+	st Y, temp1 
 .endmacro
 ; Loads an item cost into inventory_value
 .macro get_costi
@@ -64,7 +55,6 @@
 	ldi YH, high(Cost)
 	call inc_y
 	ld inventory_value, Y
-.endmacro
 .endmacro
 .macro do_lcd_command
 	ldi lcd, @0
@@ -101,38 +91,38 @@ DEFAULT: reti ; no service
 
 RESET:
 	;Stack pointer set up
-	ldi temp, low(RAMEND); Initialize stack pointer
-	out SPL, temp
-	ldi temp, high(RAMEND)
-	out SPH, temp
+	ldi temp1, low(RAMEND); Initialize stack pointer
+	out SPL, temp1
+	ldi temp1, high(RAMEND)
+	out SPH, temp1
 	
 	;LED set up
-	ser temp ; set Port C as output 
-	out DDRC, temp
+	ser temp1 ; set Port C as output 
+	out DDRC, temp1
 	
 	;Timer0 set up
 	clear TempCounter       ; Initialize the temporary counter to 0
-    ldi temp, 0b00000000
-    out TCCR0A, temp
-    ldi temp, 0b00000010
-    out TCCR0B, temp        ; Prescaling value=8
-    ldi temp, 1<<TOIE0      ; = 128 microseconds
-    sts TIMSK0, temp        ; T/C0 interrupt enable
+    ldi temp1, 0b00000000
+    out TCCR0A, temp1
+    ldi temp1, 0b00000010
+    out TCCR0B, temp1        ; Prescaling value=8
+    ldi temp1, 1<<TOIE0      ; = 128 microseconds
+    sts TIMSK0, temp1        ; T/C0 interrupt enable
     sei                     ; Enable global interrupt
 	
 	call INIT_INVENTORY		; Initialises the cost and stock of the inventory
 
 	;Keyboard set up
-	ldi temp, PORTLDIR				; set PL7:4 to output and PL3:0 to input
-	sts DDRL, temp					; PORTL is input
+	ldi temp1, PORTLDIR				; set PL7:4 to output and PL3:0 to input
+	sts DDRL, temp1					; PORTL is input
 	
 	;LCD set up
-	ser temp
-	out DDRF, temp
-	out DDRA, temp
-	clr temp
-	out PORTF, temp
-	out PORTA, temp
+	ser temp1
+	out DDRF, temp1
+	out DDRA, temp1
+	clr temp1
+	out PORTF, temp1
+	out PORTA, temp1
 
 	do_lcd_command 0b00111000 ; 2x5x7
 	rcall sleep_5ms
@@ -183,46 +173,47 @@ RESET:
 	clear SecondCounter
 
 Start_screen:
-	lds temp, CounterFlag
-	ldi temp, 1
-	sts CounterFlag, temp
+	lds temp1, CounterFlag
+	ldi temp1, 1
+	sts CounterFlag, temp1
 
 	ldi boolean, 1
 	rjmp KEYBOARD
 RetSS:
 	cpi boolean, 0
-	breq MAIN_MENU
-	lds temp, SecondCounter
-	cpi temp, 3
+	breq RetSS_MAIN_MENU
+	lds temp1, SecondCounter
+	cpi temp1, 3
 	brge MAIN_MENU
 	rjmp Start_screen
+RetSS_MAIN_MENU:
+	jmp MAIN_MENU
 
 INIT_INVENTORY:
-	ldi ZL, low(cost)
-	ldi ZH, high(cost)
-	load Z+, 2
-	load Z+, 1
-	load Z+, 2
-	load Z+, 1
-	load Z+, 2
-	load Z+, 1
-	load Z+, 2
-	load Z+, 1
-	load Z+, 2
-	load Z,  1
-	ldi ZL, low(inventory)
-	ldi ZH, high(inventory)
-	ldi count, 0
-	invetory_loop:
-		load Z+, count
-		inc count
-		cpi count, 10
-		brne inventory_loop
+	ldi ZL, low(Cost)
+	ldi ZH, high(Cost)
+	ldi temp2, 0
+	cost_loop:
+		ldi temp1, 2 
+		st Z+, temp1
+		ldi temp1, 1
+		st Z+, temp1
+		inc temp2
+		cpi temp2, 5
+		brne cost_loop
+	ldi ZL, low(Stock)
+	ldi ZH, high(Stock)
+	ldi temp2, 0
+	stock_loop:
+		st Z+, temp2
+		inc temp2
+		cpi temp2, 10
+		brne stock_loop
 	ret
 
 Timer0OVF:
-	in temp, SREG
-    push temp      
+	in temp1, SREG
+    push temp1      
     push YH         
     push YL
     push r25
@@ -234,16 +225,16 @@ Timer0OVF:
     	adiw r25:r24, 1 ; Increase the temporary counter by one.
     	
 		cpi r24, low(7812)  ; Check if (r25:r24) = 7812 ; 7812 = 10^6/128
-    	ldi temp, high(7812)    ; 7812 = 10^6/128
-    	cpc r25, temp
+    	ldi temp1, high(7812)    ; 7812 = 10^6/128
+    	cpc r25, temp1
     	brne NotSecond
 		
-		lds temp, CounterFlag
-		cpi temp, 1
+		lds temp1, CounterFlag
+		cpi temp1, 1
 		brne Cont
-		lds temp, SecondCounter
-		subi temp, -1
-		sts SecondCounter, temp
+		lds temp1, SecondCounter
+		subi temp1, -1
+		sts SecondCounter, temp1
 	Cont:
 		clear TempCounter       ; Reset the temporary counter.
     
@@ -258,8 +249,8 @@ EndIF:
     pop r25         ; Restore all conflict registers from the stack.
     pop YL
     pop YH
-    pop temp
-    out SREG, temp
+    pop temp1
+    out SREG, temp1
     reti            ; Return from the interrupt.	
 
 MAIN_MENU:
@@ -449,14 +440,14 @@ sleep_5ms:
 	ret
 
 inc_y:
-	push count
-	push temp
-	clr count
+	push temp2
+	push temp1
+	clr temp2
 	inc_y_loop:
-		ld temp, Y+
-		inc count
-		cpi count, inventory_value
+		ld temp1, Y+
+		inc temp2
+		cp temp2, inventory_value
 		brne inc_y_loop
-	pop temp
-	pop count
+	pop temp1
+	pop temp2
 	ret
