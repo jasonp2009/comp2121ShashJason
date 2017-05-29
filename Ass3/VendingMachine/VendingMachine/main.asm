@@ -2,6 +2,8 @@
 
 .def lcd = r16	//lcd handler
 .def temp = r17
+.def count = r18
+.def inventory_value = r19
 .def boolean = r22
 .def flag = r23
 
@@ -26,6 +28,44 @@
 	st Y+, temp ; clear the two bytes at @0 in SRAM 
 	st Y, temp 
 .endmacro
+; Loads a single immediate value into an input SRAM address
+.macro load
+	ldi YL, low(@0)
+	ldi YH, high(@0)
+	ldi temp, @1
+	st Y, temp
+.endmacro
+; Loads an item cost into inventory_value
+.macro get_costi
+	ldi inventory_value, @0
+	ldi YL, low(Cost)
+	ldi YH, high(Cost)
+	call inc_y
+	ld inventory_value, Y
+.endmacro
+.macro get_cost
+	mov inventory_value, @0
+	ldi YL, low(Cost)
+	ldi YH, high(Cost)
+	call inc_y
+	ld inventory_value, Y
+.endmacro
+; Loads an item stock count into invetory_value
+.macro get_stocki
+	ldi inventory_value, @0
+	ldi YL, low(Stock)
+	ldi YH, high(Stock)
+	call inc_y
+	ld inventory_value, Y
+.endmacro
+.macro get_stock
+	mov inventory_value, @0
+	ldi YL, low(Cost)
+	ldi YH, high(Cost)
+	call inc_y
+	ld inventory_value, Y
+.endmacro
+.endmacro
 .macro do_lcd_command
 	ldi lcd, @0
 	rcall lcd_command
@@ -44,6 +84,10 @@ SecondCounter:
 	.byte 1 ; Counter used to determine how many second have passed when used
 CounterFlag:
 	.byte 1 ; Used to idicate when to start counting seconds
+Cost:
+	.byte 10 ; Used to store the cost of each item
+Stock:
+	.byte 10 ; Used to store the stock of each item
 
 .cseg
 .org 0x0000
@@ -76,6 +120,8 @@ RESET:
     sts TIMSK0, temp        ; T/C0 interrupt enable
     sei                     ; Enable global interrupt
 	
+	call INIT_INVENTORY		; Initialises the cost and stock of the inventory
+
 	;Keyboard set up
 	ldi temp, PORTLDIR				; set PL7:4 to output and PL3:0 to input
 	sts DDRL, temp					; PORTL is input
@@ -114,7 +160,7 @@ RESET:
 	do_lcd_data ' '
 	do_lcd_data 'B'
 	do_lcd_data '4'
-	do_lcd_command 0b11000000
+	do_lcd_command 0b11000000 ; New line
 	do_lcd_data 'V'
 	do_lcd_data 'e'
 	do_lcd_data 'n'
@@ -151,6 +197,28 @@ RetSS:
 	brge MAIN_MENU
 	rjmp Start_screen
 
+INIT_INVENTORY:
+	ldi ZL, low(cost)
+	ldi ZH, high(cost)
+	load Z+, 2
+	load Z+, 1
+	load Z+, 2
+	load Z+, 1
+	load Z+, 2
+	load Z+, 1
+	load Z+, 2
+	load Z+, 1
+	load Z+, 2
+	load Z,  1
+	ldi ZL, low(inventory)
+	ldi ZH, high(inventory)
+	ldi count, 0
+	invetory_loop:
+		load Z+, count
+		inc count
+		cpi count, 10
+		brne inventory_loop
+	ret
 
 Timer0OVF:
 	in temp, SREG
@@ -378,4 +446,17 @@ sleep_5ms:
 	rcall sleep_1ms
 	rcall sleep_1ms
 	rcall sleep_1ms
+	ret
+
+inc_y:
+	push count
+	push temp
+	clr count
+	inc_y_loop:
+		ld temp, Y+
+		inc count
+		cpi count, inventory_value
+		brne inc_y_loop
+	pop temp
+	pop count
 	ret
