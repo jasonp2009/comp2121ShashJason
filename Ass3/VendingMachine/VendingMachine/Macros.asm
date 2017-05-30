@@ -17,3 +17,33 @@
 	rcall lcd_data
 	rcall lcd_wait
 .endmacro
+; Loads an item cost into inventory_value
+.macro get_costi
+	ldi inventory_value, @0
+	ldi YL, low(Cost)
+	ldi YH, high(Cost)
+	call inc_y
+	ld inventory_value, Y
+.endmacro
+.macro get_cost
+	mov inventory_value, @0
+	ldi YL, low(Cost)
+	ldi YH, high(Cost)
+	call inc_y
+	ld inventory_value, Y
+.endmacro
+; Loads an item stock count into invetory_value
+.macro get_stocki
+	ldi inventory_value, @0
+	ldi YL, low(Stock)
+	ldi YH, high(Stock)
+	call inc_y
+	ld inventory_value, Y
+.endmacro
+.macro get_stock
+	mov inventory_value, @0
+	ldi YL, low(Cost)
+	ldi YH, high(Cost)
+	call inc_y
+	ld inventory_value, Y
+.endmacro

@@ -1,71 +1,27 @@
 .include "m2560def.inc"
 
 .def lcd = r16	//lcd handler
-.def inventory_value = r17
-.def boolean = r18
-.def flag = r19
+.def temp = r17
+.def cost = r18
+.def number = r19
+.def temp2 = r20
+.def boolean = r22
+.def flag = r23
+.def inventory_value = r24
 
-.def row = r20				; current row number
-.def col = r21				; current column number
-.def rmask = r22			; mask for current row during scan
-.def cmask = r23			; mask for current column during scan
-.def temp1 = r24
-.def temp2 = r25
+.def row = r16				; current row number
+.def col = r17				; current column number
+.def rmask = r18			; mask for current row during scan
+.def cmask = r19			; mask for current column during scan
+.def temp1 = r20
+.def temp2 = r21
 
 .equ PORTLDIR = 0xF0		; -> 1111 0000 PL7-4: output, PL3-0, input
 .equ INITCOLMASK = 0xEF		; -> 1110 1111 scan from the rightmost column,
 .equ INITROWMASK = 0x01		; -> 0000 0001 scan from the top row
 .equ ROWMASK  = 0x0F		; -> 0000 1111 for obtaining input from Port L (note that first 4 bits are output)
 
-; The macro clears a word (2 bytes) in a memory 
-; the parameter @0 is the memory address for that word
-.macro clear 
-	ldi YL, low(@0) ; load the memory address to Y 
-	ldi YH, high(@0) 
-	clr temp1
-	st Y+, temp1 ; clear the two bytes at @0 in SRAM 
-	st Y, temp1 
-.endmacro
-; Loads an item cost into inventory_value
-.macro get_costi
-	ldi inventory_value, @0
-	ldi YL, low(Cost)
-	ldi YH, high(Cost)
-	call inc_y
-	ld inventory_value, Y
-.endmacro
-.macro get_cost
-	mov inventory_value, @0
-	ldi YL, low(Cost)
-	ldi YH, high(Cost)
-	call inc_y
-	ld inventory_value, Y
-.endmacro
-; Loads an item stock count into invetory_value
-.macro get_stocki
-	ldi inventory_value, @0
-	ldi YL, low(Stock)
-	ldi YH, high(Stock)
-	call inc_y
-	ld inventory_value, Y
-.endmacro
-.macro get_stock
-	mov inventory_value, @0
-	ldi YL, low(Cost)
-	ldi YH, high(Cost)
-	call inc_y
-	ld inventory_value, Y
-.endmacro
-.macro do_lcd_command
-	ldi lcd, @0
-	rcall lcd_command
-	rcall lcd_wait
-.endmacro
-.macro do_lcd_data
-	ldi lcd, @0
-	rcall lcd_data
-	rcall lcd_wait
-.endmacro
+.include "Macros.asm"
 
 .dseg
 TempCounter:
@@ -74,14 +30,42 @@ SecondCounter:
 	.byte 1 ; Counter used to determine how many second have passed when used
 CounterFlag:
 	.byte 1 ; Used to idicate when to start counting seconds
+ScreenState:
+	.byte 1 ; Used to indicate which screen to show
 Cost:
 	.byte 10 ; Used to store the cost of each item
 Stock:
 	.byte 10 ; Used to store the stock of each item
+InventState:
+	.byte 1	; Used to store the inventory number
+One:
+	.byte 2
+Two:
+	.byte 2
+Three:
+	.byte 2
+Four:
+	.byte 2
+Five:
+	.byte 2
+Six:
+	.byte 2
+Seven:
+	.byte 2
+Eight:
+	.byte 2
+Nine:
+	.byte 2
+Zero:
+	.byte 2
 
 .cseg
 .org 0x0000
-	jmp RESET
+    jmp RESET
+.org INT0addr
+    jmp EXT_INT1
+.org INT1addr
+    jmp EXT_INT0
 	jmp DEFAULT ; No handling for IRQ0.
 	jmp DEFAULT ; No handling for IRQ1.
 .org OVF0addr
@@ -91,38 +75,58 @@ DEFAULT: reti ; no service
 
 RESET:
 	;Stack pointer set up
-	ldi temp1, low(RAMEND); Initialize stack pointer
-	out SPL, temp1
-	ldi temp1, high(RAMEND)
-	out SPH, temp1
+	ldi temp, low(RAMEND); Initialize stack pointer
+	out SPL, temp
+	ldi temp, high(RAMEND)
+	out SPH, temp
 	
 	;LED set up
-	ser temp1 ; set Port C as output 
-	out DDRC, temp1
+	ser temp ; set Port C as output 
+	out DDRC, temp
 	
 	;Timer0 set up
 	clear TempCounter       ; Initialize the temporary counter to 0
-    ldi temp1, 0b00000000
-    out TCCR0A, temp1
-    ldi temp1, 0b00000010
-    out TCCR0B, temp1        ; Prescaling value=8
-    ldi temp1, 1<<TOIE0      ; = 128 microseconds
-    sts TIMSK0, temp1        ; T/C0 interrupt enable
+    ldi temp, 0b00000000
+    out TCCR0A, temp
+    ldi temp, 0b00000010
+    out TCCR0B, temp        ; Prescaling value=8
+    ldi temp, 1<<TOIE0      ; = 128 microseconds
+    sts TIMSK0, temp        ; T/C0 interrupt enable
     sei                     ; Enable global interrupt
-	
-	call INIT_INVENTORY		; Initialises the cost and stock of the inventory
 
+	;Push button set up
+	ldi temp, (2 << ISC00)      ; set INT0 as falling-
+    sts EICRA, temp             ; edge triggered interrupt
+    in temp, EIMSK              ; enable INT0
+    ori temp, (1<<INT0)
+    out EIMSK, temp
+	sei                         ; enable Global Interrupt
+
+	ldi temp, (2 << ISC00)      ; set INT1 as falling-
+    sts EICRA, temp             ; edge triggered interrupt
+    in temp, EIMSK              ; enable INT1
+    ori temp, (1<<INT1)
+    out EIMSK, temp
+	sei   
+	
 	;Keyboard set up
-	ldi temp1, PORTLDIR				; set PL7:4 to output and PL3:0 to input
-	sts DDRL, temp1					; PORTL is input
+	ldi temp, PORTLDIR				; set PL7:4 to output and PL3:0 to input
+	sts DDRL, temp					; PORTL is input
 	
 	;LCD set up
-	ser temp1
-	out DDRF, temp1
-	out DDRA, temp1
-	clr temp1
-	out PORTF, temp1
-	out PORTA, temp1
+	ser temp
+	out DDRF, temp
+	out DDRA, temp
+	clr temp
+	out PORTF, temp
+	out PORTA, temp
+
+	;Set up inventory
+	call INIT_INVENTORY ; Used to initialise the inventory storage (Jason's implementation)
+						; Use get_cost or get_stock passing in a register with value 0-9, or
+						; get_costi or get_stocki passing in an immediate value. The return value
+						; will be stored in inventory_value
+	.include "Inventory.asm"
 
 	do_lcd_command 0b00111000 ; 2x5x7
 	rcall sleep_5ms
@@ -150,7 +154,7 @@ RESET:
 	do_lcd_data ' '
 	do_lcd_data 'B'
 	do_lcd_data '4'
-	do_lcd_command 0b11000000 ; New line
+	do_lcd_command 0b11000000
 	do_lcd_data 'V'
 	do_lcd_data 'e'
 	do_lcd_data 'n'
@@ -166,28 +170,25 @@ RESET:
 	do_lcd_data 'i'
 	do_lcd_data 'n'
 	do_lcd_data 'e'
+	do_lcd_data ' '
 
 	ldi flag, 0
 	ldi boolean, 0
 	clear CounterFlag
 	clear SecondCounter
+	clear ScreenState
 
 Start_screen:
-	lds temp1, CounterFlag
-	ldi temp1, 1
-	sts CounterFlag, temp1
-
-	ldi boolean, 1
-	rjmp KEYBOARD
-RetSS:
-	cpi boolean, 0
-	breq RetSS_MAIN_MENU
-	lds temp1, SecondCounter
-	cpi temp1, 3
+	ldi temp, 1
+	sts CounterFlag, temp
+	
+	call KEYBOARD
+	cpi flag, 1
+	brge MAIN_MENU
+	lds temp, SecondCounter
+	cpi temp, 3
 	brge MAIN_MENU
 	rjmp Start_screen
-RetSS_MAIN_MENU:
-	jmp MAIN_MENU
 
 INIT_INVENTORY:
 	ldi ZL, low(Cost)
@@ -212,8 +213,8 @@ INIT_INVENTORY:
 	ret
 
 Timer0OVF:
-	in temp1, SREG
-    push temp1      
+	in temp, SREG
+    push temp      
     push YH         
     push YL
     push r25
@@ -225,16 +226,16 @@ Timer0OVF:
     	adiw r25:r24, 1 ; Increase the temporary counter by one.
     	
 		cpi r24, low(7812)  ; Check if (r25:r24) = 7812 ; 7812 = 10^6/128
-    	ldi temp1, high(7812)    ; 7812 = 10^6/128
-    	cpc r25, temp1
+    	ldi temp, high(7812)    ; 7812 = 10^6/128
+    	cpc r25, temp
     	brne NotSecond
 		
-		lds temp1, CounterFlag
-		cpi temp1, 1
+		lds temp, CounterFlag
+		cpi temp, 1
 		brne Cont
-		lds temp1, SecondCounter
-		subi temp1, -1
-		sts SecondCounter, temp1
+		lds temp, SecondCounter
+		subi temp, -1
+		sts SecondCounter, temp
 	Cont:
 		clear TempCounter       ; Reset the temporary counter.
     
@@ -249,9 +250,29 @@ EndIF:
     pop r25         ; Restore all conflict registers from the stack.
     pop YL
     pop YH
-    pop temp1
-    out SREG, temp1
-    reti            ; Return from the interrupt.	
+    pop temp
+    out SREG, temp
+    reti            ; Return from the interrupt.
+	
+EXT_INT1:
+	ldi boolean, 1
+	reti
+;	ldi boolean, 0xFF
+;	rjmp delay255
+
+EXT_INT0:
+	ldi boolean, 1
+	reti
+;	ldi boolean, 0xFF	
+;	rjmp delay255
+
+;delay255:
+;	cpi boolean, 1
+;	breq return255
+;	dec boolean
+
+;return255:
+;	reti	
 
 MAIN_MENU:
 	ldi boolean, 0	
@@ -282,162 +303,168 @@ MAIN_MENU:
 	do_lcd_data 'e'
 	do_lcd_data 'm'
 
-KEYBOARD:
-	ldi cmask, INITCOLMASK	; initial column mask (1110 1111)
-	clr col 				; initial column (0)
+	ldi boolean, 0xFF	
+	rjmp delay255
 
-colloop:
-	cpi col, 4 				; compare current column # to total # columns
-	breq check				; if all keys are scanned, repeat
+delay255:
+	dec boolean
+	brne Keypress
 
-	sts PORTL, cmask		; otherwise, scan a column
-	ldi temp1, 0xFF			; slow down the scan operation to debounce button press
-delay:
-	dec temp1
-	brne delay
+Keypress:
+	call KEYBOARD
+	cpi flag, 0
+	breq Keypress
 
-	lds temp1, PINL			; read PORTL
-	andi temp1, ROWMASK		; get the keypad output value
-	cpi temp1, 0xF0 		; check if any row is low (0)
-	breq rowloop			; if yes, find which row is low
-	ldi rmask, INITROWMASK	; initialize rmask with 0000 0001 for row check
-	clr row
+	cpi flag, 1
+	breq Inven1
+	cpi flag, 2
+	breq Inven2
+	cpi flag, 3
+	breq Inven3
+	cpi flag, 4
+	breq Inven4
+	cpi flag, 5
+	breq Inven5
+	rjmp Part2
+	
+	Inven1:
+		lds cost, high(ONE)
+		lds number, low(ONE)
+		rjmp STOCK
+	Inven2:
+		lds cost, high(TWO)
+		lds number, low(TWO)
+		rjmp STOCK
+	Inven3:
+		lds cost, high(THREE)
+		lds number, low(THREE)
+		rjmp STOCK
+	Inven4:
+		lds cost, high(FOUR)
+		lds number, low(FOUR)
+		rjmp STOCK
+	Inven5:
+		lds cost, high(FIVE)
+		lds number, low(FIVE)
+		rjmp STOCK
 
-rowloop:
-	cpi row, 4 				; compare current value of row with total number of rows (4)
-	breq nextcol			; if theyre equal, the row scan is over.
-	mov temp2, temp1 		; temp1 is 0xF
-	and temp2, rmask 		; check un-masked bit
-	breq convert 			; if bit is clear, the key is pressed
-	inc row 				; else move to the next row
-	lsl rmask 				; shift row mask left by one
-	jmp rowloop
+Part2:
+	cpi flag, 6
+	breq Inven6
+	cpi flag, 7
+	breq Inven7
+	cpi flag, 8
+	breq Inven8
+	cpi flag, 9
+	breq Inven9
+	cpi flag, 255
+	breq Inven0
+	rjmp Keypress
+	Inven6:
+		lds cost, high(SIX)
+		lds number, low(SIX)
+		rjmp STOCK
+	Inven7:
+		lds cost, high(SEVEN)
+		lds number, low(SEVEN)
+		rjmp STOCK
+	Inven8:
+		lds cost, high(EIGHT)
+		lds number, low(EIGHT)
+		rjmp STOCK
+	Inven9:
+		lds cost, high(NINE)
+		lds number, low(NINE)
+		rjmp STOCK
+	Inven0:
+		lds cost, high(ZERO)
+		lds number, low(ZERO)
+		rjmp STOCK
 
-nextcol:					; if row scan is over
-	lsl cmask 				; shift column mask left by one
-	inc col 				; increase column value
-	jmp colloop				; go to the next column
+STOCK:
+	out PORTC, flag
+	cpi number, 0
+	breq EMPTY
+	rjmp COIN
 
-convert:
+	.include "Keyboard.asm"
+
+EMPTY:
+	ldi boolean, 0	
+	clear SecondCounter
+	clear CounterFlag
+
+	do_lcd_command 0b00111000 ; 2x5x7
+	rcall sleep_5ms
+	do_lcd_command 0b00111000 ; 2x5x7
+	rcall sleep_1ms
+	do_lcd_command 0b00111000 ; 2x5x7
+	do_lcd_command 0b00111000 ; 2x5x7
+	do_lcd_command 0b00001000 ; display off?
+	do_lcd_command 0b00000001 ; clear display
+	do_lcd_command 0b00000110 ; increment, no display shift
+	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
+
+	do_lcd_data 'O'
+	do_lcd_data 'u'
+	do_lcd_data 't'
+	do_lcd_data ' '
+	do_lcd_data 'o'
+	do_lcd_data 'f'
+	do_lcd_data ' '
+	do_lcd_data 'S'
+	do_lcd_data 't'
+	do_lcd_data 'o'
+	do_lcd_data 'c'
+	do_lcd_data 'k'
+	do_lcd_command 0b11000000
+	do_lcd_data 'S'
+
+Remain:
+	ldi temp2, 1
+	sts CounterFlag, temp2
+	
 	cpi boolean, 1
-	breq change
+	breq Leave
+	lds temp2, SecondCounter
+	cpi temp2, 3
+	brge Leave
+	rjmp Remain
 
-	cpi col, 3				; if the pressed key is in col.3 
-	breq KEYBOARD			; we have a letter, so ignore it and restart
-	cpi row, 3				; if the key is not in col 3 and is in row3,
-	breq symbols			; we have a symbol or 0
-	mov temp1, row 			; otherwise we have a number in 1-9
-	lsl temp1 				; multiply temp1 by 2
-	add temp1, row 			; add row again to temp1 -> temp1 = row * 3
-	add temp1, col 			; temp1 = col*3 + row
-	subi temp1, -1			; add 1
-	; 1 row 0 col 0 -> temp1 = 0 + 0 + 1 = 1 = 0b 0000 0001
-	; 2 row 0 col 1 -> temp1 = 0 + 1 + 1 = 2 = 0b 0000 0010
-	; 3 row 0 col 2 -> temp1 = 0 + 2 + 1 = 3 = 0b 0000 0011
-	; 4 row 1 col 0 -> temp1 = 3 + 0 + 1 = 4 = 0b 0000 0100
-	jmp convert_end
+Leave:
+	rjmp MAIN_MENU
 
-symbols:
-	cpi col, 1 				; if its in column 1, it's a zero
-	brne KEYBOARD 			; ignore * and #
-	clr temp1
-	jmp convert_end
+COIN:
+	ldi boolean, 0
 
-check:						;check to see if KEYBOARD was jumped too from the start screen
-	cpi boolean, 1
-	breq return				
-	rjmp KEYBOARD
+	do_lcd_command 0b00111000 ; 2x5x7
+	rcall sleep_5ms
+	do_lcd_command 0b00111000 ; 2x5x7
+	rcall sleep_1ms
+	do_lcd_command 0b00111000 ; 2x5x7
+	do_lcd_command 0b00111000 ; 2x5x7
+	do_lcd_command 0b00001000 ; display off?
+	do_lcd_command 0b00000001 ; clear display
+	do_lcd_command 0b00000110 ; increment, no display shift
+	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
 
-change:
-	ldi boolean, 0				;a key has been pressed
-
-return:						;return from jmp
-	rjmp RetSS	
-
-convert_end:
-	out PORTC, temp1		; write value to LEDs
-	jmp KEYBOARD			; restart main loop
+	do_lcd_data 'I'
+	do_lcd_data 'n'
+	do_lcd_data 's'
+	do_lcd_data 'e'
+	do_lcd_data 'r'
+	do_lcd_data 't'
+	do_lcd_data ' '
+	do_lcd_data 'c'
+	do_lcd_data 'o'
+	do_lcd_data 'i'
+	do_lcd_data 'n'
+	do_lcd_data 's'
+	
+	rjmp loop
 
 loop:
 	rjmp loop
-
-//--------LCD FUNCTIONS--------
-.equ LCD_RS = 7
-.equ LCD_E = 6
-.equ LCD_RW = 5
-.equ LCD_BE = 4
-
-.macro lcd_set
-	sbi PORTA, @0
-.endmacro
-.macro lcd_clr
-	cbi PORTA, @0
-.endmacro
-
-;
-; Send a command to the LCD (r16)
-;
-
-lcd_command:
-	out PORTF, lcd
-	rcall sleep_1ms
-	lcd_set LCD_E
-	rcall sleep_1ms
-	lcd_clr LCD_E
-	rcall sleep_1ms
-	ret
-lcd_data:
-	out PORTF, lcd
-	lcd_set LCD_RS
-	rcall sleep_1ms
-	lcd_set LCD_E
-	rcall sleep_1ms
-	lcd_clr LCD_E
-	rcall sleep_1ms
-	lcd_clr LCD_RS
-	ret
-lcd_wait:
-	push lcd
-	clr lcd
-	out DDRF, lcd
-	out PORTF, lcd
-	lcd_set LCD_RW
-lcd_wait_loop:
-	rcall sleep_1ms
-	lcd_set LCD_E
-	rcall sleep_1ms
-	in lcd, PINF
-	lcd_clr LCD_E
-	sbrc lcd, 7
-	rjmp lcd_wait_loop
-	lcd_clr LCD_RW
-	ser lcd
-	out DDRF, lcd
-	pop lcd
-	ret
-
-.equ F_CPU = 16000000
-.equ DELAY_1MS = F_CPU / 4 / 1000 - 4
-; 4 cycles per iteration - setup/call-return overhead
-
-sleep_1ms:
-	push r24
-	push r25
-	ldi r25, high(DELAY_1MS)
-	ldi r24, low(DELAY_1MS)
-delayloop_1ms:
-	sbiw r25:r24, 1
-	brne delayloop_1ms
-	pop r25
-	pop r24
-	ret
-sleep_5ms:
-	rcall sleep_1ms
-	rcall sleep_1ms
-	rcall sleep_1ms
-	rcall sleep_1ms
-	rcall sleep_1ms
-	ret
 
 inc_y:
 	push temp2
@@ -451,3 +478,13 @@ inc_y:
 	pop temp1
 	pop temp2
 	ret
+
+
+
+
+
+ITEM_SELECT:
+	
+
+.include "LCD.asm"
+
