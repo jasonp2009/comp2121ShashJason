@@ -52,6 +52,19 @@ DEFAULT: reti ; no service
 
 .include "LCD.asm" ; CHECK I'm not sure where to put this
 RESET:
+	/*clr lcd
+	clr temp
+	clr curCost
+	clr curStock
+	clr boolean
+	clr flag
+	clr inventory_value
+	clr row
+	clr col
+	clr rmask
+	clr cmask
+	clr temp1
+	clr temp2*/ ;might be useful
 	;Stack pointer set up
 	ldi temp, low(RAMEND); Initialize stack pointer
 	out SPL, temp

@@ -32,10 +32,10 @@
   <Cost><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>35</LINE></Cost>
   <Stock><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>37</LINE></Stock>
   <RESET><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>54</LINE></RESET>
-  <EXT_INT1><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>173</LINE></EXT_INT1>
-  <EXT_INT0><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>179</LINE></EXT_INT0>
+  <EXT_INT1><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>186</LINE></EXT_INT1>
+  <EXT_INT0><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>192</LINE></EXT_INT0>
   <DEFAULT><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>51</LINE></DEFAULT>
-  <Timer0OVF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>131</LINE></Timer0OVF>
+  <Timer0OVF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>144</LINE></Timer0OVF>
   <lcd_command><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\LCD.asm</FILE><LINE>17</LINE></lcd_command>
   <sleep_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\LCD.asm</FILE><LINE>155</LINE></sleep_1ms>
   <lcd_data><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\LCD.asm</FILE><LINE>25</LINE></lcd_data>
@@ -48,17 +48,17 @@
   <lcd_empty_screen><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\LCD.asm</FILE><LINE>117</LINE></lcd_empty_screen>
   <lcd_coin_screen><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\LCD.asm</FILE><LINE>135</LINE></lcd_coin_screen>
   <delayloop_1ms><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\LCD.asm</FILE><LINE>160</LINE></delayloop_1ms>
-  <INIT_INVENTORY><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>270</LINE></INIT_INVENTORY>
-  <Start_screen><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>116</LINE></Start_screen>
+  <INIT_INVENTORY><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>283</LINE></INIT_INVENTORY>
+  <Start_screen><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>129</LINE></Start_screen>
   <KEYBOARD><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm</FILE><LINE>1</LINE></KEYBOARD>
-  <SS_MAIN><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>128</LINE></SS_MAIN>
-  <MAIN_MENU><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>193</LINE></MAIN_MENU>
-  <newSecond><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>139</LINE></newSecond>
-  <NotSecond><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>160</LINE></NotSecond>
-  <Cont><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>155</LINE></Cont>
-  <EndIF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>164</LINE></EndIF>
-  <delay255><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>205</LINE></delay255>
-  <Keypress><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>211</LINE></Keypress>
+  <SS_MAIN><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>141</LINE></SS_MAIN>
+  <MAIN_MENU><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>206</LINE></MAIN_MENU>
+  <newSecond><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>152</LINE></newSecond>
+  <NotSecond><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>173</LINE></NotSecond>
+  <Cont><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>168</LINE></Cont>
+  <EndIF><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>177</LINE></EndIF>
+  <delay255><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>218</LINE></delay255>
+  <Keypress><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>224</LINE></Keypress>
   <colloop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm</FILE><LINE>5</LINE></colloop>
   <return><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm</FILE><LINE>63</LINE></return>
   <delay><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm</FILE><LINE>11</LINE></delay>
@@ -67,15 +67,15 @@
   <convert><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm</FILE><LINE>37</LINE></convert>
   <symbols><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm</FILE><LINE>53</LINE></symbols>
   <convert_end><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm</FILE><LINE>59</LINE></convert_end>
-  <inc_y><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>257</LINE></inc_y>
-  <STOCK_CHECK><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>222</LINE></STOCK_CHECK>
-  <EMPTY><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>228</LINE></EMPTY>
-  <COIN><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>249</LINE></COIN>
-  <Remain><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>235</LINE></Remain>
-  <Leave><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>246</LINE></Leave>
-  <loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>254</LINE></loop>
-  <inc_y_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>261</LINE></inc_y_loop>
-  <cost_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>274</LINE></cost_loop>
-  <stock_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>285</LINE></stock_loop>
+  <inc_y><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>270</LINE></inc_y>
+  <STOCK_CHECK><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>235</LINE></STOCK_CHECK>
+  <EMPTY><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>241</LINE></EMPTY>
+  <COIN><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>262</LINE></COIN>
+  <Remain><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>248</LINE></Remain>
+  <Leave><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>259</LINE></Leave>
+  <loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>267</LINE></loop>
+  <inc_y_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>274</LINE></inc_y_loop>
+  <cost_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>287</LINE></cost_loop>
+  <stock_loop><FILE>C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm</FILE><LINE>298</LINE></stock_loop>
  </LABELS>
 </ASSEMBLER_INFO>
