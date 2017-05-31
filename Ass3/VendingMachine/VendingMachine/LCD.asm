@@ -14,7 +14,6 @@
 ;
 ; Send a command to the LCD (r16)
 ;
-
 lcd_command:
 	out PORTF, lcd
 	rcall sleep_1ms
@@ -51,6 +50,102 @@ lcd_wait_loop:
 	ser lcd
 	out DDRF, lcd
 	pop lcd
+	ret
+lcd_clear:
+	do_lcd_command 0b00111000 ; 2x5x7
+	rcall sleep_5ms
+	do_lcd_command 0b00111000 ; 2x5x7
+	rcall sleep_1ms
+	do_lcd_command 0b00111000 ; 2x5x7
+	do_lcd_command 0b00111000 ; 2x5x7
+	do_lcd_command 0b00001000 ; display off?
+	do_lcd_command 0b00000001 ; clear display
+	do_lcd_command 0b00000110 ; increment, no display shift
+	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
+	ret
+lcd_starting_screen:
+	call lcd_clear
+	do_lcd_data '2'
+	do_lcd_data '1'
+	do_lcd_data '2'
+	do_lcd_data '1'
+	do_lcd_data ' '
+	do_lcd_data '1'
+	do_lcd_data '7'
+	do_lcd_data 's'
+	do_lcd_data '1'
+	do_lcd_data ' '
+	do_lcd_data ' '
+	do_lcd_data ' '
+	do_lcd_data ' '
+	do_lcd_data 'B'
+	do_lcd_data '4'
+	do_lcd_command 0b11000000
+	do_lcd_data 'V'
+	do_lcd_data 'e'
+	do_lcd_data 'n'
+	do_lcd_data 'd'
+	do_lcd_data 'i'
+	do_lcd_data 'n'
+	do_lcd_data 'g'
+	do_lcd_data ' '
+	do_lcd_data 'M'
+	do_lcd_data 'a'
+	do_lcd_data 'c'
+	do_lcd_data 'h'
+	do_lcd_data 'i'
+	do_lcd_data 'n'
+	do_lcd_data 'e'
+	do_lcd_data ' '
+	ret
+
+lcd_main_menu:
+	call lcd_clear
+	do_lcd_data 'S'
+	do_lcd_data 'e'
+	do_lcd_data 'l'
+	do_lcd_data 'e'
+	do_lcd_data 'c'
+	do_lcd_data 't'
+	do_lcd_data ' '
+	do_lcd_data 'I'
+	do_lcd_data 't'
+	do_lcd_data 'e'
+	do_lcd_data 'm'
+	ret
+
+lcd_empty_screen:
+	call lcd_clear
+	do_lcd_data 'O'
+	do_lcd_data 'u'
+	do_lcd_data 't'
+	do_lcd_data ' '
+	do_lcd_data 'o'
+	do_lcd_data 'f'
+	do_lcd_data ' '
+	do_lcd_data 'S'
+	do_lcd_data 't'
+	do_lcd_data 'o'
+	do_lcd_data 'c'
+	do_lcd_data 'k'
+	do_lcd_command 0b11000000
+	do_lcd_data 'S'
+	ret
+
+lcd_coin_screen:
+	call lcd_clear
+	do_lcd_data 'I'
+	do_lcd_data 'n'
+	do_lcd_data 's'
+	do_lcd_data 'e'
+	do_lcd_data 'r'
+	do_lcd_data 't'
+	do_lcd_data ' '
+	do_lcd_data 'c'
+	do_lcd_data 'o'
+	do_lcd_data 'i'
+	do_lcd_data 'n'
+	do_lcd_data 's'
 	ret
 
 .equ F_CPU = 16000000

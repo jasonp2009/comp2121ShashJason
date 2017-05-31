@@ -2,9 +2,9 @@
 
 .def lcd = r16	//lcd handler
 .def temp = r17
-.def cost = r18
-.def number = r19
-.def temp2 = r20
+.def curCost = r18
+.def curStock = r19
+;.def temp2 = r20
 .def boolean = r22
 .def flag = r23
 .def inventory_value = r24
@@ -36,32 +36,9 @@ Cost:
 	.byte 10 ; Used to store the cost of each item
 Stock:
 	.byte 10 ; Used to store the stock of each item
-InventState:
-	.byte 1	; Used to store the inventory number
-One:
-	.byte 2
-Two:
-	.byte 2
-Three:
-	.byte 2
-Four:
-	.byte 2
-Five:
-	.byte 2
-Six:
-	.byte 2
-Seven:
-	.byte 2
-Eight:
-	.byte 2
-Nine:
-	.byte 2
-Zero:
-	.byte 2
-
 .cseg
 .org 0x0000
-    jmp RESET
+    jmp RESET	
 .org INT0addr
     jmp EXT_INT1
 .org INT1addr
@@ -73,6 +50,7 @@ Zero:
 	jmp DEFAULT ; default service for all other interrupts.
 DEFAULT: reti ; no service
 
+.include "LCD.asm"
 RESET:
 	;Stack pointer set up
 	ldi temp, low(RAMEND); Initialize stack pointer
@@ -126,51 +104,8 @@ RESET:
 						; Use get_cost or get_stock passing in a register with value 0-9, or
 						; get_costi or get_stocki passing in an immediate value. The return value
 						; will be stored in inventory_value
-	.include "Inventory.asm"
 
-	do_lcd_command 0b00111000 ; 2x5x7
-	rcall sleep_5ms
-	do_lcd_command 0b00111000 ; 2x5x7
-	rcall sleep_1ms
-	do_lcd_command 0b00111000 ; 2x5x7
-	do_lcd_command 0b00111000 ; 2x5x7
-	do_lcd_command 0b00001000 ; display off?
-	do_lcd_command 0b00000001 ; clear display
-	do_lcd_command 0b00000110 ; increment, no display shift
-	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
-
-	do_lcd_data '2'
-	do_lcd_data '1'
-	do_lcd_data '2'
-	do_lcd_data '1'
-	do_lcd_data ' '
-	do_lcd_data '1'
-	do_lcd_data '7'
-	do_lcd_data 's'
-	do_lcd_data '1'
-	do_lcd_data ' '
-	do_lcd_data ' '
-	do_lcd_data ' '
-	do_lcd_data ' '
-	do_lcd_data 'B'
-	do_lcd_data '4'
-	do_lcd_command 0b11000000
-	do_lcd_data 'V'
-	do_lcd_data 'e'
-	do_lcd_data 'n'
-	do_lcd_data 'd'
-	do_lcd_data 'i'
-	do_lcd_data 'n'
-	do_lcd_data 'g'
-	do_lcd_data ' '
-	do_lcd_data 'M'
-	do_lcd_data 'a'
-	do_lcd_data 'c'
-	do_lcd_data 'h'
-	do_lcd_data 'i'
-	do_lcd_data 'n'
-	do_lcd_data 'e'
-	do_lcd_data ' '
+	call lcd_starting_screen
 
 	ldi flag, 0
 	ldi boolean, 0
@@ -184,33 +119,14 @@ Start_screen:
 	
 	call KEYBOARD
 	cpi flag, 1
-	brge MAIN_MENU
+	brge SS_MAIN
 	lds temp, SecondCounter
 	cpi temp, 3
-	brge MAIN_MENU
+	brge SS_MAIN
 	rjmp Start_screen
 
-INIT_INVENTORY:
-	ldi ZL, low(Cost)
-	ldi ZH, high(Cost)
-	ldi temp2, 0
-	cost_loop:
-		ldi temp1, 2 
-		st Z+, temp1
-		ldi temp1, 1
-		st Z+, temp1
-		inc temp2
-		cpi temp2, 5
-		brne cost_loop
-	ldi ZL, low(Stock)
-	ldi ZH, high(Stock)
-	ldi temp2, 0
-	stock_loop:
-		st Z+, temp2
-		inc temp2
-		cpi temp2, 10
-		brne stock_loop
-	ret
+	SS_MAIN:
+	jmp MAIN_MENU
 
 Timer0OVF:
 	in temp, SREG
@@ -280,145 +196,40 @@ MAIN_MENU:
 	clear SecondCounter
 	clear CounterFlag
 
-	do_lcd_command 0b00111000 ; 2x5x7
-	rcall sleep_5ms
-	do_lcd_command 0b00111000 ; 2x5x7
-	rcall sleep_1ms
-	do_lcd_command 0b00111000 ; 2x5x7
-	do_lcd_command 0b00111000 ; 2x5x7
-	do_lcd_command 0b00001000 ; display off?
-	do_lcd_command 0b00000001 ; clear display
-	do_lcd_command 0b00000110 ; increment, no display shift
-	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
-
-	do_lcd_data 'S'
-	do_lcd_data 'e'
-	do_lcd_data 'l'
-	do_lcd_data 'e'
-	do_lcd_data 'c'
-	do_lcd_data 't'
-	do_lcd_data ' '
-	do_lcd_data 'I'
-	do_lcd_data 't'
-	do_lcd_data 'e'
-	do_lcd_data 'm'
+	call lcd_main_menu
 
 	ldi boolean, 0xFF	
 	rjmp delay255
 
+// POSSIBLE_BUG CHECK
 delay255:
 	dec boolean
 	brne Keypress
 
+.include "Keyboard.asm"
+
 Keypress:
+	; I changed 0 keypress to return 0 in flag and letter/symbol keypresses to return 255
 	call KEYBOARD
-	cpi flag, 0
-	breq Keypress
-
-	cpi flag, 1
-	breq Inven1
-	cpi flag, 2
-	breq Inven2
-	cpi flag, 3
-	breq Inven3
-	cpi flag, 4
-	breq Inven4
-	cpi flag, 5
-	breq Inven5
-	rjmp Part2
-	
-	Inven1:
-		lds cost, high(ONE)
-		lds number, low(ONE)
-		rjmp STOCK
-	Inven2:
-		lds cost, high(TWO)
-		lds number, low(TWO)
-		rjmp STOCK
-	Inven3:
-		lds cost, high(THREE)
-		lds number, low(THREE)
-		rjmp STOCK
-	Inven4:
-		lds cost, high(FOUR)
-		lds number, low(FOUR)
-		rjmp STOCK
-	Inven5:
-		lds cost, high(FIVE)
-		lds number, low(FIVE)
-		rjmp STOCK
-
-Part2:
-	cpi flag, 6
-	breq Inven6
-	cpi flag, 7
-	breq Inven7
-	cpi flag, 8
-	breq Inven8
-	cpi flag, 9
-	breq Inven9
 	cpi flag, 255
-	breq Inven0
-	rjmp Keypress
-	Inven6:
-		lds cost, high(SIX)
-		lds number, low(SIX)
-		rjmp STOCK
-	Inven7:
-		lds cost, high(SEVEN)
-		lds number, low(SEVEN)
-		rjmp STOCK
-	Inven8:
-		lds cost, high(EIGHT)
-		lds number, low(EIGHT)
-		rjmp STOCK
-	Inven9:
-		lds cost, high(NINE)
-		lds number, low(NINE)
-		rjmp STOCK
-	Inven0:
-		lds cost, high(ZERO)
-		lds number, low(ZERO)
-		rjmp STOCK
+	breq Keypress
+	get_cost flag
+	mov curCost, inventory_value
+	get_stock flag
+	mov curStock, inventory_value
 
-STOCK:
-	out PORTC, flag
-	cpi number, 0
+STOCK_CHECK:
+	out PORTC, flag ; CHECK
+	cpi curStock, 0
 	breq EMPTY
 	rjmp COIN
-
-	.include "Keyboard.asm"
 
 EMPTY:
 	ldi boolean, 0	
 	clear SecondCounter
 	clear CounterFlag
 
-	do_lcd_command 0b00111000 ; 2x5x7
-	rcall sleep_5ms
-	do_lcd_command 0b00111000 ; 2x5x7
-	rcall sleep_1ms
-	do_lcd_command 0b00111000 ; 2x5x7
-	do_lcd_command 0b00111000 ; 2x5x7
-	do_lcd_command 0b00001000 ; display off?
-	do_lcd_command 0b00000001 ; clear display
-	do_lcd_command 0b00000110 ; increment, no display shift
-	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
-
-	do_lcd_data 'O'
-	do_lcd_data 'u'
-	do_lcd_data 't'
-	do_lcd_data ' '
-	do_lcd_data 'o'
-	do_lcd_data 'f'
-	do_lcd_data ' '
-	do_lcd_data 'S'
-	do_lcd_data 't'
-	do_lcd_data 'o'
-	do_lcd_data 'c'
-	do_lcd_data 'k'
-	do_lcd_command 0b11000000
-	do_lcd_data 'S'
+	call lcd_empty_screen
 
 Remain:
 	ldi temp2, 1
@@ -436,31 +247,7 @@ Leave:
 
 COIN:
 	ldi boolean, 0
-
-	do_lcd_command 0b00111000 ; 2x5x7
-	rcall sleep_5ms
-	do_lcd_command 0b00111000 ; 2x5x7
-	rcall sleep_1ms
-	do_lcd_command 0b00111000 ; 2x5x7
-	do_lcd_command 0b00111000 ; 2x5x7
-	do_lcd_command 0b00001000 ; display off?
-	do_lcd_command 0b00000001 ; clear display
-	do_lcd_command 0b00000110 ; increment, no display shift
-	do_lcd_command 0b00001110 ; Cursor on, bar, no blink
-
-	do_lcd_data 'I'
-	do_lcd_data 'n'
-	do_lcd_data 's'
-	do_lcd_data 'e'
-	do_lcd_data 'r'
-	do_lcd_data 't'
-	do_lcd_data ' '
-	do_lcd_data 'c'
-	do_lcd_data 'o'
-	do_lcd_data 'i'
-	do_lcd_data 'n'
-	do_lcd_data 's'
-	
+	call lcd_coin_screen
 	rjmp loop
 
 loop:
@@ -479,12 +266,24 @@ inc_y:
 	pop temp2
 	ret
 
-
-
-
-
-ITEM_SELECT:
-	
-
-.include "LCD.asm"
-
+INIT_INVENTORY:
+	ldi ZL, low(Cost)
+	ldi ZH, high(Cost)
+	ldi temp2, 0
+	cost_loop:
+		ldi temp1, 2 
+		st Z+, temp1
+		ldi temp1, 1
+		st Z+, temp1
+		inc temp2
+		cpi temp2, 5
+		brne cost_loop
+	ldi ZL, low(Stock)
+	ldi ZH, high(Stock)
+	ldi temp2, 0
+	stock_loop:
+		st Z+, temp2
+		inc temp2
+		cpi temp2, 10
+		brne stock_loop
+	ret

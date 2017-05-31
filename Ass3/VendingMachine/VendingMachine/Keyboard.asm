@@ -53,7 +53,7 @@ convert:
 symbols:
 	cpi col, 1 				; if its in column 1, it's a zero
 	brne return 			; ignore * and #
-	ldi temp1, 255
+	ldi temp1, 0
 	jmp convert_end
 
 convert_end:
@@ -61,5 +61,5 @@ convert_end:
 	ret
 
 return:
-	ldi flag, 0
+	ldi flag, 255
 	ret
