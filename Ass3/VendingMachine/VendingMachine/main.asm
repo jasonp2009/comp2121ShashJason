@@ -50,7 +50,7 @@ Stock:
 	jmp DEFAULT ; default service for all other interrupts.
 DEFAULT: reti ; no service
 
-.include "LCD.asm"
+.include "LCD.asm" ; CHECK I'm not sure where to put this
 RESET:
 	;Stack pointer set up
 	ldi temp, low(RAMEND); Initialize stack pointer
@@ -209,7 +209,8 @@ delay255:
 .include "Keyboard.asm"
 
 Keypress:
-	; I changed 0 keypress to return 0 in flag and letter/symbol keypresses to return 255
+	; I changed 0 keypress to return 0 in flag and letter/symbol/no keypresses to return 255
+	call sleep_5ms
 	call KEYBOARD
 	cpi flag, 255
 	breq Keypress

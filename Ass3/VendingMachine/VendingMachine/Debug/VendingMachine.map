@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm Wed May 31 14:27:59 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm Wed May 31 14:42:15 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1405,7 +1405,7 @@ CSEG lcd_coin_screen 00000123
 EQU  F_CPU        00f42400
 EQU  DELAY_1MS    00000f9c
 CSEG delayloop_1ms 0000014e
-CSEG INIT_INVENTORY 00000253
+CSEG INIT_INVENTORY 00000255
 CSEG Start_screen 00000198
 CSEG KEYBOARD     000001e5
 CSEG SS_MAIN      000001a4
@@ -1424,13 +1424,13 @@ CSEG nextcol      000001fe
 CSEG convert      00000202
 CSEG symbols      0000020d
 CSEG convert_end  00000212
-CSEG inc_y        00000249
-CSEG STOCK_CHECK  00000228
-CSEG EMPTY        0000022c
-CSEG COIN         00000244
-CSEG Remain       00000239
-CSEG Leave        00000243
-CSEG loop         00000248
-CSEG inc_y_loop   0000024c
-CSEG cost_loop    00000256
-CSEG stock_loop   00000260
+CSEG inc_y        0000024b
+CSEG STOCK_CHECK  0000022a
+CSEG EMPTY        0000022e
+CSEG COIN         00000246
+CSEG Remain       0000023b
+CSEG Leave        00000245
+CSEG loop         0000024a
+CSEG inc_y_loop   0000024e
+CSEG cost_loop    00000258
+CSEG stock_loop   00000262

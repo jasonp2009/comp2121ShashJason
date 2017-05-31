@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm Wed May 31 14:27:59 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm Wed May 31 14:42:15 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
@@ -2012,7 +2012,7 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachin
 000030 940c 0032                 	jmp DEFAULT ; default service for all other interrupts.
 000032 9518                      DEFAULT: reti ; no service
                                  
-                                 .include "LCD.asm"
+                                 .include "LCD.asm" ; CHECK I'm not sure where to put this
                                  
                                  .equ LCD_RS = 7
                                  .equ LCD_E = 6
@@ -2392,7 +2392,7 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachin
 000182 b912                      	out PORTA, temp
                                  
                                  	;Set up inventory
-000183 940e 0253                 	call INIT_INVENTORY ; Used to initialise the inventory storage (Jason's implementation)
+000183 940e 0255                 	call INIT_INVENTORY ; Used to initialise the inventory storage (Jason's implementation)
                                  						; Use get_cost or get_stock passing in a register with value 0-9, or
                                  						; get_costi or get_stocki passing in an immediate value. The return value
                                  						; will be stored in inventory_value
@@ -2590,99 +2590,100 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachin
 000215 9508                      	ret
                                  
                                  Keypress:
-                                 	; I changed 0 keypress to return 0 in flag and letter/symbol keypresses to return 255
-000216 940e 01e5                 	call KEYBOARD
-000218 3f7f                      	cpi flag, 255
-000219 f3e1                      	breq Keypress
-00021a 2f87
-00021b e0c5
-00021c e0d2
-00021d 940e 0249
-00021f 8188                      	get_cost flag
-000220 2f28                      	mov curCost, inventory_value
-000221 2f87
-000222 e0c5
-000223 e0d2
-000224 940e 0249
-000226 8188                      	get_stock flag
-000227 2f38                      	mov curStock, inventory_value
+                                 	; I changed 0 keypress to return 0 in flag and letter/symbol/no keypresses to return 255
+000216 940e 0153                 	call sleep_5ms
+000218 940e 01e5                 	call KEYBOARD
+00021a 3f7f                      	cpi flag, 255
+00021b f3d1                      	breq Keypress
+00021c 2f87
+00021d e0c5
+00021e e0d2
+00021f 940e 024b
+000221 8188                      	get_cost flag
+000222 2f28                      	mov curCost, inventory_value
+000223 2f87
+000224 e0c5
+000225 e0d2
+000226 940e 024b
+000228 8188                      	get_stock flag
+000229 2f38                      	mov curStock, inventory_value
                                  
                                  STOCK_CHECK:
-000228 b978                      	out PORTC, flag ; CHECK
-000229 3030                      	cpi curStock, 0
-00022a f009                      	breq EMPTY
-00022b c018                      	rjmp COIN
+00022a b978                      	out PORTC, flag ; CHECK
+00022b 3030                      	cpi curStock, 0
+00022c f009                      	breq EMPTY
+00022d c018                      	rjmp COIN
                                  
                                  EMPTY:
-00022c e060                      	ldi boolean, 0	
-00022d e0c2
-00022e e0d2
-00022f 2711
-000230 9319
-000231 8318                      	clear SecondCounter
-000232 e0c3
-000233 e0d2
-000234 2711
-000235 9319
-000236 8318                      	clear CounterFlag
+00022e e060                      	ldi boolean, 0	
+00022f e0c2
+000230 e0d2
+000231 2711
+000232 9319
+000233 8318                      	clear SecondCounter
+000234 e0c3
+000235 e0d2
+000236 2711
+000237 9319
+000238 8318                      	clear CounterFlag
                                  
-000237 940e 00f6                 	call lcd_empty_screen
+000239 940e 00f6                 	call lcd_empty_screen
                                  
                                  Remain:
-000239 e051                      	ldi temp2, 1
-00023a 9350 0203                 	sts CounterFlag, temp2
+00023b e051                      	ldi temp2, 1
+00023c 9350 0203                 	sts CounterFlag, temp2
                                  	
-00023c 3061                      	cpi boolean, 1
-00023d f029                      	breq Leave
-00023e 9150 0202                 	lds temp2, SecondCounter
-000240 3053                      	cpi temp2, 3
-000241 f40c                      	brge Leave
-000242 cff6                      	rjmp Remain
+00023e 3061                      	cpi boolean, 1
+00023f f029                      	breq Leave
+000240 9150 0202                 	lds temp2, SecondCounter
+000242 3053                      	cpi temp2, 3
+000243 f40c                      	brge Leave
+000244 cff6                      	rjmp Remain
                                  
                                  Leave:
-000243 cf8f                      	rjmp MAIN_MENU
+000245 cf8d                      	rjmp MAIN_MENU
                                  
                                  COIN:
-000244 e060                      	ldi boolean, 0
-000245 940e 0123                 	call lcd_coin_screen
-000247 c000                      	rjmp loop
+000246 e060                      	ldi boolean, 0
+000247 940e 0123                 	call lcd_coin_screen
+000249 c000                      	rjmp loop
                                  
                                  loop:
-000248 cfff                      	rjmp loop
+00024a cfff                      	rjmp loop
                                  
                                  inc_y:
-000249 935f                      	push temp2
-00024a 934f                      	push temp1
-00024b 2755                      	clr temp2
+00024b 935f                      	push temp2
+00024c 934f                      	push temp1
+00024d 2755                      	clr temp2
                                  	inc_y_loop:
-00024c 9149                      		ld temp1, Y+
-00024d 9553                      		inc temp2
-00024e 1758                      		cp temp2, inventory_value
-00024f f7e1                      		brne inc_y_loop
-000250 914f                      	pop temp1
-000251 915f                      	pop temp2
-000252 9508                      	ret
+00024e 9149                      		ld temp1, Y+
+00024f 9553                      		inc temp2
+000250 1758                      		cp temp2, inventory_value
+000251 f7e1                      		brne inc_y_loop
+000252 914f                      	pop temp1
+000253 915f                      	pop temp2
+000254 9508                      	ret
                                  
                                  INIT_INVENTORY:
-000253 e0e5                      	ldi ZL, low(Cost)
-000254 e0f2                      	ldi ZH, high(Cost)
-000255 e050                      	ldi temp2, 0
+000255 e0e5                      	ldi ZL, low(Cost)
+000256 e0f2                      	ldi ZH, high(Cost)
+000257 e050                      	ldi temp2, 0
                                  	cost_loop:
-000256 e042                      		ldi temp1, 2 
-000257 9341                      		st Z+, temp1
-000258 e041                      		ldi temp1, 1
+000258 e042                      		ldi temp1, 2 
 000259 9341                      		st Z+, temp1
-00025a 9553                      		inc temp2
-00025b 3055                      		cpi temp2, 5
-00025c f7c9                      		brne cost_loop
-00025d e0ef                      	ldi ZL, low(Stock)
-00025e e0f2                      	ldi ZH, high(Stock)
-00025f e050                      	ldi temp2, 0
+00025a e041                      		ldi temp1, 1
+00025b 9341                      		st Z+, temp1
+00025c 9553                      		inc temp2
+00025d 3055                      		cpi temp2, 5
+00025e f7c9                      		brne cost_loop
+00025f e0ef                      	ldi ZL, low(Stock)
+000260 e0f2                      	ldi ZH, high(Stock)
+000261 e050                      	ldi temp2, 0
                                  	stock_loop:
-000260 9351                      		st Z+, temp2
-000261 9553                      		inc temp2
-000262 305a                      		cpi temp2, 10
-000263 f7e1                      		brne stock_loop
+000262 9351                      		st Z+, temp2
+000263 9553                      		inc temp2
+000264 305a                      		cpi temp2, 10
+000265 f7e1                      		brne stock_loop
 
 
 RESOURCE USE INFORMATION
@@ -2713,7 +2714,7 @@ andi  :   1 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0
 brcc  :   0 brcs  :   0 break :   0 breq  :   9 brge  :   3 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   9 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :  13 cbi   :   5 cbr   :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :  14 cbi   :   5 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :  14 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   1 
 cpi   :  16 cpse  :   0 dec   :   2 eicall:   0 eijmp :   0 elpm  :   0 
@@ -2733,7 +2734,7 @@ Instructions used: 38 out of 116 (32.8%)
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0004ca   1154      0   1154  262144   0.4%
+[.cseg] 0x000000 0x0004ce   1158      0   1158  262144   0.4%
 [.dseg] 0x000200 0x000219      0     25     25    8192   0.3%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
