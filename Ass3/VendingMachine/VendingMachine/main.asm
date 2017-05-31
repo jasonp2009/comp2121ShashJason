@@ -64,7 +64,7 @@ RESET:
 	clr rmask
 	clr cmask
 	clr temp1
-	clr temp2*/ ;might be useful
+	clr temp2*/ ;might be useful	
 	;Stack pointer set up
 	ldi temp, low(RAMEND); Initialize stack pointer
 	out SPL, temp
