@@ -47,3 +47,19 @@
 	call inc_y
 	ld inventory_value, Y
 .endmacro
+; Sets an items cost 
+.macro set_cost ; (@0 = index, @1 = value to set)
+	mov inventory_value, @0
+	ldi YL, low(Cost)
+	ldi YH, high(Cost)
+	call inc_y
+	st Y, @1
+.endmacro
+; Sets an items stock
+.macro set_stock ; (@0 = index, @1 = value to set)
+	mov inventory_value, @0
+	ldi YL, low(Stock)
+	ldi YH, high(Stock)
+	call inc_y
+	st Y, @1
+.endmacro
