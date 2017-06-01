@@ -219,12 +219,11 @@ delay255:
 	dec boolean
 	brne Keypress
 
-.include "Keyboard.asm"
-
 Keypress:
 	; I changed 0 keypress to return 0 in flag and letter/symbol/no keypresses to return 255
 	call sleep_5ms
 	call KEYBOARD
+	out PORTC, flag ; CHECK
 	cpi flag, 255
 	breq Keypress
 	get_cost flag
@@ -233,7 +232,7 @@ Keypress:
 	mov curStock, inventory_value
 
 STOCK_CHECK:
-	out PORTC, flag ; CHECK
+	//out PORTC, flag ; CHECK
 	cpi curStock, 0
 	breq EMPTY
 	rjmp COIN
@@ -267,6 +266,7 @@ COIN:
 loop:
 	rjmp loop
 
+.include "Keyboard.asm"
 inc_y:
 	push temp2
 	push temp1

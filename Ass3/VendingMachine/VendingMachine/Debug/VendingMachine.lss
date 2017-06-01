@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm Wed May 31 14:47:13 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm Thu Jun 01 12:50:52 2017
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
@@ -9,12 +9,12 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachin
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(15): warning: Register r19 already defined by the .DEF directive
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(24): Including file 'C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Macros.asm'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(53): Including file 'C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\LCD.asm'
-C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(222): Including file 'C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm'
+C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(269): Including file 'C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\avrasm\inc\m2560def.inc'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(24): Including file 'C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Macros.asm'
 C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(53): Including file 'C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\LCD.asm'
-C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(222): Including file 'C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm'
+C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm(269): Including file 'C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\Keyboard.asm'
                                  
                                  .include "m2560def.inc"
                                  
@@ -2002,13 +2002,13 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachin
                                  .org 0x0000
 000000 940c 0159                     jmp RESET	
                                  .org INT0addr
-000002 940c 01dc                     jmp EXT_INT1
+000002 940c 01cf                     jmp EXT_INT1
                                  .org INT1addr
-000004 940c 01de                     jmp EXT_INT0
+000004 940c 01d1                     jmp EXT_INT0
 000006 940c 0032                 	jmp DEFAULT ; No handling for IRQ0.
 000008 940c 0032                 	jmp DEFAULT ; No handling for IRQ1.
                                  .org OVF0addr
-00002e 940c 01b3                 	jmp Timer0OVF ; Jump to the interrupt handler for timer0 overflow.
+00002e 940c 01a6                 	jmp Timer0OVF ; Jump to the interrupt handler for timer0 overflow.
 000030 940c 0032                 	jmp DEFAULT ; default service for all other interrupts.
 000032 9518                      DEFAULT: reti ; no service
                                  
@@ -2340,166 +2340,166 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachin
 000157 dff2                      	rcall sleep_1ms
 000158 9508                      	ret
                                  RESET:
-000159 2700                      	clr lcd
-00015a 2711                      	clr temp
-00015b 2722                      	clr curCost
-00015c 2733                      	clr curStock
-00015d 2766                      	clr boolean
-00015e 2777                      	clr flag
-00015f 2788                      	clr inventory_value
-000160 2700                      	clr row
-000161 2711                      	clr col
-000162 2722                      	clr rmask
-000163 2733                      	clr cmask
-000164 2744                      	clr temp1
-000165 2755                      	clr temp2
+                                 	/*clr lcd
+                                 	clr temp
+                                 	clr curCost
+                                 	clr curStock
+                                 	clr boolean
+                                 	clr flag
+                                 	clr inventory_value
+                                 	clr row
+                                 	clr col
+                                 	clr rmask
+                                 	clr cmask
+                                 	clr temp1
+                                 	clr temp2*/ ;might be useful	
                                  	;Stack pointer set up
-000166 ef1f                      	ldi temp, low(RAMEND); Initialize stack pointer
-000167 bf1d                      	out SPL, temp
-000168 e211                      	ldi temp, high(RAMEND)
-000169 bf1e                      	out SPH, temp
+000159 ef1f                      	ldi temp, low(RAMEND); Initialize stack pointer
+00015a bf1d                      	out SPL, temp
+00015b e211                      	ldi temp, high(RAMEND)
+00015c bf1e                      	out SPH, temp
                                  	
                                  	;LED set up
-00016a ef1f                      	ser temp ; set Port C as output 
-00016b b917                      	out DDRC, temp
+00015d ef1f                      	ser temp ; set Port C as output 
+00015e b917                      	out DDRC, temp
                                  	
                                  	;Timer0 set up
-00016c e0c0
-00016d e0d2
-00016e 2711
-00016f 9319
-000170 8318                      	clear TempCounter       ; Initialize the temporary counter to 0
-000171 e010                          ldi temp, 0b00000000
-000172 bd14                          out TCCR0A, temp
-000173 e012                          ldi temp, 0b00000010
-000174 bd15                          out TCCR0B, temp        ; Prescaling value=8
-000175 e011                          ldi temp, 1<<TOIE0      ; = 128 microseconds
-000176 9310 006e                     sts TIMSK0, temp        ; T/C0 interrupt enable
-000178 9478                          sei                     ; Enable global interrupt
+00015f e0c0
+000160 e0d2
+000161 2711
+000162 9319
+000163 8318                      	clear TempCounter       ; Initialize the temporary counter to 0
+000164 e010                          ldi temp, 0b00000000
+000165 bd14                          out TCCR0A, temp
+000166 e012                          ldi temp, 0b00000010
+000167 bd15                          out TCCR0B, temp        ; Prescaling value=8
+000168 e011                          ldi temp, 1<<TOIE0      ; = 128 microseconds
+000169 9310 006e                     sts TIMSK0, temp        ; T/C0 interrupt enable
+00016b 9478                          sei                     ; Enable global interrupt
                                  
                                  	;Push button set up
-000179 e012                      	ldi temp, (2 << ISC00)      ; set INT0 as falling-
-00017a 9310 0069                     sts EICRA, temp             ; edge triggered interrupt
-00017c b31d                          in temp, EIMSK              ; enable INT0
-00017d 6011                          ori temp, (1<<INT0)
-00017e bb1d                          out EIMSK, temp
-00017f 9478                      	sei                         ; enable Global Interrupt
+00016c e012                      	ldi temp, (2 << ISC00)      ; set INT0 as falling-
+00016d 9310 0069                     sts EICRA, temp             ; edge triggered interrupt
+00016f b31d                          in temp, EIMSK              ; enable INT0
+000170 6011                          ori temp, (1<<INT0)
+000171 bb1d                          out EIMSK, temp
+000172 9478                      	sei                         ; enable Global Interrupt
                                  
-000180 e012                      	ldi temp, (2 << ISC00)      ; set INT1 as falling-
-000181 9310 0069                     sts EICRA, temp             ; edge triggered interrupt
-000183 b31d                          in temp, EIMSK              ; enable INT1
-000184 6012                          ori temp, (1<<INT1)
-000185 bb1d                          out EIMSK, temp
-000186 9478                      	sei   
+000173 e012                      	ldi temp, (2 << ISC00)      ; set INT1 as falling-
+000174 9310 0069                     sts EICRA, temp             ; edge triggered interrupt
+000176 b31d                          in temp, EIMSK              ; enable INT1
+000177 6012                          ori temp, (1<<INT1)
+000178 bb1d                          out EIMSK, temp
+000179 9478                      	sei   
                                  	
                                  	;Keyboard set up
-000187 ef10                      	ldi temp, PORTLDIR				; set PL7:4 to output and PL3:0 to input
-000188 9310 010a                 	sts DDRL, temp					; PORTL is input
+00017a ef10                      	ldi temp, PORTLDIR				; set PL7:4 to output and PL3:0 to input
+00017b 9310 010a                 	sts DDRL, temp					; PORTL is input
                                  	
                                  	;LCD set up
-00018a ef1f                      	ser temp
-00018b bb10                      	out DDRF, temp
-00018c b911                      	out DDRA, temp
-00018d 2711                      	clr temp
-00018e bb11                      	out PORTF, temp
-00018f b912                      	out PORTA, temp
+00017d ef1f                      	ser temp
+00017e bb10                      	out DDRF, temp
+00017f b911                      	out DDRA, temp
+000180 2711                      	clr temp
+000181 bb11                      	out PORTF, temp
+000182 b912                      	out PORTA, temp
                                  
                                  	;Set up inventory
-000190 940e 0262                 	call INIT_INVENTORY ; Used to initialise the inventory storage (Jason's implementation)
+000183 940e 0265                 	call INIT_INVENTORY ; Used to initialise the inventory storage (Jason's implementation)
                                  						; Use get_cost or get_stock passing in a register with value 0-9, or
                                  						; get_costi or get_stocki passing in an immediate value. The return value
                                  						; will be stored in inventory_value
                                  
-000192 940e 006f                 	call lcd_starting_screen
+000185 940e 006f                 	call lcd_starting_screen
                                  
-000194 e070                      	ldi flag, 0
-000195 e060                      	ldi boolean, 0
-000196 e0c3
-000197 e0d2
-000198 2711
-000199 9319
-00019a 8318                      	clear CounterFlag
-00019b e0c2
-00019c e0d2
-00019d 2711
-00019e 9319
-00019f 8318                      	clear SecondCounter
-0001a0 e0c4
-0001a1 e0d2
-0001a2 2711
-0001a3 9319
-0001a4 8318                      	clear ScreenState
+000187 e070                      	ldi flag, 0
+000188 e060                      	ldi boolean, 0
+000189 e0c3
+00018a e0d2
+00018b 2711
+00018c 9319
+00018d 8318                      	clear CounterFlag
+00018e e0c2
+00018f e0d2
+000190 2711
+000191 9319
+000192 8318                      	clear SecondCounter
+000193 e0c4
+000194 e0d2
+000195 2711
+000196 9319
+000197 8318                      	clear ScreenState
                                  
                                  Start_screen:
-0001a5 e011                      	ldi temp, 1
-0001a6 9310 0203                 	sts CounterFlag, temp
+000198 e011                      	ldi temp, 1
+000199 9310 0203                 	sts CounterFlag, temp
                                  	
-0001a8 940e 01f2                 	call KEYBOARD
-0001aa 3071                      	cpi flag, 1
-0001ab f42c                      	brge SS_MAIN
-0001ac 9110 0202                 	lds temp, SecondCounter
-0001ae 3013                      	cpi temp, 3
-0001af f40c                      	brge SS_MAIN
-0001b0 cff4                      	rjmp Start_screen
+00019b 940e 021a                 	call KEYBOARD
+00019d 3071                      	cpi flag, 1
+00019e f42c                      	brge SS_MAIN
+00019f 9110 0202                 	lds temp, SecondCounter
+0001a1 3013                      	cpi temp, 3
+0001a2 f40c                      	brge SS_MAIN
+0001a3 cff4                      	rjmp Start_screen
                                  
                                  	SS_MAIN:
-0001b1 940c 01e0                 	jmp MAIN_MENU
+0001a4 940c 01d3                 	jmp MAIN_MENU
                                  
                                  Timer0OVF:
-0001b3 b71f                      	in temp, SREG
-0001b4 931f                          push temp      
-0001b5 93df                          push YH         
-0001b6 93cf                          push YL
-0001b7 939f                          push r25
-0001b8 938f                          push r24
+0001a6 b71f                      	in temp, SREG
+0001a7 931f                          push temp      
+0001a8 93df                          push YH         
+0001a9 93cf                          push YL
+0001aa 939f                          push r25
+0001ab 938f                          push r24
                                  
                                  	newSecond:
-0001b9 9180 0200                 	    lds r24, TempCounter
-0001bb 9190 0201                     	lds r25, TempCounter+1
-0001bd 9601                          	adiw r25:r24, 1 ; Increase the temporary counter by one.
+0001ac 9180 0200                 	    lds r24, TempCounter
+0001ae 9190 0201                     	lds r25, TempCounter+1
+0001b0 9601                          	adiw r25:r24, 1 ; Increase the temporary counter by one.
                                      	
-0001be 3884                      		cpi r24, low(7812)  ; Check if (r25:r24) = 7812 ; 7812 = 10^6/128
-0001bf e11e                          	ldi temp, high(7812)    ; 7812 = 10^6/128
-0001c0 0791                          	cpc r25, temp
-0001c1 f479                          	brne NotSecond
+0001b1 3884                      		cpi r24, low(7812)  ; Check if (r25:r24) = 7812 ; 7812 = 10^6/128
+0001b2 e11e                          	ldi temp, high(7812)    ; 7812 = 10^6/128
+0001b3 0791                          	cpc r25, temp
+0001b4 f479                          	brne NotSecond
                                  		
-0001c2 9110 0203                 		lds temp, CounterFlag
-0001c4 3011                      		cpi temp, 1
-0001c5 f429                      		brne Cont
-0001c6 9110 0202                 		lds temp, SecondCounter
-0001c8 5f1f                      		subi temp, -1
-0001c9 9310 0202                 		sts SecondCounter, temp
+0001b5 9110 0203                 		lds temp, CounterFlag
+0001b7 3011                      		cpi temp, 1
+0001b8 f429                      		brne Cont
+0001b9 9110 0202                 		lds temp, SecondCounter
+0001bb 5f1f                      		subi temp, -1
+0001bc 9310 0202                 		sts SecondCounter, temp
                                  	Cont:
-0001cb e0c0
-0001cc e0d2
-0001cd 2711
-0001ce 9319
-0001cf 8318                      		clear TempCounter       ; Reset the temporary counter.
+0001be e0c0
+0001bf e0d2
+0001c0 2711
+0001c1 9319
+0001c2 8318                      		clear TempCounter       ; Reset the temporary counter.
                                      
-0001d0 c004                      	rjmp EndIF
+0001c3 c004                      	rjmp EndIF
                                      
                                  NotSecond: ; Store the new value of the temporary counter.
-0001d1 9380 0200                     sts TempCounter, r24
-0001d3 9390 0201                     sts TempCounter+1, r25 
+0001c4 9380 0200                     sts TempCounter, r24
+0001c6 9390 0201                     sts TempCounter+1, r25 
                                      
                                  EndIF:
-0001d5 918f                          pop r24         ; Epilogue starts;
-0001d6 919f                          pop r25         ; Restore all conflict registers from the stack.
-0001d7 91cf                          pop YL
-0001d8 91df                          pop YH
-0001d9 911f                          pop temp
-0001da bf1f                          out SREG, temp
-0001db 9518                          reti            ; Return from the interrupt.
+0001c8 918f                          pop r24         ; Epilogue starts;
+0001c9 919f                          pop r25         ; Restore all conflict registers from the stack.
+0001ca 91cf                          pop YL
+0001cb 91df                          pop YH
+0001cc 911f                          pop temp
+0001cd bf1f                          out SREG, temp
+0001ce 9518                          reti            ; Return from the interrupt.
                                  	
                                  EXT_INT1:
-0001dc e061                      	ldi boolean, 1
-0001dd 9518                      	reti
+0001cf e061                      	ldi boolean, 1
+0001d0 9518                      	reti
                                  ;	ldi boolean, 0xFF
                                  ;	rjmp delay255
                                  
                                  EXT_INT0:
-0001de e061                      	ldi boolean, 1
-0001df 9518                      	reti
+0001d1 e061                      	ldi boolean, 1
+0001d2 9518                      	reti
                                  ;	ldi boolean, 0xFF	
                                  ;	rjmp delay255
                                  
@@ -2512,191 +2512,230 @@ C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachin
                                  ;	reti	
                                  
                                  MAIN_MENU:
-0001e0 e060                      	ldi boolean, 0	
-0001e1 e070                      	ldi flag, 0
-0001e2 e0c2
-0001e3 e0d2
-0001e4 2711
-0001e5 9319
-0001e6 8318                      	clear SecondCounter
-0001e7 e0c3
-0001e8 e0d2
-0001e9 2711
-0001ea 9319
-0001eb 8318                      	clear CounterFlag
+0001d3 e060                      	ldi boolean, 0	
+0001d4 e070                      	ldi flag, 0
+0001d5 e0c2
+0001d6 e0d2
+0001d7 2711
+0001d8 9319
+0001d9 8318                      	clear SecondCounter
+0001da e0c3
+0001db e0d2
+0001dc 2711
+0001dd 9319
+0001de 8318                      	clear CounterFlag
                                  
-0001ec 940e 00d2                 	call lcd_main_menu
+0001df 940e 00d2                 	call lcd_main_menu
                                  
-0001ee ef6f                      	ldi boolean, 0xFF	
-0001ef c000                      	rjmp delay255
+0001e1 ef6f                      	ldi boolean, 0xFF	
+0001e2 c000                      	rjmp delay255
                                  
                                  // POSSIBLE_BUG CHECK
                                  delay255:
-0001f0 956a                      	dec boolean
-0001f1 f589                      	brne Keypress
-                                 
-                                 .include "Keyboard.asm"
-                                 
-0001f2 ee3f                      	ldi cmask, INITCOLMASK	; initial column mask (1110 1111)
-0001f3 2711                      	clr col 				; initial column (0)
-                                 
-                                 colloop:
-0001f4 3014                      	cpi col, 4 				; compare current column # to total # columns
-0001f5 f159                      	breq return				; if all keys are scanned, repeat
-                                 
-0001f6 9330 010b                 	sts PORTL, cmask		; otherwise, scan a column
-0001f8 ef4f                      	ldi temp1, 0xFF			; slow down the scan operation to debounce button press
-                                 delay:
-0001f9 954a                      	dec temp1
-0001fa f7f1                      	brne delay
-                                 
-0001fb 9140 0109                 	lds temp1, PINL			; read PORTL
-0001fd 704f                      	andi temp1, ROWMASK		; get the keypad output value
-0001fe 3f40                      	cpi temp1, 0xF0 		; check if any row is low (0)
-0001ff f011                      	breq rowloop			; if yes, find which row is low
-000200 e021                      	ldi rmask, INITROWMASK	; initialize rmask with 0000 0001 for row check
-000201 2700                      	clr row
-                                 
-                                 rowloop:
-000202 3004                      	cpi row, 4 				; compare current value of row with total number of rows (4)
-000203 f039                      	breq nextcol			; if theyre equal, the row scan is over.
-000204 2f54                      	mov temp2, temp1 		; temp1 is 0xF
-000205 2352                      	and temp2, rmask 		; check un-masked bit
-000206 f041                      	breq convert 			; if bit is clear, the key is pressed
-000207 9503                      	inc row 				; else move to the next row
-000208 0f22                      	lsl rmask 				; shift row mask left by one
-000209 940c 0202                 	jmp rowloop
-                                 
-                                 nextcol:					; if row scan is over
-00020b 0f33                      	lsl cmask 				; shift column mask left by one
-00020c 9513                      	inc col 				; increase column value
-00020d 940c 01f4                 	jmp colloop				; go to the next column
-                                 
-                                 convert:
-00020f 3013                      	cpi col, 3				; if the pressed key is in col.3 
-000210 f081                      	breq return			; we have a letter, so ignore it and restart
-000211 3003                      	cpi row, 3				; if the key is not in col 3 and is in row3,
-000212 f039                      	breq symbols			; we have a symbol or 0
-000213 2f40                      	mov temp1, row 			; otherwise we have a number in 1-9
-000214 0f44                      	lsl temp1 				; multiply temp1 by 2
-000215 0f40                      	add temp1, row 			; add row again to temp1 -> temp1 = row * 3
-000216 0f41                      	add temp1, col 			; temp1 = col*3 + row
-000217 5f4f                      	subi temp1, -1			; add 1
-                                 	; 1 row 0 col 0 -> temp1 = 0 + 0 + 1 = 1 = 0b 0000 0001
-                                 	; 2 row 0 col 1 -> temp1 = 0 + 1 + 1 = 2 = 0b 0000 0010
-                                 	; 3 row 0 col 2 -> temp1 = 0 + 2 + 1 = 3 = 0b 0000 0011
-                                 	; 4 row 1 col 0 -> temp1 = 3 + 0 + 1 = 4 = 0b 0000 0100
-000218 940c 021f                 	jmp convert_end
-                                 
-                                 symbols:
-00021a 3011                      	cpi col, 1 				; if its in column 1, it's a zero
-00021b f429                      	brne return 			; ignore * and #
-00021c e040                      	ldi temp1, 0
-00021d 940c 021f                 	jmp convert_end
-                                 
-                                 convert_end:
-00021f 2f74                      	mov flag, temp1
-000220 9508                      	ret
-                                 
-                                 return:
-000221 ef7f                      	ldi flag, 255
-000222 9508                      	ret
+0001e3 956a                      	dec boolean
+0001e4 f401                      	brne Keypress
                                  
                                  Keypress:
                                  	; I changed 0 keypress to return 0 in flag and letter/symbol/no keypresses to return 255
-000223 940e 0153                 	call sleep_5ms
-000225 940e 01f2                 	call KEYBOARD
-000227 3f7f                      	cpi flag, 255
-000228 f3d1                      	breq Keypress
-000229 2f87
-00022a e0c5
-00022b e0d2
-00022c 940e 0258
-00022e 8188                      	get_cost flag
-00022f 2f28                      	mov curCost, inventory_value
-000230 2f87
-000231 e0c5
-000232 e0d2
-000233 940e 0258
-000235 8188                      	get_stock flag
-000236 2f38                      	mov curStock, inventory_value
+0001e5 940e 0153                 	call sleep_5ms
+0001e7 940e 021a                 	call KEYBOARD
+0001e9 b978                      	out PORTC, flag ; CHECK
+0001ea 3f7f                      	cpi flag, 255
+0001eb f3c9                      	breq Keypress
+0001ec 2f87
+0001ed e0c5
+0001ee e0d2
+0001ef 940e 025b
+0001f1 8188                      	get_cost flag
+0001f2 2f28                      	mov curCost, inventory_value
+0001f3 2f87
+0001f4 e0c5
+0001f5 e0d2
+0001f6 940e 025b
+0001f8 8188                      	get_stock flag
+0001f9 2f38                      	mov curStock, inventory_value
                                  
                                  STOCK_CHECK:
-000237 b978                      	out PORTC, flag ; CHECK
-000238 3030                      	cpi curStock, 0
-000239 f009                      	breq EMPTY
-00023a c018                      	rjmp COIN
+                                 	//out PORTC, flag ; CHECK
+0001fa 3030                      	cpi curStock, 0
+0001fb f009                      	breq EMPTY
+0001fc c018                      	rjmp COIN
                                  
                                  EMPTY:
-00023b e060                      	ldi boolean, 0	
-00023c e0c2
-00023d e0d2
-00023e 2711
-00023f 9319
-000240 8318                      	clear SecondCounter
-000241 e0c3
-000242 e0d2
-000243 2711
-000244 9319
-000245 8318                      	clear CounterFlag
+0001fd e060                      	ldi boolean, 0	
+0001fe e0c2
+0001ff e0d2
+000200 2711
+000201 9319
+000202 8318                      	clear SecondCounter
+000203 e0c3
+000204 e0d2
+000205 2711
+000206 9319
+000207 8318                      	clear CounterFlag
                                  
-000246 940e 00f6                 	call lcd_empty_screen
+000208 940e 00f6                 	call lcd_empty_screen
                                  
                                  Remain:
-000248 e051                      	ldi temp2, 1
-000249 9350 0203                 	sts CounterFlag, temp2
+00020a e051                      	ldi temp2, 1
+00020b 9350 0203                 	sts CounterFlag, temp2
                                  	
-00024b 3061                      	cpi boolean, 1
-00024c f029                      	breq Leave
-00024d 9150 0202                 	lds temp2, SecondCounter
-00024f 3053                      	cpi temp2, 3
-000250 f40c                      	brge Leave
-000251 cff6                      	rjmp Remain
+00020d 3061                      	cpi boolean, 1
+00020e f029                      	breq Leave
+00020f 9150 0202                 	lds temp2, SecondCounter
+000211 3053                      	cpi temp2, 3
+000212 f40c                      	brge Leave
+000213 cff6                      	rjmp Remain
                                  
                                  Leave:
-000252 cf8d                      	rjmp MAIN_MENU
+000214 cfbe                      	rjmp MAIN_MENU
                                  
                                  COIN:
-000253 e060                      	ldi boolean, 0
-000254 940e 0123                 	call lcd_coin_screen
-000256 c000                      	rjmp loop
+000215 e060                      	ldi boolean, 0
+000216 940e 0123                 	call lcd_coin_screen
+000218 c000                      	rjmp loop
                                  
                                  loop:
-000257 cfff                      	rjmp loop
+000219 cfff                      	rjmp loop
                                  
+                                 .include "Keyboard.asm"
+                                 
+00021a ee3f                      	ldi cmask, INITCOLMASK  ; initial column mask
+00021b 2711                          clr col                 ; initial column
+                                 
+                                 colloop:
+00021c 3014                          cpi col, 4
+00021d f1d9                          breq return               ; If all keys are scanned, repeat.
+00021e 9330 010b                     sts PORTL, cmask        ; Otherwise, scan a column.
+                                   
+000220 ef4f                          ldi temp1, 0xFF         ; Slow down the scan operation.
+                                 
+                                 delay:
+000221 954a                          dec temp1
+000222 f7f1                          brne delay              ; until temp1 is zero? - delay
+                                 
+000223 9140 0109                     lds temp1, PINL          ; Read PORTL
+000225 704f                          andi temp1, ROWMASK     ; Get the keypad output value
+000226 304f                          cpi temp1, 0xF          ; Check if any row is low
+000227 f059                          breq nextcol            ; if not - switch to next column
+                                 
+                                                             ; If yes, find which row is low
+000228 e021                          ldi rmask, INITROWMASK  ; initialize for row check
+000229 2700                          clr row
+                                 
+                                 ; and going into the row loop
+                                 rowloop:
+00022a 3004                          cpi row, 4              ; is row already 4?
+00022b f039                          breq nextcol            ; the row scan is over - next column
+00022c 2f54                          mov temp2, temp1
+00022d 2352                          and temp2, rmask        ; check un-masked bit
+00022e f041                          breq convert            ; if bit is clear, the key is pressed
+00022f 9503                          inc row                 ; else move to the next row
+000230 0f22                          lsl rmask
+000231 940c 022a                     jmp rowloop
+                                     
+                                 nextcol:                    ; if row scan is over
+000233 0f33                           lsl cmask
+000234 9513                           inc col                ; increase col value
+000235 940c 021c                      jmp colloop            ; go to the next column
+                                      
+                                 convert:
+                                 	; NOTE: cols and rows are counter-intuitive (flipped)
+000237 2f11                      	mov temp, col
+000238 2f10                      	mov col, row
+000239 2f01                      	mov row, temp
+                                 
+                                 	;out PORTC, col
+                                 
+00023a 3013                          cpi col, 3              ; If the pressed key is in col 3
+00023b f049                          breq letters           ; we have letter
+                                     ;breq convert_end
+                                                             ; If the key is not in col 3 and
+00023c 3003                          cpi row, 3              ; if the key is in row 3,
+00023d f061                          breq symbols            ; we have a symbol or 0
+                                 	;breq convert_end
+                                 
+                                     ;mov temp1, row          ; otherwise we have a number 1-9
+                                     ;lsl temp1
+                                 	;add col, 1
+                                 	;add row, 1
+                                     ;add temp1, col
+                                     ;add temp1, row          ; temp1 = 1 + row + col
+                                     ;subi temp1, -'1'        ; add the value of character '1'
+00023e 2f40                          mov temp1, row          ; otherwise we have a number 1-9
+00023f 0f44                          lsl temp1
+000240 0f40                          add temp1, row
+000241 0f41                          add temp1, col          ; temp1 = row*3 + col
+000242 5f4f                      	subi temp1, -1
+000243 940c 0257                     jmp convert_end
+                                     
+                                 letters:
+                                     ;ldi temp1, 'A'
+                                     ;add temp1, row          ; Get the ASCII value for the key
+                                 	;clr temp1
+000245 3003                      	cpi row, 3
+000246 f361                      	breq nextcol
+000247 e144                      	ldi temp1, 20
+000248 940c 0257                     jmp convert_end
+                                 
+                                 symbols:
+00024a 3010                          cpi col, 0              ; Check if we have a star
+00024b f029                          breq star
+00024c 3011                          cpi col, 1              ; or if we have zero
+00024d f031                          breq ze_ro
+                                     ;ldi temp1, '#'         ; if not we have hash
+                                 	;clr temp1				; TEMP: not handling the hash now
+00024e e144                      	ldi temp1, 20
+00024f 940c 0257                     jmp convert_end
+                                 star:
+                                     ;ldi temp1, '*'          ; set to star
+                                 	;clr temp1
+000251 e144                      	ldi temp1, 20
+000252 940c 0257                     jmp convert_end
+                                 ze_ro:
+000254 e040                          ldi temp1, 0         ; set to zero in binary
+000255 940c 0257                 	jmp convert_end
+                                 
+                                 convert_end:
+000257 2f74                      	mov flag, temp1
+000258 9508                          ret
+                                 
+                                 return:
+000259 ef7f                      	ldi flag, 255
+00025a 9508                      	ret
                                  inc_y:
-000258 935f                      	push temp2
-000259 934f                      	push temp1
-00025a 2755                      	clr temp2
+00025b 935f                      	push temp2
+00025c 934f                      	push temp1
+00025d 2755                      	clr temp2
                                  	inc_y_loop:
-00025b 9149                      		ld temp1, Y+
-00025c 9553                      		inc temp2
-00025d 1758                      		cp temp2, inventory_value
-00025e f7e1                      		brne inc_y_loop
-00025f 914f                      	pop temp1
-000260 915f                      	pop temp2
-000261 9508                      	ret
+00025e 9149                      		ld temp1, Y+
+00025f 9553                      		inc temp2
+000260 1758                      		cp temp2, inventory_value
+000261 f7e1                      		brne inc_y_loop
+000262 914f                      	pop temp1
+000263 915f                      	pop temp2
+000264 9508                      	ret
                                  
                                  INIT_INVENTORY:
-000262 e0e5                      	ldi ZL, low(Cost)
-000263 e0f2                      	ldi ZH, high(Cost)
-000264 e050                      	ldi temp2, 0
+000265 e0e5                      	ldi ZL, low(Cost)
+000266 e0f2                      	ldi ZH, high(Cost)
+000267 e050                      	ldi temp2, 0
                                  	cost_loop:
-000265 e042                      		ldi temp1, 2 
-000266 9341                      		st Z+, temp1
-000267 e041                      		ldi temp1, 1
-000268 9341                      		st Z+, temp1
-000269 9553                      		inc temp2
-00026a 3055                      		cpi temp2, 5
-00026b f7c9                      		brne cost_loop
-00026c e0ef                      	ldi ZL, low(Stock)
-00026d e0f2                      	ldi ZH, high(Stock)
-00026e e050                      	ldi temp2, 0
+000268 e042                      		ldi temp1, 2 
+000269 9341                      		st Z+, temp1
+00026a e041                      		ldi temp1, 1
+00026b 9341                      		st Z+, temp1
+00026c 9553                      		inc temp2
+00026d 3055                      		cpi temp2, 5
+00026e f7c9                      		brne cost_loop
+00026f e0ef                      	ldi ZL, low(Stock)
+000270 e0f2                      	ldi ZH, high(Stock)
+000271 e050                      	ldi temp2, 0
                                  	stock_loop:
-00026f 9351                      		st Z+, temp2
-000270 9553                      		inc temp2
-000271 305a                      		cpi temp2, 10
-000272 f7e1                      		brne stock_loop
+000272 9351                      		st Z+, temp2
+000273 9553                      		inc temp2
+000274 305a                      		cpi temp2, 10
+000275 f7e1                      		brne stock_loop
 
 
 RESOURCE USE INFORMATION
@@ -2716,24 +2755,24 @@ counted separately from r26..r31 here.
 "ATmega2560" register use summary:
 x  :   0 y  :  21 z  :   3 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  96 r17:  80 r18:   6 r19:   7 r20:  21 
-r21:  19 r22:  10 r23:  10 r24:  18 r25:  10 r26:   0 r27:   0 r28:  13 
+r13:   0 r14:   0 r15:   0 r16:  97 r17:  83 r18:   4 r19:   5 r20:  23 
+r21:  18 r22:   9 r23:   9 r24:  17 r25:  10 r26:   0 r27:   0 r28:  13 
 r29:  13 r30:   2 r31:   2 
 Registers used: 16 out of 35 (45.7%)
 
 "ATmega2560" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   2 adiw  :   1 and   :   1 
 andi  :   1 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   9 brge  :   3 brhc  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :  12 brge  :   3 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   9 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brne  :   8 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :  14 cbi   :   5 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :  27 cls   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :  14 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   1 
-cpi   :  16 cpse  :   0 dec   :   2 eicall:   0 eijmp :   0 elpm  :   0 
+cpi   :  18 cpse  :   0 dec   :   2 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :   4 inc   :   5 jmp   :  12 ld    :   3 ldd   :   0 ldi   : 134 
-lds   :   7 lpm   :   0 lsl   :   3 lsr   :   0 mov   :   7 movw  :   0 
+in    :   4 inc   :   5 jmp   :  15 ld    :   3 ldd   :   0 ldi   : 137 
+lds   :   7 lpm   :   0 lsl   :   3 lsr   :   0 mov   :  10 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
 ori   :   2 out   :  18 pop   :  10 push  :  10 rcall : 169 ret   :  14 
 reti  :   4 rjmp  :   9 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
@@ -2747,7 +2786,7 @@ Instructions used: 38 out of 116 (32.8%)
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0004e8   1184      0   1184  262144   0.5%
+[.cseg] 0x000000 0x0004ee   1190      0   1190  262144   0.5%
 [.dseg] 0x000200 0x000219      0     25     25    8192   0.3%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 

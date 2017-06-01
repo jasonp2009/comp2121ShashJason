@@ -92,7 +92,7 @@ star:
 	ldi temp1, 20
     jmp convert_end
 ze_ro:
-    ldi temp1, 255          ; set to zero in binary
+    ldi temp1, 0         ; set to zero in binary
 	jmp convert_end
 
 convert_end:
@@ -100,5 +100,5 @@ convert_end:
     ret
 
 return:
-	ldi flag, 0
+	ldi flag, 255
 	ret
