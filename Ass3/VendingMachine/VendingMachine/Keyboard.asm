@@ -4,7 +4,7 @@ KEYBOARD:
 
 colloop:
     cpi col, 4
-    breq convert_end               ; If all keys are scanned, repeat.
+    breq no_press_end               ; If all keys are scanned, repeat.
     sts PORTL, cmask        ; Otherwise, scan a column.
   
     ldi temp1, 0xFF         ; Slow down the scan operation.
@@ -92,5 +92,8 @@ zero:
 
 convert_end:
 	;ldi temp, 9
-    out PORTC, temp1        ; write value to PORTC
+    //out PORTC, temp1        ; write value to PORTC
     ret               ; restart the main loop
+no_press_end:
+	ldi temp1, 255
+	ret

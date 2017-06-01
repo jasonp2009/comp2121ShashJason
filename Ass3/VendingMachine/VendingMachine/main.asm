@@ -239,9 +239,15 @@ Keypress:
 	; I changed 0 keypress to return 0 in flag and letter/symbol/no keypresses to return 255
 	call sleep_5ms
 	call KEYBOARD
+	cpi temp1, 255
+	breq Keypress
 	call sleep_20ms
-	//out PORTC, pot
-	jmp Keypress
+	call sleep_20ms
+	call sleep_20ms
+	call sleep_20ms
+	call sleep_20ms
+	out PORTC, temp1
+	rjmp Keypress
 
 
 	get_cost flag
@@ -331,23 +337,21 @@ ADC_Read:
 	ldi temp2, high(10)
 	cp XL, temp1
 	cpc XH, temp2
-	brlo POT_low
+	brge POT_low
 
 	ldi temp1, low(245)
 	ldi temp2, high(245)
 	cp XL, temp1
 	cpc XH, temp2
-	brge POT_high
+	brlo POT_high
 
 	rjmp POT_end
 	
 POT_low:
-	ldi temp1, 0
-	out PORTC, temp1
+	ldi pot, 0
 	rjmp POT_end
 POT_high:
-	ldi temp1, 255
-	out PORTC, temp1
+	ldi pot, 255
 	rjmp POT_end
 POT_end:
 	pop temp2
