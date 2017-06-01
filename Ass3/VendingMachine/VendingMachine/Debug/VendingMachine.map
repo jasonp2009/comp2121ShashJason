@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm Thu Jun 01 15:12:56 2017
+AVRASM ver. 2.2.6  C:\Users\Jason P\Desktop\uni\comp2121\labs\comp2121ShashJason\Ass3\VendingMachine\VendingMachine\main.asm Thu Jun 01 16:59:37 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1366,7 +1366,7 @@ DEF  curStock     r19
 DEF  boolean      r22
 DEF  flag         r23
 DEF  inventory_value r24
-DEF  pot          r21
+DEF  pot          r25
 DEF  row          r16
 DEF  col          r17
 DEF  rmask        r18
@@ -1389,7 +1389,7 @@ CSEG EXT_INT1     000001e9
 CSEG EXT_INT0     000001eb
 CSEG DEFAULT      0000003e
 CSEG Timer0OVF    000001c9
-CSEG ADC_Read     0000029d
+CSEG ADC_Read     00000290
 EQU  LCD_RS       00000007
 EQU  LCD_E        00000006
 EQU  LCD_RW       00000005
@@ -1409,9 +1409,9 @@ EQU  F_CPU        00f42400
 EQU  DELAY_1MS    00000f9c
 CSEG delayloop_1ms 0000015a
 CSEG sleep_20ms   00000165
-CSEG INIT_INVENTORY 0000028b
+CSEG INIT_INVENTORY 0000027e
 CSEG Start_screen 000001bb
-CSEG KEYBOARD     0000023d
+CSEG KEYBOARD     00000230
 CSEG SS_MAIN      000001c7
 CSEG MAIN_MENU    000001ed
 CSEG newSecond    000001cf
@@ -1419,27 +1419,27 @@ CSEG NotSecond    000001de
 CSEG EndIF        000001e2
 CSEG delay255     000001fd
 CSEG Keypress     00000200
-CSEG inc_y        00000281
-CSEG STOCK_CHECK  0000021d
-CSEG EMPTY        00000220
-CSEG COIN         00000238
-CSEG Remain       0000022d
-CSEG Leave        00000237
-CSEG loop         0000023c
-CSEG colloop      0000023f
-CSEG return       0000027d
-CSEG delay        00000244
-CSEG nextcol      00000256
-CSEG rowloop      0000024d
-CSEG convert      0000025a
-CSEG letters      00000265
-CSEG symbols      00000269
-CSEG convert_end  00000279
-CSEG star         00000271
-CSEG zero         00000275
-CSEG inc_y_loop   00000284
-CSEG cost_loop    0000028e
-CSEG stock_loop   00000298
-CSEG POT_low      000002ae
-CSEG POT_high     000002b0
-CSEG POT_end      000002b2
+CSEG inc_y        00000274
+CSEG STOCK_CHECK  00000210
+CSEG EMPTY        00000213
+CSEG COIN         0000022b
+CSEG Remain       00000220
+CSEG Leave        0000022a
+CSEG loop         0000022f
+CSEG colloop      00000232
+CSEG return       00000270
+CSEG delay        00000237
+CSEG nextcol      00000249
+CSEG rowloop      00000240
+CSEG convert      0000024d
+CSEG letters      00000258
+CSEG symbols      0000025c
+CSEG convert_end  0000026c
+CSEG star         00000264
+CSEG zero         00000268
+CSEG inc_y_loop   00000277
+CSEG cost_loop    00000281
+CSEG stock_loop   0000028b
+CSEG POT_low      000002a2
+CSEG POT_high     000002a4
+CSEG POT_end      000002a6

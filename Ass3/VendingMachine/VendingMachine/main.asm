@@ -8,7 +8,7 @@
 .def boolean = r22
 .def flag = r23
 .def inventory_value = r24
-.def pot = r21
+.def pot = r25
 
 .def row = r16				; current row number
 .def col = r17				; current column number
@@ -240,17 +240,18 @@ delay255:
 
 Keypress:
 	; I changed 0 keypress to return 0 in flag and letter/symbol/no keypresses to return 255
-	call KEYBOARD
+	/*call KEYBOARD
 	lds temp1, Input
 	
 	cpi temp1, 255
 	breq Keypress
 
-
 	mov temp1, flag
 	subi temp1, -'0'
 	do_lcd_data ' '
 	do_lcd_data_r temp1
+	rjmp Keypress*/
+	out PORTC, pot
 	rjmp Keypress
 
 
@@ -336,23 +337,25 @@ ADC_Read:
 
 	lds XL, ADCL
 	lds XH, ADCH
+	ldi pot, 1
+	//out PORTC, pot
 
 	ldi temp1, low(10)
 	ldi temp2, high(10)
 	cp XL, temp1
 	cpc XH, temp2
-	brge POT_low
+	brlo POT_low
 
 	ldi temp1, low(245)
 	ldi temp2, high(245)
 	cp XL, temp1
 	cpc XH, temp2
-	brlo POT_high
+	brge POT_high
 
 	rjmp POT_end
 	
 POT_low:
-	ldi pot, 0
+	ldi pot, 1
 	rjmp POT_end
 POT_high:
 	ldi pot, 255
