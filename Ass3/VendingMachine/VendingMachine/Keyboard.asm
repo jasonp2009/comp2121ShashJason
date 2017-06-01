@@ -45,6 +45,7 @@ convert:
 
 letters: 
 	ldi flag, 20
+	sts Input, flag
 	;add temp1, row ; Get the ASCII value for the key 
 	ret
 symbols: 
@@ -53,19 +54,24 @@ symbols:
 	cpi col, 1 ; or if we have zero 
 	breq zero 
 	ldi flag, 20 ; if not we have hash 
+	sts Input, flag
 	ret
 star: 
 	ldi flag, 20 ; Set to star 
+	sts Input, flag
 	ret
 zero: 
 	ldi flag, 0 ; Set to zero 
+	sts Input, flag
 	ret
 convert_end: 
 	mov flag, temp1
+	sts Input, flag
 	//out PORTC, temp1 ; Write value to PORTC 
 	//jmp main ; Restart main loop
 	ret
 
 return: 
 	ldi flag, 255
+	sts Input, flag
 	ret
