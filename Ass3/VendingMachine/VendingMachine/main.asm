@@ -8,6 +8,7 @@
 .def boolean = r22
 .def flag = r23
 .def inventory_value = r24
+.def pot = r21
 
 .def row = r16				; current row number
 .def col = r17				; current column number
@@ -120,6 +121,19 @@ RESET:
 						; get_costi or get_stocki passing in an immediate value. The return value
 						; will be stored in inventory_value
 
+	//Set Up ADC converter
+	clr temp1
+	ldi temp1, (3 <<refs0)|(0<<adlar)|(0<<mux0);refs0 turns on the refernce voltage to 2.5V, Adlar ensures the results are right adjusted (so we can read ADCL and ADCH), mux0 determunes which analogue inputs are connected
+	sts Admux,temp1 
+	clr temp1
+	ldi temp1, (1 << MUX5) ;mux 5 means ADC8 which is conected to PK8 on board
+	sts ADCSRB, temp1
+	clr temp1
+	ldi temp1, (1 << ADEN) | (0 << ADSC) | (1 << ADIE) | (5 << ADPS0) ;ADEN enables the ADC converter, ADSC tells it to do a conversion, ADIE enbales the ADC interrupt and ADPS0 is the prescalier(32)
+	sts ADCSRA, temp1
+
+	sei ;turn global interrupts on
+
 	call lcd_starting_screen
 
 	ldi flag, 0
@@ -226,12 +240,10 @@ Keypress:
 	call sleep_5ms
 	call KEYBOARD
 	call sleep_20ms
-	cpi flag, 255 ;
-	breq Keypress ;
-	out PORTC, flag ; CHECK
-	rjmp Keypress ;
-	//cpi flag, 255
-	//breq Keypress
+	//out PORTC, pot
+	jmp Keypress
+
+
 	get_cost flag
 	mov curCost, inventory_value
 	get_stock flag
@@ -315,23 +327,29 @@ ADC_Read:
 	lds XL, ADCL
 	lds XH, ADCH
 
-	ldi temp1, low(0)
-	ldi temp2, high(0)
+	ldi temp1, low(10)
+	ldi temp2, high(10)
 	cp XL, temp1
 	cpc XH, temp2
-	breq POT_low
+	brlo POT_low
 
-	ldi temp1, low(255)
-	ldi temp2, high(255)
+	ldi temp1, low(245)
+	ldi temp2, high(245)
 	cp XL, temp1
 	cpc XH, temp2
-	breq POT_high
+	brge POT_high
 
-	reti
+	rjmp POT_end
 	
 POT_low:
-	ldi flag, 0
-	reti
+	ldi temp1, 0
+	out PORTC, temp1
+	rjmp POT_end
 POT_high:
-	ldi flag, 0
+	ldi temp1, 255
+	out PORTC, temp1
+	rjmp POT_end
+POT_end:
+	pop temp2
+	pop temp1
 	reti

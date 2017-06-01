@@ -34,10 +34,7 @@ nextcol: ; if row scan is over
 	jmp colloop ; go to the next column
 
 convert:
-	call sleep_5ms
-	call sleep_5ms
-	call sleep_5ms
-	call sleep_5ms ; 20ms debounce
+	call sleep_20ms
 	cpi col, 3 ; If the pressed key is in col.3 
 	breq letters ; we have a letter If the key is not in col.3 and 
 	cpi row, 3 ; If the key is in row3, 
