@@ -47,6 +47,8 @@ Stock:
 	jmp DEFAULT ; No handling for IRQ1.
 .org OVF0addr
 	jmp Timer0OVF ; Jump to the interrupt handler for timer0 overflow.
+.org ADCCaddr
+	jmp ADC_Read
 	jmp DEFAULT ; default service for all other interrupts.
 DEFAULT: reti ; no service
 
@@ -305,3 +307,31 @@ INIT_INVENTORY:
 		cpi temp2, 10
 		brne stock_loop
 	ret
+
+ADC_Read:
+	push temp1
+	push temp2
+
+	lds XL, ADCL
+	lds XH, ADCH
+
+	ldi temp1, low(0)
+	ldi temp2, high(0)
+	cp XL, temp1
+	cpc XH, temp2
+	breq POT_low
+
+	ldi temp1, low(255)
+	ldi temp2, high(255)
+	cp XL, temp1
+	cpc XH, temp2
+	breq POT_high
+
+	reti
+	
+POT_low:
+	ldi flag, 0
+	reti
+POT_high:
+	ldi flag, 0
+	reti
