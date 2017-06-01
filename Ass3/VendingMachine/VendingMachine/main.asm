@@ -214,18 +214,22 @@ MAIN_MENU:
 	ldi boolean, 0xFF	
 	rjmp delay255
 
-// POSSIBLE_BUG CHECK
 delay255:
 	dec boolean
-	brne Keypress
+	cpi boolean, 0
+	brne delay255
 
 Keypress:
 	; I changed 0 keypress to return 0 in flag and letter/symbol/no keypresses to return 255
 	call sleep_5ms
 	call KEYBOARD
+	call sleep_20ms
+	cpi flag, 255 ;
+	breq Keypress ;
 	out PORTC, flag ; CHECK
-	cpi flag, 255
-	breq Keypress
+	rjmp Keypress ;
+	//cpi flag, 255
+	//breq Keypress
 	get_cost flag
 	mov curCost, inventory_value
 	get_stock flag

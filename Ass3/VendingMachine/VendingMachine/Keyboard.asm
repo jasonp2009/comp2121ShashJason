@@ -11,6 +11,7 @@ colloop:
 
 delay:
     dec temp1
+	cpi temp1, 0
     brne delay              ; until temp1 is zero? - delay
 
     lds temp1, PINL          ; Read PORTL
