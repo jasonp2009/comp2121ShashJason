@@ -45,8 +45,8 @@ convert:
 
 letters: 
 	ldi flag, 20
-	;add temp1, row ; Get the ASCII value for the key
-	sts Input, flag 
+	sts Input, flag
+	;add temp1, row ; Get the ASCII value for the key 
 	ret
 symbols: 
 	cpi col, 0 ; Check if we have a star 
