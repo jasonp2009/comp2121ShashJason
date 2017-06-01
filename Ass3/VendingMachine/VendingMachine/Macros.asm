@@ -17,6 +17,11 @@
 	rcall lcd_data
 	rcall lcd_wait
 .endmacro
+.macro do_lcd_data_r
+	mov lcd, @0
+	rcall lcd_data
+	rcall lcd_wait
+.endmacro
 ; Loads an item cost into inventory_value
 .macro get_costi
 	ldi inventory_value, @0

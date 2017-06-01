@@ -33,6 +33,8 @@ CounterFlag:
 	.byte 1 ; Used to idicate when to start counting seconds
 ScreenState:
 	.byte 1 ; Used to indicate which screen to show
+Input:
+	.byte 1 
 Cost:
 	.byte 10 ; Used to store the cost of each item
 Stock:
@@ -141,14 +143,15 @@ RESET:
 	clear CounterFlag
 	clear SecondCounter
 	clear ScreenState
+	clear Input
 
 Start_screen:
 	ldi temp, 1
 	sts CounterFlag, temp
 	
 	call KEYBOARD
-	cpi flag, 1
-	brge SS_MAIN
+	cpi flag, 255
+	brne SS_MAIN
 	lds temp, SecondCounter
 	cpi temp, 3
 	brge SS_MAIN
@@ -175,13 +178,13 @@ Timer0OVF:
     	cpc r25, temp
     	brne NotSecond
 		
-		lds temp, CounterFlag
+		/*lds temp, CounterFlag
 		cpi temp, 1
 		brne Cont
 		lds temp, SecondCounter
 		subi temp, -1
 		sts SecondCounter, temp
-	Cont:
+	Cont:*/
 		clear TempCounter       ; Reset the temporary counter.
     
 	rjmp EndIF
@@ -221,7 +224,7 @@ EXT_INT0:
 
 MAIN_MENU:
 	ldi boolean, 0	
-	ldi flag, 0
+	ldi flag, 255
 	clear SecondCounter
 	clear CounterFlag
 
@@ -237,16 +240,17 @@ delay255:
 
 Keypress:
 	; I changed 0 keypress to return 0 in flag and letter/symbol/no keypresses to return 255
-	call sleep_5ms
 	call KEYBOARD
+	lds temp1, Input
+	
 	cpi temp1, 255
 	breq Keypress
-	call sleep_20ms
-	call sleep_20ms
-	call sleep_20ms
-	call sleep_20ms
-	call sleep_20ms
-	out PORTC, temp1
+
+
+	mov temp1, flag
+	subi temp1, -'0'
+	do_lcd_data ' '
+	do_lcd_data_r temp1
 	rjmp Keypress
 
 
