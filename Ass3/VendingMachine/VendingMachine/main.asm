@@ -251,6 +251,8 @@ Keypress:
 	do_lcd_data ' '
 	do_lcd_data_r temp1
 	rjmp Keypress*/
+	call POT_SET
+	call sleep_20ms
 	out PORTC, pot
 	rjmp Keypress
 
@@ -335,8 +337,8 @@ ADC_Read:
 	push temp1
 	push temp2
 
-	lds XL, ADCL
 	lds XH, ADCH
+	lds XL, ADCL
 	ldi pot, 1
 	//out PORTC, pot
 
@@ -364,3 +366,11 @@ POT_end:
 	pop temp2
 	pop temp1
 	reti
+
+POT_SET:
+	push temp1
+	lds temp1, ADCSRA
+	ori temp1, (1<<ADSC) ;tell the ADC to do another conversion
+	sts ADCSRA, temp1
+	pop temp1
+	ret
